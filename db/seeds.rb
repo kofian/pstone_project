@@ -43,10 +43,14 @@ AcctType.create(id: 2, name: 'checking', interest_rate: 0.000)
 users = [] # Empty array to store users
 100.times do
 	username = "#{Faker::Vehicle.make}#{Faker::BaconIpsum.word}-#{rand(999)}"
+	user_password = SecureRandom.base64(12)
 	u = User.new
 		u.id = SecureRandom.random_number(9999999999)
 		u.username = username.gsub(/\s+/,"")
-		u.password = SecureRandom.base64(12)
+		u.password = user_password
+		u.password_confirmation = user_password
+		u.email = "#{Faker::Internet.free_email}"
+		u.sign_in_count = 0
 		# u.role_id = 2
 	u.save
 	users << u # Put newly created user in the array
@@ -91,7 +95,7 @@ customers = [] # Empty array to store customers
 
 		c.user_id = users[i].id
 		c.id = SecureRandom.random_number(999999999) # 9-digit integer
-		c.email = "#{Faker::Internet.free_email(firstname)}"
+		c.email = users[i].email # "#{Faker::Internet.free_email(firstname)}"
 		c.phone1 = "#{Faker::PhoneNumber.short_phone_number}"
 		c.phone2 = "#{Faker::PhoneNumber.short_phone_number}"
 		c.title = name_prefix

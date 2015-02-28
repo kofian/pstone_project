@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
-	# self.primary_key = "id"
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-	# has_one :role
-	has_many :customers
-	has_many :administrators
+  validates_uniqueness_of :email, :case_sensitive => false
+  validates_uniqueness_of :id
+
+  has_many :customers
+  has_many :administrators
 end
