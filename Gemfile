@@ -54,4 +54,5 @@ gem 'puma', '~> 2.11.1'
 # gem 'capistrano-rails', group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
+# Use Devise for authentication
+gem 'devise'

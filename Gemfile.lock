@@ -40,6 +40,7 @@ GEM
       multi_xml (~> 0.5)
     aws-sdk-resources (2.0.24)
       aws-sdk-core (= 2.0.24)
+    bcrypt (3.1.10)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.2.2)
@@ -51,6 +52,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.0)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.3.0)
     fabrication (2.12.2)
@@ -76,6 +84,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     mysql2 (0.3.17)
+    orm_adapter (0.5.0)
     puma (2.11.1)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
@@ -104,6 +113,8 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
     ruby-graphviz (1.0.9)
     sass (3.2.19)
     sass-rails (4.0.5)
@@ -134,6 +145,8 @@ GEM
     uglifier (2.7.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -143,6 +156,7 @@ DEPENDENCIES
   aws-sdk (~> 2.0.24)
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
+  devise
   fabrication (~> 2.12.2)
   ffaker
   foreigner (~> 1.7.2)
