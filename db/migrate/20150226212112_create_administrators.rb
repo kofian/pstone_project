@@ -5,7 +5,7 @@ class CreateAdministrators < ActiveRecord::Migration
 	    t.integer "id",        limit: 8,  null: false
 	    t.string  "firstname", limit: 40, null: false
 	    t.string  "lastname",  limit: 40, null: false
-	    t.integer "user_id",   limit: 8,  null: false
+	    t.uuid 	  "user_id",   limit: 8,  null: false
 	  end
 	  execute "ALTER TABLE administrators ADD PRIMARY KEY (id);"
 	  add_index "administrators", ["lastname", "firstname", "id"], name: "BY_LASTNAME", using: :btree

@@ -27,6 +27,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    activeuuid (0.6.0)
+      activerecord (>= 3.1)
+      uuidtools
     arel (5.0.1.20140414130214)
     autoprefixer-rails (5.1.7)
       execjs
@@ -145,6 +148,7 @@ GEM
     uglifier (2.7.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuidtools (2.1.5)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -152,6 +156,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activeuuid
   autoprefixer-rails
   aws-sdk (~> 2.0.24)
   bootstrap-sass (~> 3.2.0)

@@ -33,6 +33,9 @@ gem 'ffaker'
 gem 'forgery'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# ActiveUUID generates binary uuid's for key generation, it's based on uuidtools gem
+# This is a cool way to avoid key collisions in multi-master environments
+gem "activeuuid"
 # Foreigner gem for generating foreign keys 
 gem 'foreigner', '~> 1.7.2'
 # Amazon cli tools

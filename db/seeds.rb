@@ -45,7 +45,7 @@ users = [] # Empty array to store users
 	username = "#{Faker::Vehicle.make}#{Faker::BaconIpsum.word}-#{rand(999)}"
 	user_password = SecureRandom.base64(12)
 	u = User.new
-		u.id = SecureRandom.random_number(9999999999)
+		u.id = SecureRandom.uuid
 		u.username = username.gsub(/\s+/,"")
 		u.password = user_password
 		u.password_confirmation = user_password
@@ -58,10 +58,11 @@ end
 
 # Generate admin ("Administrator") user # ADMIN USER_ID IS 10 ZEROES
 # User.create(id: 0000000000, username: 'admin', password: 'Pa55w0rd', role_id: 1)
-User.create(id: 0000000000, username: 'admin', password: 'Pa55w0rd')
+seeded_admin_id = SecureRandom.uuid
+User.create(id: seeded_admin_id, username: 'admin', password: 'Pa55w0rd')
 
 # Set up profile for above created admin user ADMIN_ID IS 10 ONES
-Administrator.create(id: 1111111111, firstname: 'Peggy', lastname: 'Hill', user_id: 0000000000)
+Administrator.create(id: 1111111111, firstname: 'Peggy', lastname: 'Hill', user_id: seeded_admin_id)
 
 # Generate 100 customers
 customers = [] # Empty array to store customers

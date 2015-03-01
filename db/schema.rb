@@ -49,22 +49,22 @@ ActiveRecord::Schema.define(version: 20150228175219) do
   add_index "addresses", ["zip_code_zip_code"], name: "fk_addresses_zip_codes1_idx", using: :btree
 
   create_table "administrators", force: true do |t|
-    t.string  "firstname", limit: 40, null: false
-    t.string  "lastname",  limit: 40, null: false
-    t.integer "user_id",   limit: 8,  null: false
+    t.string "firstname", limit: 40, null: false
+    t.string "lastname",  limit: 40, null: false
+    t.uuid   "user_id",              null: false
   end
 
   add_index "administrators", ["lastname", "firstname", "id"], name: "BY_LASTNAME", using: :btree
   add_index "administrators", ["user_id"], name: "fk_administrators_users_idx", using: :btree
 
   create_table "customers", force: true do |t|
-    t.string  "email",     limit: 75
-    t.string  "phone1",    limit: 20
-    t.string  "phone2",    limit: 20
-    t.string  "title",     limit: 11
-    t.string  "firstname", limit: 40
-    t.string  "lastname",  limit: 40
-    t.integer "user_id",   limit: 8,  null: false
+    t.string "email",     limit: 75
+    t.string "phone1",    limit: 20
+    t.string "phone2",    limit: 20
+    t.string "title",     limit: 11
+    t.string "firstname", limit: 40
+    t.string "lastname",  limit: 40
+    t.uuid   "user_id",              null: false
   end
 
   add_index "customers", ["lastname", "firstname"], name: "NAME_LAST_FIRST", using: :btree

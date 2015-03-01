@@ -9,7 +9,7 @@ class CreateCustomers < ActiveRecord::Migration
 	    t.string  "title",     limit: 11
 	    t.string  "firstname", limit: 40
 	    t.string  "lastname",  limit: 40
-	    t.integer "user_id",   limit: 8,  null: false
+	    t.uuid "user_id",   limit: 8,  null: false
 	  end
 	  execute "ALTER TABLE customers ADD PRIMARY KEY (id);"
 	  add_index "customers", ["lastname", "firstname"], name: "NAME_LAST_FIRST", using: :btree

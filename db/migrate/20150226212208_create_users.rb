@@ -2,7 +2,7 @@ class CreateUsers < ActiveRecord::Migration
   def self.up
   	# create USERS table
 	  create_table "users", id: false, force: true do |t|
-	    t.integer "id",       limit: 8,  default: 0,  null: false
+	    t.uuid 	  "id",       limit: 8,  null: false, unique: true
 	    t.string  "username", limit: 30, default: "", null: false
 	    t.string  "password", limit: 30, default: "", null: false   
 	  end
