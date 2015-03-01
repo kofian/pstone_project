@@ -56,7 +56,7 @@ users = [] # Empty array to store users
 	users << u # Put newly created user in the array
 end
 
-# Generate admin ("Administrator") user # ADMIN USER_ID IS 10 ZEROES
+# Generate admin ("Administrator") user
 # User.create(id: 0000000000, username: 'admin', password: 'Pa55w0rd', role_id: 1)
 seeded_admin_id = SecureRandom.uuid
 User.create(id: seeded_admin_id, username: 'admin', password: 'Pa55w0rd')

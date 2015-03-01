@@ -1,11 +1,20 @@
 class User < ActiveRecord::Base
   before_create :generate_id
 
+  # Virtual attribute for authenticating by either username or email
+  # This is in addition to a real persisted field like 'username'
+  attr_accessor :login
+
   has_many :customers
   has_many :administrators
 
   validates_uniqueness_of :email, :case_sensitive => false
   validates_uniqueness_of :id
+  validates :username,
+  	:presence => true,
+  	:uniqueness=> {
+  		:case_sensitive => false
+  	}
 
   # User ID is a generated uuid
   include ActiveUUID::UUID
@@ -24,9 +33,13 @@ class User < ActiveRecord::Base
   	self.id = SecureRandom.uuid
   end
 
-  # Allow signin by either email or username
-  def self.find_first_by_auth_conditions(warden_conditions)
-  	conditions = warden_conditions.dup
-  	where(conditions).where(['lower(username) = :value OR lower(email) = :value', { :value => signin.downcase }]).first
-  end  
+  # Allow signin by either email or username ("lower" function might have to be removed?)
+  def self.find_for_database_authentication(warden_conditions)
+      conditions = warden_conditions.dup
+      if login = conditions.delete(:login)
+        where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      else
+        where(conditions.to_h).first
+      end
+    end  
 end
