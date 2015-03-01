@@ -22,10 +22,6 @@ csv.each do |row|
   ZipCode.create!(row.to_hash)
 end
 
-# Generate the 2 basic roles
-# Role.create(id: 1, name: 'Administrator')
-# Role.create(id: 2, name: 'Customer')
-
 # Generate transaction types
 TransactionType.create(id: 1, name: 'ATM')
 TransactionType.create(id: 2, name: 'Check')
@@ -57,9 +53,8 @@ users = [] # Empty array to store users
 end
 
 # Generate admin ("Administrator") user
-# User.create(id: 0000000000, username: 'admin', password: 'Pa55w0rd', role_id: 1)
-seeded_admin_id = SecureRandom.uuid
-User.create(id: seeded_admin_id, username: 'admin', password: 'Pa55w0rd')
+seeded_admin_id = SecureRandom.uuid # Created variable because it's used twice
+User.create(id: seeded_admin_id, username: 'admin', password: 'Pa55w0rd', password_confirmation: 'Pa55w0rd', email: 'phill@capstonesavings.com', sign_in_count: 0)
 
 # Set up profile for above created admin user ADMIN_ID IS 10 ONES
 Administrator.create(id: 1111111111, firstname: 'Peggy', lastname: 'Hill', user_id: seeded_admin_id)
