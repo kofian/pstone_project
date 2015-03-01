@@ -1,4 +1,12 @@
 class User < ActiveRecord::Base
+  before_create :generate_id
+
+  has_many :customers
+  has_many :administrators
+
+  validates_uniqueness_of :email, :case_sensitive => false
+  validates_uniqueness_of :id
+
   # User ID is a generated uuid
   include ActiveUUID::UUID
   natural_key :user_id, :remember_created_at
@@ -11,10 +19,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_uniqueness_of :email, :case_sensitive => false
-  validates_uniqueness_of :id
+  # Generate a random uuid for new user id creation
+  def generate_id
+  	self.id = SecureRandom.uuid
+  end
 
-  has_many :customers
-  has_many :administrators
-
+  # Allow signin by either email or username
+  def self.find_first_by_auth_conditions(warden_conditions)
+  	conditions = warden_conditions.dup
+  	where(conditions).where(['lower(username) = :value OR lower(email) = :value', { :value => signin.downcase }]).first
+  end  
 end
