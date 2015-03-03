@@ -32,3 +32,13 @@ main {
 main>h1 {
 	font-size: 180%;
 }
+
+.general-info-panel {
+	position: absolute;
+	bottom: 0;
+	width: 300px;
+	background-color: #BBB;
+	border-color: #999;
+	font-size: 80%;
+	padding: 0;
+}
