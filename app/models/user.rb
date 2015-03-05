@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
 
-  has_one :customer
   has_one :administrator
+  has_one :customer
   has_many :accounts, through: :customers
   has_one :address, through: :customers
 

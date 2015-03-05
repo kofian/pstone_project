@@ -4,7 +4,11 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = current_user.accounts.find(params[:id])
+    if current_user.try(:admin?)
+      @accounts = Account.all
+    else
+      @accounts = current_user.accounts.find(params[:id])
+    end
   end
 
   # GET /accounts/1

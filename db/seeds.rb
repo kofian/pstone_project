@@ -54,7 +54,7 @@ end
 
 # Generate admin ("Administrator") user
 seeded_admin_id = SecureRandom.uuid # Created variable because it's used twice
-User.create(id: seeded_admin_id, username: 'admin', password: 'Pa55w0rd', password_confirmation: 'Pa55w0rd', email: 'phill@capstonesavings.com', sign_in_count: 0)
+User.create(id: seeded_admin_id, username: 'admin', password: 'Pa55w0rd', password_confirmation: 'Pa55w0rd', email: 'phill@capstonesavings.com', sign_in_count: 0, role: 'admin')
 
 # Set up profile for above created admin user ADMIN_ID IS 10 ONES
 Administrator.create(id: 1111111111, firstname: 'Peggy', lastname: 'Hill', user_id: seeded_admin_id)
