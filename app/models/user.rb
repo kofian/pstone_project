@@ -5,8 +5,10 @@ class User < ActiveRecord::Base
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
 
-  has_many :customers
-  has_many :administrators
+  has_one :customer
+  has_one :administrator
+  has_many :accounts, through: :customers
+  has_one :address, through: :customers
 
   validates_uniqueness_of :email, :case_sensitive => false
   validates_uniqueness_of :id
@@ -25,8 +27,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :timeoutable, :recoverable, :trackable, :validatable
 
   # Generate a random uuid for new user id creation
   def generate_id

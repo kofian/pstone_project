@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :acct_types
+  devise_for :users, :controllers => { :registrations => "registrations" }
 
-  resources :acct_transactions
+  # map.user_root '/users', controller: 'users' # create user_root_path
 
-  resources :addresses
+  # namespace :user do |user|
+  #   user.root controller: 'users' # creates user_root_path
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'home/index'
-  get 'home/about'
   # You can have the root of your site routed with "root"
   root 'home#index'
 
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :account_types, :accounts, :administrators, :customers, :roles, :states, :transaction_types, :transactions, :users, :zip_codes
+  resources :account_types, :accounts, :administrators, :customers, :transaction_types, :transactions, :users
 
   # Example resource route with options:
   #   resources :products do
