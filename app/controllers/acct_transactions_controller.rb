@@ -1,4 +1,5 @@
 class AcctTransactionsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_acct_transaction, only: [:show, :edit, :update, :destroy]
 
   # GET /acct_transactions

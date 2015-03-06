@@ -1,5 +1,11 @@
 
-@import url(http://fonts.googleapis.com/css?family=Cinzel:400,900);
+@font-face {
+	font-family: 'Cinzel-Regular';
+	src: url('Cinzel-Regular.ttf');
+}
+
+/*@import url(http://fonts.googleapis.com/css?family=Cinzel:400,900);*/
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -15,7 +21,7 @@ nav {
 }
 
 .navbar-brand {
-	font-family: 'Cinzel', serif;
+	font-family: 'Cinzel-Regular', serif;
 	font-weight: 500;
 	font-size: 34pt;
 }

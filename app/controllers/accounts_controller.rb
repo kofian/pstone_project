@@ -1,10 +1,11 @@
 class AccountsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_account, only: [:show, :edit, :update, :destroy]
 
   # GET /accounts
   # GET /accounts.json
   def index
-    if current_user.try(:admin?)
+    if current_user.role == 'admin'
       @accounts = Account.all
     else
       @accounts = current_user.accounts.find(params[:id])

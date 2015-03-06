@@ -3,6 +3,6 @@ class Account < ActiveRecord::Base
 
 	belongs_to :customer
 	belongs_to :user
-	has_one :account_type
+	has_one :acct_type
 	has_many :acct_transactions
 end

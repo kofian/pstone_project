@@ -1,6 +1,6 @@
 <h1>Listing accounts</h1>
 
-<table>
+<table id="indexTable" class="table table-striped">
   <thead>
     <tr>
       <th colspan="5"></th>
@@ -8,19 +8,21 @@
   </thead>
 
   <tbody>
-    <% if Account.empty? %>
-      <div class="jumbotron" style="text-align: center; border: 1px solid #DDD; border-radius: 8px;">
-      <h1>You have no accounts (yet...)</h1>
-      </div>
-    <% else %>
-    <% @user.accounts.each do |account| %>
+    <% if Account.exists? %>
+      <% @accounts.each do |account| %>
       <tr>
         <td><%= account.id %></td>
-        <td><%= account.acct_type %></td>
+        <td><%= account.acct_type_name %></td>
+
         <td><%= link_to 'Show', account %></td>
         <td><%= link_to 'Edit', edit_account_path(account) %></td>
         <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
+    <% else %>
+      <div class="jumbotron" style="text-align: center; border: 1px solid #DDD; border-radius: 8px;">
+      <h1>No accounts to display</h1>
+      </div>
     <% end %>
   </tbody>
 </table>
