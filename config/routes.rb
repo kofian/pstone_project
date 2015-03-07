@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
 
+  devise_scope :user do
+    post "/accounts/adminview" => "devise/sessions#new"
+  end
   # map.user_root '/users', controller: 'users' # create user_root_path
 
   # namespace :user do |user|
@@ -16,16 +19,19 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   # Another example
   #   get '/about' => 'home#about'
-
+  # get '/adminview' => 'administrators#adminview'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
+  resources :administrators do
+    member do
+      get :adminview
+    end
+  end
+
   resources :account_types, :accounts, :administrators, :customers, :transaction_types, :transactions, :users
 
-  resources :customers do
-    resources :accounts
-  end
   # Example resource route with options:
   #   resources :products do
   #     member do

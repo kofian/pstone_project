@@ -3,6 +3,9 @@ class Address < ActiveRecord::Base
 	
 	belongs_to :customer
 	belongs_to :user
+
+	validates_presence_of :zip_code
+	
 	has_one :zip_code
 	has_one :state, through: :zip_code
 end

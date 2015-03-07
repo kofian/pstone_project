@@ -5,10 +5,21 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    if current_user.role == 'admin'
-      @accounts = Account.all
-    else
-      @accounts = current_user.accounts.find(params[:id])
+    @user = current_user
+    @accounts = @user.accounts
+
+      respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @accounts }
+    end
+  end
+
+  def adminview
+    @accounts = Account.all
+
+    respond_to do |format|
+      format.html # adminview.html.erb
+      format.json { render json: @accounts }
     end
   end
 
@@ -19,7 +30,17 @@ class AccountsController < ApplicationController
 
   # GET /accounts/new
   def new
-    @account = Account.new
+    @customer = current_user.customer
+    @account = @customer.accounts.build(:customer_id => @customer.id,
+                                      :acct_type_id => 1,
+                                      :id => SecureRandom.random_number(999999999999),
+                                      :balance => 0.00,
+                                      :date_opened => Date.today)
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @account }
+    end
   end
 
   # GET /accounts/1/edit
@@ -29,7 +50,13 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = Account.new(account_params)
+    # @account = Account.new(account_params)
+    @customer = current_user.customer
+    @account = @customer.accounts.build(:customer_id => @customer.id,
+                                      :acct_type_id => 1,
+                                      :id => SecureRandom.random_number(999999999999),
+                                      :balance => 0.00,
+                                      :date_opened => Date.today)
 
     respond_to do |format|
       if @account.save

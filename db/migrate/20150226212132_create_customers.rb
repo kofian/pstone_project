@@ -3,7 +3,6 @@ class CreateCustomers < ActiveRecord::Migration
   	  # create CUSTOMERS table
 	  create_table "customers", id: false, force: true do |t|
 	    t.integer "id",        limit: 8,  null: false
-	    t.string  "email",     limit: 75
 	    t.string  "phone1",    limit: 20
 	    t.string  "phone2",    limit: 20
 	    t.string  "title",     limit: 11

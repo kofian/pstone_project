@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20150228175219) do
   add_index "administrators", ["user_id"], name: "fk_administrators_users_idx", using: :btree
 
   create_table "customers", force: true do |t|
-    t.string "email",     limit: 75
     t.string "phone1",    limit: 20
     t.string "phone2",    limit: 20
     t.string "title",     limit: 11

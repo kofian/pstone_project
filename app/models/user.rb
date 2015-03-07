@@ -6,9 +6,15 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   has_one :administrator
+
   has_one :customer
-  has_many :accounts, through: :customers
-  has_one :address, through: :customers
+  has_many :accounts, through: :customer
+  accepts_nested_attributes_for :customer, :allow_destroy => true
+  accepts_nested_attributes_for :accounts, :allow_destroy => true
+
+  has_one :address, through: :customer
+  accepts_nested_attributes_for :customer, :allow_destroy => true
+  accepts_nested_attributes_for :address, :allow_destroy => true
 
   validates_uniqueness_of :email, :case_sensitive => false
   validates_uniqueness_of :id

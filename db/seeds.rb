@@ -91,7 +91,7 @@ customers = [] # Empty array to store customers
 
 		c.user_id = users[i].id
 		c.id = SecureRandom.random_number(999999999) # 9-digit integer
-		c.email = users[i].email # "#{Faker::Internet.free_email(firstname)}"
+		# c.email = users[i].email # "#{Faker::Internet.free_email(firstname)}"
 		c.phone1 = "#{Faker::PhoneNumber.short_phone_number}"
 		c.phone2 = "#{Faker::PhoneNumber.short_phone_number}"
 		c.title = name_prefix
