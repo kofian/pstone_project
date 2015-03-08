@@ -15,7 +15,11 @@ class AddressesController < ApplicationController
 
   # GET /addresses/new
   def new
-    @address = Address.new
+    @customer = current_user.customer
+    @address = @customer.address.build(:customer_id => @customer.id,
+                                      :address1 => nil,
+                                      :address2 => nil,
+                                      :zip_code => nil)
   end
 
   # GET /addresses/1/edit
@@ -25,7 +29,11 @@ class AddressesController < ApplicationController
   # POST /addresses
   # POST /addresses.json
   def create
-    @address = Address.new(address_params)
+    @customer = current_user.customer
+    @address = @customer.address.build(:customer_id => @customer.id,
+                                      :address1 => nil,
+                                      :address2 => nil,
+                                      :zip_code => nil)
 
     respond_to do |format|
       if @address.save

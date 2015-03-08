@@ -1,9 +1,14 @@
-<div class="panel panel-default" style="width: 50%;">
-  <div class="form-group">
-    <h2>Sign up</h2>
+<h1>Create an account</h1>
+<div class="form-group">
+<div class="panel panel-default" style="width: 14em;">  
+    <% resource.build_customer if resource.customer.nil? %>
+    <% resource.build_account if resource.accounts.nil? %>
+    <% resource.build_address if resource.address.nil? %>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
+      <h3>User Info</h3>
         <div class="form-group">
+          <!-- fields for User object -->
           <div class="field">
             <%= f.label :username %><br />
             <%= f.text_field :username, autofocus: true  %>
@@ -26,14 +31,67 @@
             <%= f.label :password_confirmation %><br />
             <%= f.password_field :password_confirmation, autocomplete: "off" %>
           </div>
-          <br />
+
+          <!-- fields for Customer object -->
+          <%= f.fields_for :customer do |customer_fields| %>
+            <div class="field">
+              <%= customer_fields.label :firstname %>
+              <%= customer_fields.text_field :firstname %>
+            </div>
+
+            <div class="field">
+              <%= customer_fields.label :title %>
+              <%= customer_fields.text_field :title %>
+            </div>
+
+            <div class="field">
+              <%= customer_fields.label :lastname %>
+              <%= customer_fields.text_field :lastname %>
+            </div>
+
+            <div class="field">
+              <%= customer_fields.label :phone1 %>
+              <%= customer_fields.text_field :phone1 %>
+            </div>
+
+            <div class="field">
+              <%= customer_fields.label :phone2 %>
+              <%= customer_fields.text_field :phone2 %>
+            </div>
+          <% end %>
+
+          <!-- fields for Account object -->
+          <%= f.fields_for :account do |account_fields| %>
+            <div class="field">
+              <%= account_fields.label :acct_type %>
+              <%= account_fields.text_field :acct_type %>
+            </div>
+          <% end %>
+
+          <!-- fields for Address object -->
+          <%= f.fields_for :address do |address_fields| %>
+            <div class="field">
+              <%= address_fields.label :address1 %>
+              <%= address_fields.text_field :address1 %>
+            </div>
+
+            <div class="field">
+              <%= address_fields.label :address2 %>
+              <%= address_fields.text_field :address2 %>
+            </div>
+
+            <div class="field">
+              <%= address_fields.label :zip_code %>
+              <%= address_fields.text_field :zip_code %>
+            </div>
+
+          <% end %>
           <div class="actions">
-            <%= f.submit "Sign up", :class => "btn btn-info" %>
+            <%= f.submit "Create My Account", :class => "btn btn-info" %>
           </div>
         </div>
     <% end %>
-    <p class="btn btn-default" style="margin-bottom: 15px;">
-      <%= render "devise/shared/links" %>
-    </p>
+      
+    
   </div>
 </div>

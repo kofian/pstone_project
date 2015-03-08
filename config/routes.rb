@@ -4,35 +4,35 @@ Rails.application.routes.draw do
   devise_scope :user do
     post "/accounts/adminview" => "devise/sessions#new"
   end
-  # map.user_root '/users', controller: 'users' # create user_root_path
 
-  # namespace :user do |user|
-  #   user.root controller: 'users' # creates user_root_path
-  # end
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-  # You can have the root of your site routed with "root"
   root 'home#index'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-  # Another example
-  #   get '/about' => 'home#about'
-  # get '/adminview' => 'administrators#adminview'
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
+ 
   resources :administrators do
     member do
       get :adminview
     end
   end
 
+  resources :users do
+    resource :customer
+    resource :accounts
+    resource :address
+  end
+
   resources :account_types, :accounts, :administrators, :customers, :transaction_types, :transactions, :users
 
-  # Example resource route with options:
+# The priority is based upon order of creation: first created -> highest priority.
+# See how all your routes lay out with "rake routes".
+# You can have the root of your site routed with "root"
+# Example resource route with options:
+# Example of regular route:
+  #   get 'products/:id' => 'catalog#view'
+  # Another example
+  #   get '/about' => 'home#about'
+  # Example of named route that can be invoked with purchase_url(id: product.id)
+  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products do
   #     member do
   #       get 'short'
@@ -43,13 +43,11 @@ Rails.application.routes.draw do
   #       get 'sold'
   #     end
   #   end
-
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
   #     resource :seller
   #   end
-
   # Example resource route with more complex sub-resources:
   #   resources :products do
   #     resources :comments

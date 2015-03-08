@@ -31,8 +31,8 @@ class AccountsController < ApplicationController
   # GET /accounts/new
   def new
     @customer = current_user.customer
-    @account = @customer.accounts.build(:customer_id => @customer.id,
-                                      :acct_type_id => 1,
+    @account = @customer.account.build(:customer_id => @customer.id,
+                                      :acct_type_id => nil,
                                       :id => SecureRandom.random_number(999999999999),
                                       :balance => 0.00,
                                       :date_opened => Date.today)
