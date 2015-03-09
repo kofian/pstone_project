@@ -5,9 +5,7 @@ class User < ActiveRecord::Base
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
 
-  has_one :administrator
-
-  has_one :customer
+  has_one :customer, :dependent => :destroy
   has_many :accounts, through: :customer
   accepts_nested_attributes_for :customer, :allow_destroy => true
   accepts_nested_attributes_for :accounts, :allow_destroy => true
@@ -15,6 +13,8 @@ class User < ActiveRecord::Base
   has_one :address, through: :customer
   accepts_nested_attributes_for :customer, :allow_destroy => true
   accepts_nested_attributes_for :address, :allow_destroy => true
+
+  has_one :administrator
 
   validates_uniqueness_of :email, :case_sensitive => false
   validates_uniqueness_of :id
@@ -48,5 +48,5 @@ class User < ActiveRecord::Base
       else
         where(conditions.to_h).first
       end
-    end  
+  end  
 end

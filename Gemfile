@@ -46,9 +46,13 @@ gem 'aws-sdk', '~> 2.0.24'
 group :development do
   gem 'rails-erd', '~> 1.3.0'
 end
+
+gem 'nested_form'
+
 # Twitter bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'bootstrap_form'
 # Use unicorn as the app server
 # gem 'unicorn'
 # Use Puma as the app server

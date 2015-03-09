@@ -8,6 +8,10 @@ class AdministratorsController < ApplicationController
     @administrators = Administrator.all
   end
 
+  def adminview
+    @accounts = Account.all
+  end
+
   # GET /administrators/1
   # GET /administrators/1.json
   def show

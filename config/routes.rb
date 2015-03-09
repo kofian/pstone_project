@@ -2,7 +2,17 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
 
   devise_scope :user do
+    # authentication
     post "/accounts/adminview" => "devise/sessions#new"
+
+    # get '/signin', to: 'devise/sessions#new', as: 'new_user_session'
+    # post '/signin', to: 'devise/sessions#create', as: 'user_session'
+    # get '/signout', to: 'devise/sessions#destroy'
+    # delete '/signout', to: 'devise/sessions#destroy', as: 'destroy_user_session'
+
+    # registrations
+    # get '/register', to: 'users/registrations#new', as: 'new_user_registration'
+    # post '/register', to: 'users/registrations#create', as: 'user_registration'
   end
 
   root 'home#index'
@@ -15,12 +25,12 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resource :customer
+    resource :customers
     resource :accounts
-    resource :address
+    resource :addresses
   end
 
-  resources :account_types, :accounts, :administrators, :customers, :transaction_types, :transactions, :users
+  resources :account_types, :accounts, :addresses, :administrators, :customers, :transaction_types, :transactions, :users
 
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".

@@ -46,6 +46,7 @@ GEM
     bcrypt (3.1.10)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
+    bootstrap_form (2.3.0)
     builder (3.2.2)
     choice (0.1.7)
     coffee-rails (4.0.1)
@@ -88,6 +89,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     mysql2 (0.3.18)
+    nested_form (0.3.2)
     orm_adapter (0.5.0)
     puma (2.11.1)
       rack (>= 1.1, < 2.0)
@@ -165,6 +167,7 @@ DEPENDENCIES
   autoprefixer-rails
   aws-sdk (~> 2.0.24)
   bootstrap-sass (~> 3.2.0)
+  bootstrap_form
   coffee-rails (~> 4.0.0)
   devise
   fabrication (~> 2.12.2)
@@ -174,6 +177,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
+  nested_form
   puma (~> 2.11.1)
   rails (= 4.1.8)
   rails-erd (~> 1.3.0)
