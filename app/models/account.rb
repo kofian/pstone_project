@@ -4,5 +4,5 @@ class Account < ActiveRecord::Base
 	has_one :acct_type
 	has_many :acct_transactions
 
-	validates :acct_type, presence: true
+	# validates :acct_type, presence: true
 end

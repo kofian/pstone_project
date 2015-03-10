@@ -35,7 +35,10 @@
 	      </form>
 	      <ul class="nav navbar-nav navbar-right">
 	      	<ul class="nav nav-pills pull-right">
-			  <% if user_signed_in? %>
+	      	  <% if @account_active = false %>
+      	  		<li role="button" class="btn btn-warning">Account Pending<br /></li>
+		    	<li role="presentation"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+			  <% elsif user_signed_in? %>
 			  	<li role="button" class="btn btn-success">Signed in as <br /><strong><%= current_user.username %></strong></li>
 			    <li role="presentation"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
 			  <% else %>

@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
- 
   resources :administrators do
     member do
       get :adminview

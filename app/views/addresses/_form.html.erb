@@ -1,4 +1,7 @@
-<%= form_for(@address) do |f| %>
+
+  <div class="panel panel-default" style="width: 50%; padding: 0 25px;">  
+
+  <%= bootstrap_form_for(@address) do |f| %>
   <% if @address.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
@@ -8,10 +11,20 @@
         <li><%= message %></li>
       <% end %>
       </ul>
-    </div>
   <% end %>
+        
+        <div id="tip">
+        <p>Tell us where you get your mail.</p>
+        </div>
+        <!-- fields for Customer object -->
+        <%= f.text_field :address1, autofocus: true, :label => "Address 1" %>
+        <%= f.text_field :address2, :label => "Address 2" %>
+        <%= f.text_field :zip_code_zip_code, :label => "Zip Code"%>
 
-  <div class="actions">
-    <%= f.submit %>
+      <br />
+      <div class="actions">
+        <%= f.submit "Next", :class => "btn btn-info", :style => 'margin-bottom: 25px;'%>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

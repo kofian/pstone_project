@@ -15,14 +15,11 @@ class CustomersController < ApplicationController
 
   # GET /customers/new
   def new
-    # @customer = Customer.new
-    @user = current_user
-    @customer = @customer.account.build(:user_id = @user.id
-                                        :title => "",
-                                        :firstname => "",
-                                        :lastname => "",
-                                        :phone1 => "",
-                                        :phone2 => "")
+
+    @customer = Customer.new
+    @customer.id = SecureRandom.random_number(999999999) # 9-digit integer
+    @customer.user_id = current_user.id
+
   end
 
   # GET /customers/1/edit
@@ -32,18 +29,13 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
-    # @customer = Customer.new(customer_params)
-    @user = current_user
-    @customer = @customer.account.build(:user_id = @user.id
-                                        :title => "",
-                                        :firstname => "",
-                                        :lastname => "",
-                                        :phone1 => "",
-                                        :phone2 => "")
-
+    @customer = Customer.new(customer_params)
+    @customer.id = SecureRandom.random_number(999999999) # 9-digit integer
+    @customer.user_id = current_user.id
+    
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+        format.html { redirect_to new_user_accounts_path(current_user), notice: 'Customer was successfully created.' }
         format.json { render :show, status: :created, location: @customer }
       else
         format.html { render :new }
@@ -84,6 +76,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params[:customer]
+      params.require(:customer).permit(:title, :firstname, :lastname, :phone1, :phone2)
     end
 end

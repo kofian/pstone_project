@@ -30,12 +30,12 @@ class AccountsController < ApplicationController
 
   # GET /accounts/new
   def new
-    @customer = current_user.customer
-    @account = @customer.account.build(:customer_id => @customer.id,
-                                      :acct_type_id => nil,
-                                      :id => SecureRandom.random_number(999999999999),
-                                      :balance => 0.00,
-                                      :date_opened => Date.today)
+    # @user = User.find(params[:user_id])
+    @account = Account.new
+    @account.id = SecureRandom.random_number(999999999999)
+    @account.customer_id = current_user.customer.id
+    @account.balance = 0
+    @account.date_opened = Time.now.to_date
 
     respond_to do |format|
       format.html # new.html.erb
@@ -50,17 +50,15 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    # @account = Account.new(account_params)
-    @customer = current_user.customer
-    @account = @customer.accounts.build(:customer_id => @customer.id,
-                                      :acct_type_id => 1,
-                                      :id => SecureRandom.random_number(999999999999),
-                                      :balance => 0.00,
-                                      :date_opened => Date.today)
+    @account = Account.new(account_params)
+    @account.id = SecureRandom.random_number(999999999999)
+    @account.customer_id = current_user.customer.id
+    @account.balance = 0
+    @account.date_opened = Time.now.to_date
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
+        format.html { redirect_to new_user_addresses_path(current_user), notice: 'Account was successfully created.' }
         format.json { render :show, status: :created, location: @account }
       else
         format.html { render :new }
@@ -101,6 +99,6 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params[:account]
+      params.require(:account).permit(:acct_type_id)
     end
 end

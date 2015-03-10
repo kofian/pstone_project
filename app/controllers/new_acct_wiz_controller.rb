@@ -1,0 +1,4 @@
+class NewAcctWizController < ApplicationController
+
+
+end

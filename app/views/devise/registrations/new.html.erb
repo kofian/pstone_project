@@ -1,10 +1,14 @@
 
-<h1>Create an account</h1>
+<h1>Let's Get Started!</h1>
   <div class="panel panel-default" style="width: 50%; padding: 0 25px;">  
-    
-    <%= bootstrap_nested_form_for(resource, as: resource_name, url: user_registration_path(resource_name)) do |f| %>
+
+    <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
-      <h3>User Info</h3>
+        <h2>Step 1</h2>
+        <div id="tip">
+        <p>Begin by adding some login information. <br />
+            This will be used to sign in to your account, so keep it handy!</p>
+        </div>
         <!-- fields for User object -->
         <%= f.text_field :username, autofocus: true %>
         <%= f.email_field :email %>
@@ -14,29 +18,9 @@
           <% end %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
 
-        <!-- fields for Customer object -->
-        <%= f.fields_for :customer do |customer_fields| %>
-          <%= customer_fields.text_field :title %>
-          <%= customer_fields.text_field :firstname %>
-          <%= customer_fields.text_field :lastname %>
-          <%= customer_fields.text_field :phone1 %>
-          <%= customer_fields.text_field :phone2 %>
-        <% end %>
-          
-        <!-- fields for Account object -->
-        <%= f.fields_for :account do |account_fields| %>
-          <%= account_fields.text_field :acct_type %>
-        <% end %>
-
-        <!-- fields for Address object -->
-        <%= f.fields_for :address do |address_fields| %>
-          <%= address_fields.text_field :address1 %>
-          <%= address_fields.text_field :address2 %>
-          <%= address_fields.text_field :zip_code %>
-        <% end %>
       <br />
       <div class="actions">
-        <%= f.submit "Create My Account", :class => "btn btn-info" %>
+        <%= f.submit "Next", :class => "btn btn-info", :style => 'margin-bottom: 25px;'%>
       </div>
       <% end %>
   </div>

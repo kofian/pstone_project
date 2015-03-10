@@ -15,11 +15,13 @@ class AddressesController < ApplicationController
 
   # GET /addresses/new
   def new
-    @customer = current_user.customer
-    @address = @customer.address.build(:customer_id => @customer.id,
-                                      :address1 => nil,
-                                      :address2 => nil,
-                                      :zip_code => nil)
+    @address = Address.new
+    @address.customer_id = current_user.customer.id
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @address }
+    end
   end
 
   # GET /addresses/1/edit
@@ -29,15 +31,12 @@ class AddressesController < ApplicationController
   # POST /addresses
   # POST /addresses.json
   def create
-    @customer = current_user.customer
-    @address = @customer.address.build(:customer_id => @customer.id,
-                                      :address1 => nil,
-                                      :address2 => nil,
-                                      :zip_code => nil)
+    @address = Address.new(address_params)
+    @address.customer_id = current_user.customer.id
 
     respond_to do |format|
       if @address.save
-        format.html { redirect_to @address, notice: 'Address was successfully created.' }
+        format.html { redirect_to root_path, notice: 'CONGRATULATIONS, your new account was successfully created!' }
         format.json { render :show, status: :created, location: @address }
       else
         format.html { render :new }
@@ -78,6 +77,6 @@ class AddressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params[:address]
+      params.require(:address).permit(:address1, :address2, :zip_code_zip_code)
     end
 end
