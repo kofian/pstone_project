@@ -1,8 +1,15 @@
 <div class="jumbotron" style="text-align: center; border: 1px solid #DDD; border-radius: 8px;">
   <h1>Let's do this!</h1>
   <p>
+  	<% if user_signed_in? %>
+  	<h4>You're already signed in, <%= current_user.username %>. Would you like to</h4>
+  	<%= link_to "View Your Accounts?", accounts_path(current_user), :class => "btn btn-warning btn-lg" %>
+  	<h4>or</h4>
+  	<%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-danger btn-lg" %>
+  	<% else %>
   	<%= link_to "Sign in", new_user_session_path, :class => "btn btn-success btn-lg" %>
   	<%= link_to "Create an Account", new_user_registration_path, :class => "btn btn-primary btn-lg" %>
+  	<% end %>
   </p>
 </div>
 

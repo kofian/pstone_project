@@ -1,4 +1,28 @@
 <p id="notice"><%= notice %></p>
+<h1>Details for Account No. <%= @account.id %> </h1>
+<h3>Current Balance as of <%= Time.now.to_date %>: <%= number_to_currency(@account.balance) %></h3>
 
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<table id="indexTable" class="table table-striped" style="margin: 40px; auto;">
+  <thead>
+  	<tr style="text-align: center;"><h4>Transaction History</h4></tr>
+    <tr>
+      <th>Date</th>
+      <th>Transaction ID</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<% if @account.acct_transactions.nil? %>
+  	 <tr><h2>You have no transactions to display</h2></tr>
+  	<% else %>
+  	<!--- Put transaction display logic here -->
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Back', accounts_path, :class => "btn btn-primary"  %>

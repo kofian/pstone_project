@@ -17,6 +17,12 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  get 'home/about'
+  get 'home/help'
+
+  get 'accounts/add_account.html.erb', to: 'accounts#new'
+  post 'accounts/add_account.html.erb', to: 'accounts#create'
+
   resources :administrators do
     member do
       get :adminview

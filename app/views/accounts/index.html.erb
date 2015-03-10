@@ -14,13 +14,12 @@
       
         <% for account in @accounts do %>
         <tr>
-          <td><%= account.id %></td>
+          <td><%= '%012d' % account.id %></td>
           <td></td>
           <td><%= number_to_currency(account.balance)%></td>
 
           <td><%= link_to 'Show', account %></td>
-          <td><%= link_to 'Edit', edit_account_path(account) %></td>
-          <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure you want to delete this account?' } %></td>
         </tr>
         <% end %>
       
@@ -34,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New Account', new_account_path %>
+<%= link_to 'Add a New Account', new_account_path, :class => "btn btn-primary"  %>

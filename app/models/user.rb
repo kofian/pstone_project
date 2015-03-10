@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   has_one :administrator
 
+  validates_format_of :email, with: /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))\z/i
+  
   # User ID is a generated uuid
   include ActiveUUID::UUID
   natural_key :user_id, :remember_created_at
@@ -24,7 +26,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :timeoutable, :recoverable, :trackable
+  devise :database_authenticatable, :registerable, :timeoutable, :recoverable, :trackable, :validatable
 
   # Generate a random uuid for new user id creation
   def generate_id

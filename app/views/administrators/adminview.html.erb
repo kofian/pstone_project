@@ -1,5 +1,28 @@
-<h1>Admin Dashboard</h1>
-<p>(Under Construction)</p>
+<!-- <nav class="navbar navbar-inverse" style= "background: #555; color: #FFF">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <h2 style="margin: auto 50px;">Admin Dashboard</h2>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><button type="button" class="btn btn-large"><a href="/home/about.html">About</a></button></li>
+          <li><button type="button" class="btn btn-large"><a href="/home/about.html">About</a></button></li>
+          <li><button type="button" class="btn btn-large"><a href="/home/about.html">About</a></button></li>
+          <li><button type="button" class="btn btn-large"><a href="/home/about.html">About</a></button></li>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav> -->
+
+<h1 style="font-size: 250%;">Admin View</h1>
+<h3>Listing Accounts</h3>
 
 <table id="indexTable" class="table table-striped">
   <thead>
@@ -7,7 +30,7 @@
       <th>Account Number</th>
       <th>Customer ID</th>
       <th>Balance</th>
-      <th colspan="4">Actions</th>
+      <th>Termination</th>
     </tr>
   </thead>
 
@@ -17,9 +40,7 @@
         <td><%= '%012d' % account.id %></td>
         <td><%= '%09d' % account.customer_id %></td>
         <td><%= number_to_currency(account.balance) %></td>
-        
-        <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Edit', edit_account_path(account) %></td>
+
         <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>

@@ -36,8 +36,8 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       if @address.save
-        format.html { redirect_to root_path, notice: 'CONGRATULATIONS, your new account was successfully created!' }
-        format.json { render :show, status: :created, location: @address }
+          format.html { redirect_to accounts_path(current_user), notice: 'CONGRATULATIONS, your new account was successfully created!' }
+          format.json { render :show, status: :created, location: @address }
       else
         format.html { render :new }
         format.json { render json: @address.errors, status: :unprocessable_entity }

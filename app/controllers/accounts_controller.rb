@@ -7,11 +7,6 @@ class AccountsController < ApplicationController
   def index
     @user = current_user
     @accounts = @user.accounts
-
-      respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @accounts }
-    end
   end
 
   def adminview
@@ -58,8 +53,13 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to new_user_addresses_path(current_user), notice: 'Account was successfully created.' }
+        if current_user.accounts.count > 1
+          format.html { redirect_to accounts_path(current_user), notice: 'CONGRATULATIONS, your new account was successfully created!' }
+          format.json { render :show, status: :created, location: @account }
+        else
+        format.html { redirect_to new_user_addresses_path(current_user), notice: 'Great! Just one more step..' }
         format.json { render :show, status: :created, location: @account }
+        end
       else
         format.html { render :new }
         format.json { render json: @account.errors, status: :unprocessable_entity }
