@@ -4,5 +4,9 @@ class Account < ActiveRecord::Base
 	has_one :acct_type
 	has_many :acct_transactions
 
-	# validates :acct_type, presence: true
+	accepts_nested_attributes_for :acct_type
+	accepts_nested_attributes_for :acct_transactions
+
+	validates :acct_type_id, presence: true
+
 end

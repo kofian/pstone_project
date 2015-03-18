@@ -1,15 +1,12 @@
-<div class="panel panel-default" style="width: 18.5em;">
-  <div class="container">
+  <div class="panel panel-default" style="width: 40%; padding: 0 25px;">  
     <h2>Log in</h2>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
       <div class="field">
-        <%= f.label :login %><br />
         <%= f.text_field :login, autofocus: true %>
       </div>
 
       <div class="field">
-        <%= f.label :password %><br />
         <%= f.password_field :password, autocomplete: "off" %>
       </div>
 
@@ -30,4 +27,3 @@
       <%= render "devise/shared/links" %>
     <br />
   </div>
-</div>

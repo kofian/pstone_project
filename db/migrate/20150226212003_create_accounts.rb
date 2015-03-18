@@ -7,6 +7,8 @@ class CreateAccounts < ActiveRecord::Migration
 	    t.date    "date_opened",                                     null: false
 	    t.integer "customer_id",  limit: 8,                          null: false
 	    t.integer "acct_type_id", limit: 1,                          null: false
+	  
+	    t.timestamps
 	  end
 	  execute "ALTER TABLE accounts ADD PRIMARY KEY (id);"
 	  add_index "accounts", ["acct_type_id"], name: "fk_accounts_acct_types1_idx", using: :btree

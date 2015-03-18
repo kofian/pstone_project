@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   get 'home/about'
   get 'home/help'
 
-  get 'accounts/add_account.html.erb', to: 'accounts#new'
-  post 'accounts/add_account.html.erb', to: 'accounts#create'
+  get 'accounts/add_account', to: 'accounts#new'
+  post 'accounts/add_account', to: 'accounts#create'
 
   resources :administrators do
     member do
@@ -35,7 +35,11 @@ Rails.application.routes.draw do
     resource :addresses
   end
 
-  resources :account_types, :accounts, :addresses, :administrators, :customers, :transaction_types, :transactions, :users
+  resources :accounts do
+    resource :acct_transactions
+  end
+
+  resources :account_types, :accounts, :addresses, :administrators, :customers, :transaction_types, :acct_transactions, :users
 
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".

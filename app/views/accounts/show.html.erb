@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <h1>Details for Account No. <%= @account.id %> </h1>
-<h3>Current Balance as of <%= Time.now.to_date %>: <%= number_to_currency(@account.balance) %></h3>
+<h3>Available Balance as of <%= Time.now.to_date %>: <%= number_to_currency(@account.balance) %></h3>
 
 <table id="indexTable" class="table table-striped" style="margin: 40px; auto;">
   <thead>
@@ -20,6 +20,16 @@
   	 <tr><h2>You have no transactions to display</h2></tr>
   	<% else %>
   	<!--- Put transaction display logic here -->
+      <% for trans in @acct_transactions do %>
+        <tr>
+          <td> <%= trans.date %> </td>
+          <td> <%= trans.id %> </td>
+          <td> <%= trans.description %></td>
+          <td> <%= TransactionType.find(trans.transaction_type_id).name %> </td>
+          <td> <%= number_to_currency(trans.amount) %></td>
+          <td> <%= number_to_currency(trans.adjusted_bal) %> </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

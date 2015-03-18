@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_one :administrator
 
   validates_format_of :email, with: /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))\z/i
-  
+
   # User ID is a generated uuid
   include ActiveUUID::UUID
   natural_key :user_id, :remember_created_at

@@ -8,6 +8,9 @@ class CreateAcctTransactions < ActiveRecord::Migration
 	    t.decimal  "amount",                          precision: 10, scale: 2, null: false
 	    t.integer  "account_id",          limit: 8,                            null: false
 	    t.integer  "transaction_type_id",                                      null: false
+	    t.decimal "adjusted_bal",                		precision: 10, scale: 2, null: false
+	  
+	    t.timestamps
 	  end
 	  execute "ALTER TABLE acct_transactions ADD PRIMARY KEY (id);"
 	  add_index "acct_transactions", ["account_id"], name: "fk_acct_transactions_accounts1_idx", using: :btree

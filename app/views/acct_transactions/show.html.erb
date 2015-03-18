@@ -1,4 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_acct_transaction_path(@acct_transaction) %> |
-<%= link_to 'Back', acct_transactions_path %>
+<h2>Summary for Transaction no. <%= @acct_transaction.id %></h2>
+<ul>
+	<li>Account: <%= @acct_transaction.account_id%></li>
+	<li>Type: <%= @trans_type %></li>
+	<li>Date: <%= @acct_transaction.date%></li>
+	<li>Amount: <%= number_to_currency(@acct_transaction.amount)%></li>
+	<li>Description: <%= @acct_transaction.description %></li>
+</ul>
+
+<%= link_to 'Back to Account', account_path(@acct_transaction.account_id) %>

@@ -28,6 +28,7 @@
   <thead>
     <tr>
       <th>Account Number</th>
+      <th>Customer Name</th>
       <th>Customer ID</th>
       <th>Balance</th>
       <th>Termination</th>
@@ -38,6 +39,7 @@
       <% @accounts.each do |account| %>
       <tr>
         <td><%= '%012d' % account.id %></td>
+        <td><%= account.customer.lastname %>, <%= account.customer.firstname %></td>
         <td><%= '%09d' % account.customer_id %></td>
         <td><%= number_to_currency(account.balance) %></td>
 

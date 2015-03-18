@@ -4,22 +4,24 @@
     <thead>
       <tr>
         <th>Account Number</th>
-        <th> </th>
+        <th>Type</th>
         <th>Balance</th>
-        <th colspan="3"></th>
+        <th colspan="4">Actions</th>
       </tr>
     </thead>
 
     <tbody>
-      
+        <!-- Iterate through accounts and display info and actions -->
         <% for account in @accounts do %>
         <tr>
           <td><%= '%012d' % account.id %></td>
-          <td></td>
+          <td><%= AcctType.find(account.acct_type_id).name %></td>
           <td><%= number_to_currency(account.balance)%></td>
-
+          <!-- Action links -->
+          <td><%= link_to 'Deposit', new_account_acct_transactions_path(:account_id => account.id, :transaction_type_id => 3) %>
+          <td><%= link_to 'Withdraw', new_account_acct_transactions_path(:account_id => account.id, :transaction_type_id => 7) %>
           <td><%= link_to 'Show', account %></td>
-          <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure you want to delete this account?' } %></td>
+          <td><%= link_to 'Close Account', account, method: :delete, data: { confirm: 'Are you sure you want to close this account?' } %></td>
         </tr>
         <% end %>
       

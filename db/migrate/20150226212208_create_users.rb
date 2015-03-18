@@ -6,6 +6,8 @@ class CreateUsers < ActiveRecord::Migration
 	    t.string  	"username", 	limit: 30, default: "", null: false
 	    t.string  	"password", 	limit: 30, default: "", null: false   
 	    t.string 	"role", 		limit: 30, default: nil
+
+	    t.timestamps
 	  end
 	  execute "ALTER TABLE users ADD PRIMARY KEY (id);"
 	  add_index "users", ["username", "id"], name: "BY_USERNAME", using: :btree

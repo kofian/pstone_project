@@ -14,10 +14,12 @@
 ActiveRecord::Schema.define(version: 20150228175219) do
 
   create_table "accounts", force: true do |t|
-    t.decimal "balance",                precision: 10, scale: 2, null: false
-    t.date    "date_opened",                                     null: false
-    t.integer "customer_id",  limit: 8,                          null: false
-    t.integer "acct_type_id", limit: 1,                          null: false
+    t.decimal  "balance",                precision: 10, scale: 2, null: false
+    t.date     "date_opened",                                     null: false
+    t.integer  "customer_id",  limit: 8,                          null: false
+    t.integer  "acct_type_id", limit: 1,                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "accounts", ["acct_type_id"], name: "fk_accounts_acct_types1_idx", using: :btree
@@ -29,6 +31,9 @@ ActiveRecord::Schema.define(version: 20150228175219) do
     t.decimal  "amount",                          precision: 10, scale: 2, null: false
     t.integer  "account_id",          limit: 8,                            null: false
     t.integer  "transaction_type_id",                                      null: false
+    t.decimal  "adjusted_bal",                    precision: 10, scale: 2, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "acct_transactions", ["account_id"], name: "fk_acct_transactions_accounts1_idx", using: :btree
@@ -49,21 +54,25 @@ ActiveRecord::Schema.define(version: 20150228175219) do
   add_index "addresses", ["zip_code_zip_code"], name: "fk_addresses_zip_codes1_idx", using: :btree
 
   create_table "administrators", force: true do |t|
-    t.string "firstname", limit: 40, null: false
-    t.string "lastname",  limit: 40, null: false
-    t.uuid   "user_id",              null: false
+    t.string   "firstname",  limit: 40, null: false
+    t.string   "lastname",   limit: 40, null: false
+    t.uuid     "user_id",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "administrators", ["lastname", "firstname", "id"], name: "BY_LASTNAME", using: :btree
   add_index "administrators", ["user_id"], name: "fk_administrators_users_idx", using: :btree
 
   create_table "customers", force: true do |t|
-    t.string "phone1",    limit: 20
-    t.string "phone2",    limit: 20
-    t.string "title",     limit: 11
-    t.string "firstname", limit: 40
-    t.string "lastname",  limit: 40
-    t.uuid   "user_id",              null: false
+    t.string   "phone1",     limit: 20
+    t.string   "phone2",     limit: 20
+    t.string   "title",      limit: 11
+    t.string   "firstname",  limit: 40
+    t.string   "lastname",   limit: 40
+    t.uuid     "user_id",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "customers", ["lastname", "firstname"], name: "NAME_LAST_FIRST", using: :btree
@@ -85,6 +94,8 @@ ActiveRecord::Schema.define(version: 20150228175219) do
     t.string   "username",               limit: 30, default: "", null: false
     t.string   "password",               limit: 30, default: "", null: false
     t.string   "role",                   limit: 30
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "email",                             default: "", null: false
     t.string   "encrypted_password",                default: "", null: false
     t.string   "reset_password_token"

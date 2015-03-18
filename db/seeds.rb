@@ -223,6 +223,7 @@ accounts.each do |i|
 			t.date = Time.at((Time.now.month - 18) + rand * (Time.now.to_f)).to_date
 			t.description = description
 			t.amount = amount
+			t.adjusted_bal = accounts[j].balance + amount
 
 		t.save
 		account_transactions << t

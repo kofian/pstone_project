@@ -7,6 +7,7 @@ class AccountsController < ApplicationController
   def index
     @user = current_user
     @accounts = @user.accounts
+
   end
 
   def adminview
@@ -21,6 +22,8 @@ class AccountsController < ApplicationController
   # GET /accounts/1
   # GET /accounts/1.json
   def show
+    @acct_transactions = @account.acct_transactions.all.order(created_at: :desc)
+    # @trans_type = TransactionType.find(@acct_transactions.transaction_type_id).name
   end
 
   # GET /accounts/new
@@ -86,8 +89,13 @@ class AccountsController < ApplicationController
   def destroy
     @account.destroy
     respond_to do |format|
-      format.html { redirect_to accounts_url, notice: 'Account was successfully destroyed.' }
-      format.json { head :no_content }
+      if current_user.role = 'admin'
+        format.html { redirect_to adminview_administrator_path(current_user, format: :html), notice: 'Account was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.json { head :no_content }
+        format.html { redirect_to accounts_path(current_user), notice: 'Account was successfully destroyed.' }
+      end
     end
   end
 
@@ -101,4 +109,5 @@ class AccountsController < ApplicationController
     def account_params
       params.require(:account).permit(:acct_type_id)
     end
+
 end
