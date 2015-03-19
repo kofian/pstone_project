@@ -9,26 +9,52 @@
 	font-family: 'Cinzel-Regular'
 	src: url('Cinzel-Regular.ttf')
 
+@font-face 
+	font-family: 'Oxygen'
+	src: url('Oxygen.otf')
+
+html
+	position: relative
+	min-height: 100%
+
 body 
 	background: url('snowy_prairie_bg.jpg') no-repeat center top
+	font-family: 'Oxygen'
+	margin: 0 0 95px
 
 footer 
 	position: absolute
-	bottom: 10px
-	right: 15px
+	left: 0 
+	bottom: 0
+	background: rgba(25,25,25,0.8)
+	color: #CCC
+	width: 100%
+	margin: 0
+	font-size: 75%
+	padding: 10px 15px 0px
+	height: 65px
+
+footer a
+	color: #F9F
+	text-decoration: none
+
+footer a:hover
+	color: #F93
+	text-decoration: none
+
+footer a:active
+	color: #F9F
+	font-weight: bold
+	text-decoration: none
+	text-shadow: 1px 1px 0px #FAF
 
 nav 
 	margin: 0
 	padding: 15px 0
 
-.navbar, .navbar-header
+.navbar
 	background: rgba(0,0,0,0.1)
 	border: none
-
-.navbar-brand 
-	font-family: 'Cinzel-Regular', serif
-	font-weight: 500
-	font-size: 34pt
 
 .navbar, .navbar-header a
 	color: #BBB
@@ -39,30 +65,69 @@ nav
 .navbar a:active
 	color: #FFF
 
+.navbar-header
+	.navbar-brand
+		font-family: 'Cinzel-Regular', serif
+		font-weight: 500
+		font-size: 34pt
+		color: #FFF
+
+.navbar-header
+	.navbar-brand:visited
+		color: #FFF
+
+.navbar-header
+	.navbar-brand:hover
+		color: #DDD
+		text-shadow: 0px 0px 3px rgba(255,255,255,0.4)
+
+.navbar-header
+	.navbar-brand:active
+		color: #FFF
+		text-shadow: 0px 0px 10px rgba(255,255,255,1)
+
 #indexTable 
 	width: 95%
 	margin: auto
 
 main 
-	margin: 20px
-	background: rgba(240,240,240,0.7)
+	margin: 30px auto
+	background: rgba(240,240,240,0.5)
 	padding: 20px
+	width: 95%
+	border-radius: 3px
 
 main>h1 
 	font-size: 180%
 
-.general-info-panel 
-	position: absolute
-	bottom: 0
-	width: 300px
-	background-color: #BBB
-	border-color: #999
-	font-size: 80%
-	padding: 0
-
 #tip 
 	background-color: #CCF
 	margin: 10px
-	padding: 10px
+	padding: 10px 10px 3px
 	font-size: 88%
 
+.jumbotron
+	background: rgba(0,0,0,0)
+	text-align: center
+
+.formPanel
+	width: 95%
+	margin: 10px auto
+	padding: 0 25px
+
+.formButton
+	margin-top: 15px
+
+table
+	margin: 0 auto 30px
+	background: #FFF
+
+th 
+	background: #555
+	color: #FFF
+
+table
+	caption
+		background-color: #222
+		color: #EEE
+		text-indent: 10px

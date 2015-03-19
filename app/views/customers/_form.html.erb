@@ -1,5 +1,5 @@
 
-  <div class="panel panel-default" style="width: 50%; padding: 0 25px;">  
+  <div class="panel panel-default formPanel">  
 
   <%= bootstrap_form_for(@customer) do |f| %>
   <% if @customer.errors.any? %>
@@ -17,7 +17,7 @@
         <p>We'd like to know who you are.</p>
         </div>
         <!-- fields for Customer object -->
-        <%= f.select :title, options_for_select(['Dr.', 'Mr.', 'Ms.', 'Mx.'])%>
+        <%= f.select :title, options_for_select(['Dr.', 'Mr.', 'Ms.', 'Mx.']) %>
         <%= f.text_field :firstname %>
         <%= f.text_field :lastname %>
         <%= f.text_field :phone1 %>

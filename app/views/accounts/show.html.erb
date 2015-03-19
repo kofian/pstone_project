@@ -2,9 +2,9 @@
 <h1>Details for Account No. <%= @account.id %> </h1>
 <h3>Available Balance as of <%= Time.now.to_date %>: <%= number_to_currency(@account.balance) %></h3>
 
-<table id="indexTable" class="table table-striped" style="margin: 40px; auto;">
+<table id="indexTable" class="table table-striped">
   <thead>
-  	<tr style="text-align: center;"><h4>Transaction History</h4></tr>
+  	<caption>Transaction History</caption>
     <tr>
       <th>Date</th>
       <th>Transaction ID</th>
@@ -35,4 +35,4 @@
 </table>
 
 
-<%= link_to 'Back', accounts_path, :class => "btn btn-primary"  %>
+<%= link_to 'Back', accounts_path, :class => "btn btn-primary formButton"  %>
