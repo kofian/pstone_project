@@ -18,9 +18,9 @@
         </div>
         <!-- fields for Customer object -->
         <%= f.select :title, options_for_select(['Dr.', 'Mr.', 'Ms.', 'Mx.']) %>
-        <%= f.text_field :firstname %>
-        <%= f.text_field :lastname %>
-        <%= f.text_field :phone1 %>
+        <%= f.text_field :firstname, required: true %>
+        <%= f.text_field :lastname, required: true %>
+        <%= f.text_field :phone1, required: true %>
         <%= f.text_field :phone2 %>
 
       <br />

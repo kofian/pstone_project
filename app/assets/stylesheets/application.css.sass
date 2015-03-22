@@ -7,19 +7,21 @@
 
 @font-face 
 	font-family: 'Cinzel-Regular'
-	src: url('Cinzel-Regular.ttf')
+	src: font-url('Cinzel-Regular.ttf')
 
 @font-face 
 	font-family: 'Oxygen'
-	src: url('Oxygen.otf')
+	src: font-url('Oxygen.otf')
 
 html
 	position: relative
 	min-height: 100%
 
 body 
-	background: url('snowy_prairie_bg.jpg') no-repeat center top
-	font-family: 'Oxygen'
+	background-image: image-url("snowy_prairie_bg.jpg")
+	background-repeat: no-repeat
+	background-position: center top
+	font: normal normal 12pt 'Oxygen', Verdana, sans-serif
 	margin: 0 0 95px
 
 footer 
@@ -30,8 +32,9 @@ footer
 	color: #CCC
 	width: 100%
 	margin: 0
-	font-size: 75%
+	font-size: 55%
 	padding: 10px 15px 0px
+	line-height: 1.55em
 	height: 65px
 
 footer a
@@ -53,14 +56,14 @@ nav
 	padding: 15px 0
 
 .navbar
-	background: rgba(0,0,0,0.1)
+	background: rgba(0,0,0,0.2)
 	border: none
 
-.navbar, .navbar-header a
-	color: #BBB
+.navbar a, .navbar-header a
+	color: #FFF
 
 .navbar a:visited
-	color: #BBB
+	color: #FFF
 
 .navbar a:active
 	color: #FFF
@@ -77,14 +80,54 @@ nav
 		color: #FFF
 
 .navbar-header
-	.navbar-brand:hover
-		color: #DDD
-		text-shadow: 0px 0px 3px rgba(255,255,255,0.4)
-
-.navbar-header
 	.navbar-brand:active
 		color: #FFF
 		text-shadow: 0px 0px 10px rgba(255,255,255,1)
+
+.header-message
+	color: #FFF
+	font: italic 400 14pt 'Oxygen', Verdana, sans-serif
+	padding: 0 20px
+
+.alert 
+	border-radius: none
+	padding: 0.4em 1em
+	-webkit-animation: alertFades 0.5s linear 1.5s 1 forwards
+	-moz-animation: alertFades 0.5s linear 1.5s 1 forwards
+	-o-animation: alertFades 0.5s linear 1.5s 1 forwards
+	animation: alertFades 0.5s linear 1.5s 1 forwards
+
+@-webkit-keyframes alertFades
+	0%
+		opacity: 1
+		margin-bottom: 30px
+	100%
+		opacity: 0
+		margin-bottom: -75px
+
+@-webkit-keyframes alertFades
+	0%
+		opacity: 1
+		margin-bottom: 30px
+	100%
+		opacity: 0
+		margin-bottom: -75px
+
+@-webkit-keyframes alertFades
+	0%
+		opacity: 1
+		margin-bottom: 30px
+	100%
+		opacity: 0
+		margin-bottom: -75px
+	
+@keyframes alertFades
+	0%
+		opacity: 1
+		margin-bottom: 30px
+	100%
+		opacity: 0
+		margin-bottom: -75px
 
 #indexTable 
 	width: 95%

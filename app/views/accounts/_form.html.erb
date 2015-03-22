@@ -17,7 +17,7 @@
         <p>Pick a flavor...</p>
         </div>
         <!-- fields for Account object -->
-        <%= f.collection_radio_buttons :acct_type_id, AcctType.all, :id, :name %>
+        <%= f.collection_radio_buttons :acct_type_id, AcctType.all, :id, :name, required: true %>
 
       <br />
       <div class="actions">

@@ -17,9 +17,9 @@
         <p>Tell us where you get your mail.</p>
         </div>
         <!-- fields for Customer object -->
-        <%= f.text_field :address1, autofocus: true, :label => "Address 1" %>
+        <%= f.text_field :address1, autofocus: true, :label => "Address 1", required: true %>
         <%= f.text_field :address2, :label => "Address 2" %>
-        <%= f.text_field :zip_code_zip_code, :label => "Zip Code"%>
+        <%= f.text_field :zip_code_zip_code, :label => "Zip Code", required: true%>
 
       <br />
       <div class="actions">

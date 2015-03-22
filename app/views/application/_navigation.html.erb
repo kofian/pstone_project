@@ -35,14 +35,14 @@
 	        </div>
 	        <button type="submit" class="btn btn-default">Submit</button>
 	      </form> -->
-	      <ul class="nav navbar-nav navbar-right">
-	      	<ul class="nav nav-pills pull-right">
+<!-- 	      <ul class="nav navbar-nav navbar-right">
+ -->	      	<ul class="nav nav-pills pull-right">
 			  <% if user_signed_in? %>
-			  	<li role="button" class="btn btn-success">Signed in as <br /><strong><%= current_user.username %></strong></li>
-			    <li role="presentation"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+			  	<li role="presentation" class="header-message">Signed in as <strong><%= current_user.username %></strong></li>
+			    <li role="button"><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-danger" %></li>
 			  <% else %>
-			    <li><%= link_to "Sign in", new_user_session_path %></li>
-			    <li><%= link_to "Sign up", new_user_registration_path %></li>
+			    <li role="button"><%= link_to "Sign in", new_user_session_path,:class => "btn btn-success" %></li>
+			    <li role="button"><%= link_to "Sign up", new_user_registration_path, :class =>"btn btn-primary"%></li>
 			  <% end %>
 			<!-- <li><a href="#">Link</a></li> -->
 	        <!-- <li class="dropdown">

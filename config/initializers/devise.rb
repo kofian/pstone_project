@@ -258,4 +258,6 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   config.authentication_keys = [ :login ]
+
+  config.secret_key = 'c2503db22a39b2f4dca8dbec369d30b4c2af75c64d8e7fd7de196eb913499fc0e158f404d487b567a987ff59fc2514a654f36df8c96bcc8e0644da95f9773236' if Rails.env == 'production'
 end

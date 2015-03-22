@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 <h1>Details for Account No. <%= @account.id %> </h1>
 <h3>Available Balance as of <%= Time.now.to_date %>: <%= number_to_currency(@account.balance) %></h3>
+<br />
 
 <table id="indexTable" class="table table-striped">
   <thead>
