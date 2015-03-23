@@ -11,6 +11,8 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+# Kaminari is an easy to use pagination gem
+gem 'kaminari'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
 # Use jquery as the JavaScript library
@@ -31,6 +33,7 @@ gem 'ffaker'
 gem 'forgery'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
 # ActiveUUID generates binary uuid's for key generation, it's based on uuidtools gem
 # This is a cool way to avoid key collisions in multi-master environments
 gem "activeuuid"

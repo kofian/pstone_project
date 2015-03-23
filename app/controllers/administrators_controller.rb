@@ -9,7 +9,7 @@ class AdministratorsController < ApplicationController
   end
 
   def adminview
-    @accounts = Account.all
+    @accounts = Account.order('id').page(params[:page]).per(20)
   end
 
   # GET /administrators/1

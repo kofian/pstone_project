@@ -16,6 +16,11 @@
 html
 	position: relative
 	min-height: 100%
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.002)
+	-webkit-font-smoothing: antialiased
+	-moz-font-smoothing: antialiased
+	-o-font-smoothing: antialiased
+	font-smoothing: antialiased
 
 body 
 	background-image: image-url("snowy_prairie_bg.jpg")
@@ -51,7 +56,7 @@ footer a:active
 	text-decoration: none
 	text-shadow: 1px 1px 0px #FAF
 
-nav 
+nav:not(.pagination)
 	margin: 0
 	padding: 15px 0
 
@@ -129,14 +134,14 @@ nav
 		opacity: 0
 		margin-bottom: -75px
 
-#indexTable 
+#displayArea
 	width: 95%
-	margin: auto
+	margin: 15px auto
 
 main 
 	margin: 30px auto
 	background: rgba(240,240,240,0.5)
-	padding: 20px
+	padding: 10px
 	width: 95%
 	border-radius: 3px
 
@@ -165,12 +170,39 @@ table
 	margin: 0 auto 30px
 	background: #FFF
 
-th 
-	background: #555
-	color: #FFF
-
-table
 	caption
 		background-color: #222
 		color: #EEE
 		text-indent: 10px
+
+th 
+	background: #555
+	color: #FFF
+
+.pagination
+	display: inline-block
+	margin: 0 auto
+	background-color: #111
+	width: 100%
+	padding: 0 10px
+	border-radius: 2px 2px 0 0
+	word-spacing: 5px
+
+	.page a, .next a, .last a, .prev a, .first a
+		color: #BBB
+
+	.page a:hover, .next a:hover, .last a:hover, .prev a:hover, .first a:hover
+		color: #FFF
+		text-decoration: none
+
+	.current
+		color: #FFF
+		font-weight: 800
+		text-shadow: 0 0 2px 2px #FFF
+
+#panel
+	width: 95%
+	margin: 12px auto
+	background: #FFF
+	padding: 5px 10px 10px 10px
+	border-radius: 2px
