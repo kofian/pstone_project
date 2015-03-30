@@ -1,0 +1,29 @@
+  <h3>Listing All Accounts</h3>
+    <%= paginate (@accounts) %>
+    <table id="indexTable" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Account Number</th>
+          <th>Customer Name</th>
+          <th>Customer ID</th>
+          <th>Balance</th>
+          <th>Termination</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @accounts.each do |account| %>
+          <tr>
+            <td><%= '%012d' % account.id %></td>
+            <td><%= account.customer.lastname %>, <%= account.customer.firstname %></td>
+            <td><%= '%09d' % account.customer_id %></td>
+            <td><%= number_to_currency(account.balance) %></td>
+
+            <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+    <%= paginate (@accounts) %>
+  <br>
+
+  <%= link_to 'New Account', new_account_path %>

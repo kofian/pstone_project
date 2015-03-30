@@ -27,7 +27,7 @@ body
 	background-repeat: no-repeat
 	background-position: center top
 	font: normal normal 12pt 'Oxygen', Verdana, sans-serif
-	margin: 0 0 95px
+	margin: 0 0 100px
 
 footer 
 	position: absolute
@@ -37,10 +37,10 @@ footer
 	color: #CCC
 	width: 100%
 	margin: 0
-	font-size: 55%
+	font-size: 65%
 	padding: 10px 15px 0px
 	line-height: 1.55em
-	height: 65px
+	height: 70px
 
 footer a
 	color: #F9F
@@ -89,58 +89,70 @@ nav:not(.pagination)
 		color: #FFF
 		text-shadow: 0px 0px 10px rgba(255,255,255,1)
 
+.navbar-nav
+	li
+		a:link, a:visited
+			color: #DDD
+
+		a:hover
+			color: #FFF
+
+		a:active
+			color: #FFF
+			text-shadow: 0px 0px 10px rgba(255,255,255,1)
+
 .header-message
 	color: #FFF
 	font: italic 400 14pt 'Oxygen', Verdana, sans-serif
 	padding: 0 20px
 
-.alert 
+.alert
+	margin: 0.26em 0 
+	position: absolute
+	width: 100%
 	border-radius: none
-	padding: 0.4em 1em
-	-webkit-animation: alertFades 0.5s linear 1.5s 1 forwards
-	-moz-animation: alertFades 0.5s linear 1.5s 1 forwards
-	-o-animation: alertFades 0.5s linear 1.5s 1 forwards
-	animation: alertFades 0.5s linear 1.5s 1 forwards
+	padding: 0 1em
+	font-weight: 700
+	-webkit-animation: alertFades 1s linear 1s 1 forwards
+	-moz-animation: alertFades 1s linear 1s 1 forwards
+	-o-animation: alertFades 1s linear 1s 1 forwards
+	animation: alertFades 1s linear 1s 1 forwards
 
 @-webkit-keyframes alertFades
 	0%
 		opacity: 1
-		margin-bottom: 30px
 	100%
 		opacity: 0
-		margin-bottom: -75px
+		-webkit-transform: translate(0,-75px)
 
-@-webkit-keyframes alertFades
+@-mos-keyframes alertFades
 	0%
 		opacity: 1
-		margin-bottom: 30px
 	100%
 		opacity: 0
-		margin-bottom: -75px
+		-mos-transform: translate(0,-75px)
 
-@-webkit-keyframes alertFades
+@-o-keyframes alertFades
 	0%
 		opacity: 1
-		margin-bottom: 30px
 	100%
 		opacity: 0
-		margin-bottom: -75px
+		-o-transform: translate(0,-75px)
 	
 @keyframes alertFades
 	0%
 		opacity: 1
-		margin-bottom: 30px
 	100%
 		opacity: 0
-		margin-bottom: -75px
+		transform: translate(0,-75px)
 
 #displayArea
 	width: 95%
 	margin: 15px auto
 
 main 
-	margin: 30px auto
-	background: rgba(240,240,240,0.5)
+	margin: 45px auto
+	background: rgba(240,240,240,0.6)
 	padding: 10px
 	width: 95%
 	border-radius: 3px
@@ -179,6 +191,9 @@ th
 	background: #555
 	color: #FFF
 
+td
+	font-size: 10pt
+
 .pagination
 	display: inline-block
 	margin: 0 auto
@@ -206,3 +221,9 @@ th
 	background: #FFF
 	padding: 5px 10px 10px 10px
 	border-radius: 2px
+
+.admin-nav
+	background: rgba(15,15,15,1)
+	color: #EEE
+	margin: 0
+	padding: 5px

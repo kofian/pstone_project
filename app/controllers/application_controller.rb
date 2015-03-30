@@ -14,10 +14,10 @@ class ApplicationController < ActionController::Base
   		accounts_path(current_user, format: :html)
   	end
   end
-
   # def after_sign_up_path_for(resource)
   #   new_user_customers_path(current_user)
   # end
+  helper_method :admin?
 
   protected
   	def configure_permitted_parameters
@@ -26,8 +26,4 @@ class ApplicationController < ActionController::Base
 	    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
   	end
 
-	 #  def configure_permitted_parameters
-	 #  	devise_parameter_sanitizer.for(:sign_in) {|u| u.permit(:signin)}
-		# devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:email, :username, :password, :password_confirmation)}
-	 #  end
 end

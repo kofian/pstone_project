@@ -18,6 +18,5 @@ class Address < ActiveRecord::Base
     end
 	else
 	# Zip Code is valid
-  end
-	
+	end
 end

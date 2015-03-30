@@ -3,10 +3,13 @@
 <h2>Summary for Transaction no. <%= @acct_transaction.id %></h2>
 <ul>
 	<li>Account: <%= @acct_transaction.account_id%></li>
-	<li>Type: <%= @trans_type %></li>
+	<li>Type: <%= @acct_transaction.transaction_type_id %></li>
 	<li>Date: <%= @acct_transaction.date%></li>
 	<li>Amount: <%= number_to_currency(@acct_transaction.amount)%></li>
 	<li>Description: <%= @acct_transaction.description %></li>
 </ul>
-
-<%= link_to 'Back to Account', account_path(@acct_transaction.account_id) %>
+<% if current_user.role = 'admin' %>
+	<%= link_to 'Return to Dashboard', :back %>
+<% else %>
+	<%= link_to 'Back to Account', account_path(@acct_transaction.account_id) %>
+<% end %>

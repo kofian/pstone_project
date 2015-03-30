@@ -23,7 +23,7 @@ csv.each do |row|
 end
 
 # Generate transaction types
-TransactionType.create(id: 1, name: 'ATM')
+TransactionType.create(id: 1, name: 'ATM_Withdrawal')
 TransactionType.create(id: 2, name: 'Check')
 TransactionType.create(id: 3, name: 'Deposit')
 TransactionType.create(id: 4, name: 'Auto-draft')
@@ -37,7 +37,7 @@ AcctType.create(id: 2, name: 'checking', interest_rate: 0.000)
 
 # Generate 100 users (with "customer" role) (Admins created separately)
 users = [] # Empty array to store users
-100.times do
+99.times do
 	username = "#{Faker::Vehicle.make}#{Faker::BaconIpsum.word}-#{rand(999)}"
 	user_password = SecureRandom.base64(12)
 	u = User.new
@@ -51,6 +51,10 @@ users = [] # Empty array to store users
 	u.save
 	users << u # Put newly created user in the array
 end
+
+# Generate a regular ("Test") user - will be the 100th seeded user
+testUser = User.create(id: SecureRandom.uuid, username: 'user', password: 'password', password_confirmation: 'password', email: 'foo@bar.com', sign_in_count: 0)
+users << testUser # Store "test" user in the users array
 
 # Generate admin ("Administrator") user
 seeded_admin_id = SecureRandom.uuid # Created variable because it's used twice
@@ -131,7 +135,7 @@ accounts = []
     	a.acct_type_id = rand(1..2)
     	a.id =  SecureRandom.random_number(999999999999) # 12-digit account number
     	a.balance = (5000.0 - 5.0) * rand() + 5
-    	a.date_opened = Time.at((Time.now.year - 10) + rand * (Time.now.to_f)).to_date
+    	a.date_opened = rand(10.years).seconds.ago
     a.save
     accounts << a
 end
@@ -143,12 +147,13 @@ end
     	a.acct_type_id = rand(1..2)
     	a.id =  SecureRandom.random_number(999999999999) 
     	a.balance = (200.0 - 5.0) * rand() + 5
-    	a.date_opened = Time.at((Time.now.year - 10) + rand * (Time.now.to_f)).to_date
+    	a.date_opened = rand(10.years).seconds.ago
     a.save
+    accounts << a
 end
 
 # Generate historical transactions (AcctTransactions) for each account
-descriptions_ATM = ['Bank Of Skyland ATM - Skyland, NC',
+descriptions_ATM_Withdrawal = ['Bank Of Skyland ATM - Skyland, NC',
 					'Citi Store ATM - Columbus, OH',
 					'Jaspers Mini Mart ATM - Sweetwater, TX',
 					'Cash Pints ATM - Black Mountain, NC',
@@ -187,12 +192,13 @@ types = [1,2,3,4,5,6,7,99]
 account_transactions = []
 
 accounts.each do |i|
+	
 	80.times do |j|
 		type = types.sample
 			case (type)
 				when 1
-					description = descriptions_ATM.sample
-					amount = atm_amounts.sample
+					description = descriptions_ATM_Withdrawal.sample
+					amount = (atm_amounts.sample) *-1
 				when 2
 					description = descriptions_Check.sample
 					amount = ((500.0 - 5.0) * rand() + 5) *-1
@@ -220,11 +226,16 @@ accounts.each do |i|
 			t.id = SecureRandom.random_number(99999999999999) # 14-digit BigInt
 			t.account_id = accounts[j].id
 			t.transaction_type_id = type
-			t.date = Time.at((Time.now.month - 18) + rand * (Time.now.to_f)).to_date
 			t.description = description
 			t.amount = amount
 			t.adjusted_bal = accounts[j].balance + amount
 
+			# update the balance of the account to reflect transaction
+			account = Account.find(t.account_id)
+			account.update(balance: account.balance + t.amount)
+
+			# make sure transaction date is within range of account's lifetime
+			t.date = rand(account.date_opened..Date.today)
 		t.save
 		account_transactions << t
 	end

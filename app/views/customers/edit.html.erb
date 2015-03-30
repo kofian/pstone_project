@@ -3,4 +3,8 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @customer %> |
-<%= link_to 'Back', customers_path %>
+<% if current_user.role = 'admin' %>
+	<%= link_to 'Return to Dashboard', :back %>
+<% else %>
+	<%= link_to 'Back to Home Page', root_path %>
+<% end %>

@@ -89,7 +89,7 @@ class AccountsController < ApplicationController
   def destroy
     @account.destroy
     respond_to do |format|
-      if current_user.role = 'admin'
+      if current_user.role == 'admin'
         format.html { redirect_to adminview_administrator_path(current_user, format: :html), notice: 'Account was successfully destroyed.' }
         format.json { head :no_content }
       else

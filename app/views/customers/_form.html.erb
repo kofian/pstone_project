@@ -12,10 +12,11 @@
       <% end %>
       </ul>
   <% end %>
-        
-        <div id="tip">
-        <p>We'd like to know who you are.</p>
-        </div>
+        <% unless current_user.role = 'admin' %>
+          <div id="tip">
+          <p>We'd like to know who you are.</p>
+          </div>
+        <% end %>
         <!-- fields for Customer object -->
         <%= f.select :title, options_for_select(['Dr.', 'Mr.', 'Ms.', 'Mx.']) %>
         <%= f.text_field :firstname, required: true %>

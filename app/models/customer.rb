@@ -1,6 +1,6 @@
 class Customer < ActiveRecord::Base
 
-	belongs_to :user
+	belongs_to :user, :dependent => :destroy
 	has_one :address, :dependent => :destroy
 	has_many :accounts, :dependent => :destroy
 

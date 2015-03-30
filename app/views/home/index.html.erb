@@ -4,15 +4,15 @@
   	<% if user_signed_in? %>
   	<h4>You're already signed in, <%= current_user.username %>. Would you like to</h4>
       <% unless current_user.role == 'admin' %>
-       <%= link_to "View Your Accounts?", accounts_path(current_user), :class => "btn btn-warning btn-lg" %>
+       <span role=button><%= link_to "View Your Accounts?", accounts_path(current_user), :class => "btn btn-warning btn-lg" %></span>
       <% else %>
-        <%= link_to 'Continue to Administrator Dashboard', adminview_administrator_path(current_user), :class => 'btn btn-warning btn-lg' %>
+      <span role=button><%= link_to 'Continue to Administrator Dashboard', adminview_administrator_path(current_user), :class => 'btn btn-warning btn-lg' %></span>
       <% end %>
     	<h4>or</h4>
-  	<%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-danger btn-lg" %>
+  	<span role=button><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-danger btn-lg" %></span>
   	<% else %>
-  	<%= link_to "Sign in", new_user_session_path, :class => "btn btn-success btn-lg" %>
-  	<%= link_to "Create an Account", new_user_registration_path, :class => "btn btn-primary btn-lg" %>
+  	<span role=button><%= link_to "Sign in", new_user_session_path, :class => "btn btn-success btn-lg" %></span>
+  	<span role=button><%= link_to "Create an Account", new_user_registration_path, :class => "btn btn-primary btn-lg" %></span>
   	<% end %>
   </p>
 </div>

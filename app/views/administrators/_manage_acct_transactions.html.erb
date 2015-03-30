@@ -1,0 +1,30 @@
+  <h3>Listing All Account Transactions</h3>
+    <%= paginate (@acct_transactions) %>
+    <table id="indexTable" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Transaction ID</th>
+          <th>Type</th>
+          <th>Account ID</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @acct_transactions.each do |trans| %>
+          <tr>
+            <td><%= trans.date.strftime("%B %d, %Y") %></td>
+            <td><%= trans.id %></td>
+            <td><%= trans.transaction_type_id %></td>
+            <td><%= trans.account_id %></td>
+            <td><%= trans.description %></td>
+            <td><%= number_to_currency(trans.amount) %></td>
+
+            <td><%= link_to 'Show', acct_transaction_path(trans) %></td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+    <%= paginate (@acct_transactions) %>

@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   resources :administrators do
     member do
       get :adminview
+      get :manage_accounts
+      get :manage_customers
+      get :manage_acct_transactions
     end
   end
 
