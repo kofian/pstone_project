@@ -1,5 +1,6 @@
 class AdministratorsController < ApplicationController
-
+  #call admin layout file
+  layout "admin"
   before_filter :authenticate_user!
 
   before_action :set_administrator, only: [:show, :edit, :update, :destroy]
@@ -12,33 +13,25 @@ class AdministratorsController < ApplicationController
   end
 
   def adminview
-      manage_customers
+      # manage_customers
+      # redirect_to manage_customers_administrator_path
+      # render "_manage_customers"
   end
 
   # Update adminview content using AJAX and jQuery
   def manage_accounts
     @accounts = Account.order('id').page(params[:page]).per(15)
-    respond_to do |format|
-      format.js {render :manage_accounts}
-      format.html
-    end
+    render 'manage_accounts'
   end
 
   def manage_customers
     @customers = Customer.order('lastname').page(params[:page]).per(15)
-    respond_to do |format|
-      format.html
-      format.js {render :manage_customers}
-      format.html
-    end
+    render 'manage_customers'
   end
 
   def manage_acct_transactions
     @acct_transactions = AcctTransaction.order('date DESC').page(params[:page]).per(15)
-    respond_to do |format|
-      format.js {render :manage_acct_transactions}
-      format.html
-    end
+    render 'manage_acct_transactions'
   end
 
   # GET /administrators/1

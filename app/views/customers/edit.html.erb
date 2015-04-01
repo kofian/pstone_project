@@ -4,7 +4,7 @@
 
 <%= link_to 'Show', @customer %> |
 <% if current_user.role = 'admin' %>
-	<%= link_to 'Return to Dashboard', :back %>
+	<%= link_to 'Return to Dashboard', manage_customers_administrator_path %>
 <% else %>
 	<%= link_to 'Back to Home Page', root_path %>
 <% end %>

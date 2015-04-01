@@ -1,0 +1,17 @@
+<!-- include the admin menu -->
+<div id="panel">
+  <div class="navbar subnav navbar-inverse admin-nav" role="navigation">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <h2>Admin Dashboard</h2>
+        <ul class="pager subnav-pager">
+          <div class="btn-group btn-group-justified" role="group" aria-label="navigation">
+            <span role=button><%= link_to "Manage Accounts", manage_accounts_administrator_path, :class => "btn btn-primary" %></span>
+            <span role=button><%= link_to "Manage Customers", {:action=>"manage_customers"},  :class => "btn btn-primary" %></span>
+            <span role=button><%= link_to "Manage Transactions", {:action=>"manage_acct_transactions"},  :class => "btn btn-primary" %></span>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
