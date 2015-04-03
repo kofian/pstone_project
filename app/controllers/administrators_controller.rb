@@ -21,17 +21,17 @@ class AdministratorsController < ApplicationController
   # Update adminview content using AJAX and jQuery
   def manage_accounts
     @accounts = Account.order('id').page(params[:page]).per(15)
-    render 'manage_accounts'
+    render 'manage_accounts', :format => :js
   end
 
   def manage_customers
     @customers = Customer.order('lastname').page(params[:page]).per(15)
-    render 'manage_customers'
+    render 'manage_customers', :format => :js
   end
 
   def manage_acct_transactions
     @acct_transactions = AcctTransaction.order('date DESC').page(params[:page]).per(15)
-    render 'manage_acct_transactions'
+    render 'manage_acct_transactions', :format => :js
   end
 
   # GET /administrators/1

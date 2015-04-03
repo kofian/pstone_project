@@ -1,1 +1,5 @@
-$('#displayArea').html('<%= escape_javascript(render partial: 'manage_customers') %>');
+$('#').html('<%= escape_javascript(render 'manage_customers') %>');
+$('a.tab_link').click(function() {
+    $('a.tab_link').removeClass('active')
+    $(this).addClass('active')
+})

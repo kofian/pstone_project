@@ -8,6 +8,7 @@
   <%= favicon_link_tag 'capstone_icon.png' %>
 </head>
 <body>
+	<!-- render main navigation partial -->
 	<%= render 'navigation' %>
 	<% if notice %>
 	  <p class="alert alert-success"><%= notice %></p>
@@ -18,10 +19,7 @@
 	<main>
 		<%= yield %>
 	</main>
-
-	<footer>
-	  <p><strong>Version 1.5.0</strong> | A project by Barnabas Bulpett | Asheville-Buncombe Web Technologies System Project<br />WEB-289-D1 | Currently in Phase 5
-	  <br /><a href="https://github.com/bbulpett/capstone_project"> <em>Available on GitHub</em></a></p>
-	</footer>
+	<!-- render footer partial -->
+	<%= render 'footer' %>
 </body>
 </html>

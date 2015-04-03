@@ -8,6 +8,7 @@
   <%= favicon_link_tag 'capstone_icon.png' %>
 </head>
 <body>
+	<!-- render main navigation partial -->
 	<%= render 'navigation' %>
 	<% if notice %>
 	  <p class="alert alert-success"><%= notice %></p>
@@ -16,15 +17,18 @@
 	  <p class="alert alert-danger"><%= alert %></p>
 	<% end %>
 	<main>
+		<!-- render "Admin-only" navigation partial -->
 		<%= render partial: 'admin_navigation' %>
 		<div id="admin_content">
-			<%= yield :admin_content %>
+			<% if content_for?(:admin_content) %>
+				<%= yield(:admin_content) %>
+			<% else %>
+				<h3>Welcome to the Administrators Dashboard</h3>
+				<p>Please select an action above to get started</p>
+			<% end %>
 		</div>
 	</main>
-
-	<footer>
-	  <p><strong>Version 1.5.0</strong> | A project by Barnabas Bulpett | Asheville-Buncombe Web Technologies System Project<br />WEB-289-D1 | Currently in Phase 5
-	  <br /><a href="https://github.com/bbulpett/capstone_project"> <em>Available on GitHub</em></a></p>
-	</footer>
+	<!-- render footer partial -->
+	<%= render 'footer' %>
 </body>
 </html>
