@@ -8,8 +8,9 @@
 	<li>Amount: <%= number_to_currency(@acct_transaction.amount)%></li>
 	<li>Description: <%= @acct_transaction.description %></li>
 </ul>
-<% if current_user.role = 'admin' %>
-	<%= link_to 'Return to Dashboard', :back %>
+<% if current_user.role == 'admin' %>
+	<%= link_to 'Back', :back, :class => "btn btn-primary formButton"  %>
+	<%= link_to 'Return to Dashboard', manage_acct_transactions_administrator_path, :class => "btn btn-info formButton"  %>
 <% else %>
-	<%= link_to 'Back to Account', account_path(@acct_transaction.account_id) %>
+	<%= link_to 'Back to Account', account_path(@acct_transaction.account_id), :class => "btn btn-primary formButton"  %>
 <% end %>

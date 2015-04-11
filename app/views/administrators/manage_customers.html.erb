@@ -1,5 +1,11 @@
 <% content_for :admin_content do %>
-  <h3>Listing All Customers</h3>
+  <h3 class="table-heading"><%= @table_heading %></h3>
+  <%= form_tag manage_customers_administrator_path, :method => 'get', :id => "search-form" do %>
+      <%= text_field_tag :search, params[:search], placeholder: 'Search Customers'  %>
+      <%= select_tag("search_criteria", options_for_select([['by customer id', '1'],['by customer last name', '2']], selected: '1')) %>
+      <%= submit_tag "Search", :name => nil %>
+  <% end %>
+  <br />
     <%= paginate (@customers) %>
     <table id="indexTable" class="table table-striped">
       <thead>
@@ -14,10 +20,10 @@
       <tbody>
           <% @customers.each do |customer| %>
           <tr>
-            <td><%= '%09d' % customer.id %></td>
+            <td><%= customer.id %></td>
             <td><%= customer.lastname %>, <%= customer.firstname %></td>
             <td><%= customer.phone1 %></td>
-            <td><%= customer.user.email %></td>
+            <td><%= mail_to customer.user.email %></td>
             <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
             <td><%= link_to 'Details', customer_path(customer) %></td>
             
@@ -26,7 +32,7 @@
       </tbody>
     </table>
     <%= paginate (@customers) %>
-  <br>
+  <br />
+  <%= link_to 'Back', :back, :class => "btn btn-primary formButton"  %>
 
-  <%= link_to 'New Account', new_customer_path %>
 <% end %>

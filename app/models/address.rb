@@ -15,8 +15,8 @@ class Address < ActiveRecord::Base
   def check_zip
     if ZipCode.where(:zip_code => zip_code_zip_code).blank?
       errors.add(:base, 'Not a real zip code')
-    end
 	else
 	# Zip Code is valid
 	end
+  end
 end

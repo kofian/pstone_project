@@ -23,9 +23,7 @@ html
 	font-smoothing: antialiased
 
 body 
-	background-image: image-url("snowy_prairie_bg.jpg")
-	background-repeat: no-repeat
-	background-position: center top
+	background: #7E99D0 image-url("snowy_prairie_bg.jpg") no-repeat center top
 	font: normal normal 12pt 'Oxygen', Verdana, sans-serif
 	margin: 0 0 100px
 
@@ -64,15 +62,6 @@ nav:not(.pagination)
 	background: rgba(0,0,0,0.2)
 	border: none
 
-.navbar a, .navbar-header a
-	color: #FFF
-
-.navbar a:visited
-	color: #FFF
-
-.navbar a:active
-	color: #FFF
-
 .navbar-header
 	.navbar-brand
 		font-family: 'Cinzel-Regular', serif
@@ -89,40 +78,34 @@ nav:not(.pagination)
 		color: #FFF
 		text-shadow: 0px 0px 10px rgba(255,255,255,1)
 
-.navbar-nav
-	li
-		a:link, a:visited
-			color: #DDD
+.topnav-button
+	margin-right: 10px
 
-		a:hover
-			color: #FFF
-
-		a:active
-			color: #FFF
-			text-shadow: 0px 0px 10px rgba(255,255,255,1)
+	a
+		background: rgba(255,255,255,0.75)
+		color: #000
+		font-weight: 500
+		letter-spacing: 0.12em
 
 #admin-nav
 	background: rgba(15,15,15,1)
 	color: #EEE
 
-#admin-nav
-	border-bottom: transparent
 	li
 		text-indent: none
 		margin: 0 5px 0 0 
+		
 		a
-			border: transparent
 			background: #AAA
 
 		a:focus
 			background: #FFF
 			color: #000
 
-#admin-nav
-	a.tab_link.active
-		a
-			color: #000
-			background-color: #fff
+.tab_link.active
+	a
+		color: #000
+		background-color: #fff
 
 .navbar-form
 	margin: 5px 0 0 
@@ -193,8 +176,8 @@ main>h1
 	text-align: center
 
 .formPanel
-	width: 95%
-	margin: 10px auto
+	width: 50%
+	margin: 10px 20px
 	padding: 0 25px
 
 .formButton
@@ -244,3 +227,19 @@ td
 	padding: 5px 10px 10px 10px
 	border-radius: 2px
 
+.table-heading
+	display: inline
+
+#search-form
+	float: right
+	margin-top: -5px
+	margin-bottom: 10px
+
+#formButtonGroup
+	padding: 0
+	list-style-type: none
+	margin: 0 0 15px 0
+
+	li
+		display: inline
+		margin-right: 10px

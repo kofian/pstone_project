@@ -1,3 +1,3 @@
 class TransactionType < ActiveRecord::Base
-	belongs_to :transactions
+	belongs_to :acct_transaction
 end

@@ -12,7 +12,7 @@
       <% end %>
       </ul>
   <% end %>
-        <% unless current_user.role = 'admin' %>
+        <% unless current_user.role == 'admin' %>
           <div id="tip">
           <p>We'd like to know who you are.</p>
           </div>
@@ -26,7 +26,13 @@
 
       <br />
       <div class="actions">
-        <%= f.submit "Next", :class => "btn btn-info", :style => 'margin-bottom: 25px;'%>
+        <ul id="formButtonGroup">
+          <% if current_user.role == 'admin' %>
+            <li><%= f.submit "Update", :class => "btn btn-primary"%></li>
+          <% else %>
+            <li><%= f.submit "Next", :class => "btn btn-success" %></li>
+          <% end %>
+        </ul>
       </div>
     <% end %>
   </div>

@@ -3,7 +3,7 @@ class CreateAcctTransactions < ActiveRecord::Migration
   	# create ACCT_TRANSACTIONS table
 	  create_table "acct_transactions", id: false, force: true do |t|
 	    t.integer  "id",                  limit: 8,                            null: false
-	    t.timestamp "date",                                                     null: false
+	    t.datetime "date",                                                     null: false
 	    t.text     "description",         limit: 255
 	    t.decimal  "amount",                          precision: 10, scale: 2, null: false
 	    t.integer  "account_id",          limit: 8,                            null: false

@@ -4,7 +4,7 @@ class CreateAccounts < ActiveRecord::Migration
 	  create_table "accounts", id: false, force: true do |t|
 	    t.integer "id",           limit: 8,                          null: false
 	    t.decimal "balance",                precision: 10, scale: 2, null: false
-	    t.date    "date_opened",                                     null: false
+	    t.datetime    "date_opened",                                     null: false
 	    t.integer "customer_id",  limit: 8,                          null: false
 	    t.integer "acct_type_id", limit: 1,                          null: false
 	  

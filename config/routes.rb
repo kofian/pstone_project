@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get :manage_accounts
       get :manage_customers
       get :manage_acct_transactions
+
     end
   end
 

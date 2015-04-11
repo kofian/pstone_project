@@ -15,11 +15,15 @@ class AcctTransactionsController < ApplicationController
 
   # GET /acct_transactions/new
   def new
-    @acct_transaction = AcctTransaction.new
-    @acct_transaction.id = SecureRandom.random_number(99999999999999)
-    @acct_transaction.date = Time.now
-    @acct_transaction.transaction_type_id = params[:transaction_type_id]
-    @acct_transaction.amount = params[:amount]
+    # if params[:amount] > Account.find(@acct_transaction.account_id).balance
+    #   redirect_to :back, notice: 'INSUFFICIENT FUNDS!! Transaction aborted.'
+    # else
+      @acct_transaction = AcctTransaction.new
+      @acct_transaction.id = SecureRandom.random_number(99999999999999)
+      @acct_transaction.date = Time.now
+      @acct_transaction.transaction_type_id = params[:transaction_type_id]
+      @acct_transaction.amount = params[:amount]
+    # end
 
     # for the view - show 'name' of transaction types
     @trans_type = TransactionType.find(params[:transaction_type_id]).name
@@ -89,7 +93,7 @@ class AcctTransactionsController < ApplicationController
       account = Account.find(@acct_transaction.account_id)
       case @acct_transaction.transaction_type_id
           when 1,2,4,5,7
-            account.update(balance: account.balance - @acct_transaction.amount)
+              account.update(balance: account.balance - @acct_transaction.amount)
           when 3
             account.update(balance: account.balance + @acct_transaction.amount)
       end

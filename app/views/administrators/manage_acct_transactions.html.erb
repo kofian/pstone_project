@@ -1,5 +1,11 @@
 <% content_for :admin_content do %>
-  <h3>Listing All Account Transactions</h3>
+  <h3 class="table-heading"><%= @table_heading %></h3>
+  <%= form_tag manage_acct_transactions_administrator_path, :method => 'get', :id => "search-form" do %>
+      <%= text_field_tag :search, params[:search], placeholder: 'Search Transactions'  %>
+      <%= select_tag("search_criteria", options_for_select([['by transaction id', '1'],['by account id', '2']], selected: '1')) %>
+      <%= submit_tag "Search", :name => nil %>
+  <% end %>
+  <br />
     <%= paginate (@acct_transactions) %>
     <table id="indexTable" class="table table-striped">
       <thead>
@@ -18,7 +24,7 @@
           <tr>
             <td><%= trans.date.strftime("%B %d, %Y") %></td>
             <td><%= trans.id %></td>
-            <td><%= trans.transaction_type_id %></td>
+            <td><%= TransactionType.find(trans.transaction_type_id).name %></td>
             <td><%= trans.account_id %></td>
             <td><%= trans.description %></td>
             <td><%= number_to_currency(trans.amount) %></td>
@@ -29,4 +35,7 @@
       </tbody>
     </table>
     <%= paginate (@acct_transactions) %>
+    <br />
+  <%= link_to 'Back', :back, :class => "btn btn-primary formButton"  %>
+
 <% end %>

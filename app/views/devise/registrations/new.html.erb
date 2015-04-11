@@ -7,7 +7,7 @@
         <h2>Step 1</h2>
         <div id="tip">
         <p>Begin by adding some login information. <br />
-            This will be used to sign in to your account, so keep it handy!</p>
+           <strong>This will be used to sign in to your account, so keep it handy!</strong></p>
         </div>
         <!-- fields for User object -->
         <%= f.text_field :username, autofocus: true, required: true, label: 'Username' %>
@@ -20,7 +20,10 @@
 
       <br />
       <div class="actions">
-        <%= f.submit "Next", :class => "btn btn-info", :style => 'margin-bottom: 25px;'%>
+        <ul id="formButtonGroup">
+          <li><%= link_to 'Cancel', root_path, :class => "btn btn-danger formButton", data: {confirm: "Are you sure you want to cancel your registration? You'll have to start all over!"} %></li>
+          <li><%= f.submit "Next", :class => "btn btn-success formButton"%></li>
+        </ul>
       </div>
       <% end %>
   </div>

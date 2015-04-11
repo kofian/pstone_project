@@ -11,6 +11,9 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+    zip = @customer.address.zip_code_zip_code
+    @city = ZipCode.find(zip).city
+    @state = ZipCode.find(zip).state_abbreviation
   end
 
   # GET /customers/new

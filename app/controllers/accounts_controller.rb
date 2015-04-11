@@ -22,8 +22,13 @@ class AccountsController < ApplicationController
   # GET /accounts/1
   # GET /accounts/1.json
   def show
-    @acct_transactions = @account.acct_transactions.all.order(created_at: :desc)
-    # @trans_type = TransactionType.find(@acct_transactions.transaction_type_id).name
+    if params[:search]
+    @acct_transactions = @account.acct_transactions.where('id LIKE ?', "%#{params[:search]}%").page(params[:page]).per(15)
+    
+    else
+    @acct_transactions = @account.acct_transactions.all.order('date DESC').page(params[:page]).per(15)
+
+    end
   end
 
   # GET /accounts/new

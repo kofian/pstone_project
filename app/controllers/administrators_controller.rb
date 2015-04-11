@@ -20,18 +20,76 @@ class AdministratorsController < ApplicationController
 
   # Update adminview content using AJAX and jQuery
   def manage_accounts
-    @accounts = Account.order('id').page(params[:page]).per(15)
-    render 'manage_accounts', :format => :js
+    # criteria from the "Search by" select menu
+    if params[:search]
+        case (params[:search_criteria])
+        when '1'
+          @criteria = 'id'
+        when '2'
+          @criteria = 'customer_id'
+        # when '3' 
+        #   Account.includes(:customers).all
+        #   @criteria = 'customer.lastname'
+        end
+
+        @accounts = Account.where("#{@criteria} LIKE ?", "%#{params[:search].downcase}%").page(params[:page]).per(15)
+        @table_heading = "Account Search Results"
+    else
+        @accounts = Account.order('id').page(params[:page]).per(15)
+        @table_heading = "Listing All Accounts"
+    end
+
+    respond_to do |format|
+      format.js
+      format.html {render 'manage_accounts'}
+    end
   end
 
   def manage_customers
-    @customers = Customer.order('lastname').page(params[:page]).per(15)
-    render 'manage_customers', :format => :js
+    # criteria from the "Search by" select menu
+    if params[:search]
+        case (params[:search_criteria])
+        when '1'
+          @criteria = 'id'
+        when '2'
+          @criteria = 'lastname'
+        end
+
+        @customers = Customer.where("#{@criteria} LIKE ?", "%#{params[:search].downcase}%").page(params[:page]).per(15)
+        @table_heading = "Customer Search Results"
+    else
+        @customers = Customer.order('lastname').page(params[:page]).per(15)
+        @table_heading = "Listing All Customers"
+    end
+    
+    respond_to do |format|
+      format.js
+      format.html {render 'manage_customers'}
+    end
   end
 
   def manage_acct_transactions
-    @acct_transactions = AcctTransaction.order('date DESC').page(params[:page]).per(15)
-    render 'manage_acct_transactions', :format => :js
+    # criteria from the "Search by" select menu
+    if params[:search]
+        case (params[:search_criteria])
+        when '1'
+          @criteria = 'id'
+        when '2'
+          @criteria = 'account_id'
+        end
+
+        @acct_transactions = AcctTransaction.where("#{@criteria} LIKE ?", "%#{params[:search].downcase}%").page(params[:page]).per(15)
+        @table_heading = "Transaction Search Results"
+    else
+        @acct_transactions = AcctTransaction.order('date DESC').page(params[:page]).per(15)
+        @table_heading = "Listing All Transactions"
+        
+    end
+    
+    respond_to do |format|
+      format.js
+      format.html {render 'manage_acct_transactions'}
+    end
   end
 
   # GET /administrators/1

@@ -23,7 +23,13 @@
 
       <br />
       <div class="actions">
-        <%= f.submit "Finish", :class => "btn btn-success", :style => 'margin-bottom: 25px;'%>
+        <ul id="formButtonGroup">
+          <% if current_user.role == 'admin' %>
+            <li><%= f.submit "Update", :class => "btn btn-primary"%></li>
+          <% else %>
+            <li><%= f.submit "Finish", :class => "btn btn-success" %></li>
+          <% end %>
+        </ul>
       </div>
     <% end %>
   </div>

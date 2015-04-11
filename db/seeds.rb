@@ -10,17 +10,17 @@ require 'ffaker' #Using faker to seed make-believe data
 require 'csv' #Pull data from local .csv files
 
 # Seed zip_code and states tables via SQL import
-csv_text = File.read("#{Rails.root}/db/state_table.csv")
-csv = CSV.parse(csv_text, :headers => true)
-csv.each do |row|
-  State.create!(row.to_hash)
-end
+# csv_text = File.read("#{Rails.root}/db/state_table.csv")
+# csv = CSV.parse(csv_text, :headers => true)
+# csv.each do |row|
+#   State.create!(row.to_hash)
+# end
 
-csv_text = File.read("#{Rails.root}/db/zip_code_table.csv")
-csv = CSV.parse(csv_text, :headers => true)
-csv.each do |row|
-  ZipCode.create!(row.to_hash)
-end
+# csv_text = File.read("#{Rails.root}/db/zip_code_table.csv")
+# csv = CSV.parse(csv_text, :headers => true)
+# csv.each do |row|
+#   ZipCode.create!(row.to_hash)
+# end
 
 # Generate transaction types
 TransactionType.create(id: 1, name: 'ATM_Withdrawal')
@@ -192,7 +192,6 @@ types = [1,2,3,4,5,6,7,99]
 account_transactions = []
 
 accounts.each do |i|
-	
 	80.times do |j|
 		type = types.sample
 			case (type)
@@ -221,22 +220,17 @@ accounts.each do |i|
 					description = descriptions_Miscellaneous
 					amount = ((500.0 - 5.0) * rand() + 5) *-1
 			end
-
 		t = AcctTransaction.new
 			t.id = SecureRandom.random_number(99999999999999) # 14-digit BigInt
-			t.account_id = accounts[j].id
+			t.account_id = i.id
 			t.transaction_type_id = type
 			t.description = description
 			t.amount = amount
-			t.adjusted_bal = accounts[j].balance + amount
-
-			# update the balance of the account to reflect transaction
-			account = Account.find(t.account_id)
-			account.update(balance: account.balance + t.amount)
-
-			# make sure transaction date is within range of account's lifetime
-			t.date = rand(account.date_opened..Date.today)
+			t.date = rand(i.date_opened..Time.now)
+			t.adjusted_bal = i.balance + t.amount
+			i.balance += amount
 		t.save
+		# i.update(balance: t.adjusted_bal)
 		account_transactions << t
 	end
 end
