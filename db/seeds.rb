@@ -189,10 +189,10 @@ descriptions_Miscellaneous = 'Miscellaneous'
 
 atm_amounts = [20.00,40.00,60.00,80.00,100.00,120.00,140.00,160.00,180.00,200.00]
 types = [1,2,3,4,5,6,7,99]
-account_transactions = []
 
-accounts.each do |i|
-	80.times do |j|
+# Generate 75 unique transactions for each account and update balance
+accounts.each do |account|
+	75.times do
 		type = types.sample
 			case (type)
 				when 1
@@ -220,17 +220,20 @@ accounts.each do |i|
 					description = descriptions_Miscellaneous
 					amount = ((500.0 - 5.0) * rand() + 5) *-1
 			end
-		t = AcctTransaction.new
-			t.id = SecureRandom.random_number(99999999999999) # 14-digit BigInt
-			t.account_id = i.id
-			t.transaction_type_id = type
-			t.description = description
-			t.amount = amount
-			t.date = rand(i.date_opened..Time.now)
-			t.adjusted_bal = i.balance + t.amount
-			i.balance += amount
-		t.save
-		# i.update(balance: t.adjusted_bal)
-		account_transactions << t
-	end
+		AcctTransaction.create do |transaction|
+			transaction.id = SecureRandom.random_number(99999999999999)
+			transaction.account_id = account.id
+			transaction.transaction_type_id = type
+			transaction.description = description
+			transaction.amount = amount
+			transaction.adjusted_bal = account.balance + transaction.amount
+			# keep transaction in chronological order unless it's the first one
+			unless AcctTransaction.exists?(account_id: transaction.account_id)
+				transaction.date = rand(account.date_opened..Time.now)
+			else
+				transaction.date = rand(AcctTransaction.where(account_id: transaction.account_id).last.date..Time.now)
+			end
+		end
+		Account.update(AcctTransaction.last.account_id, balance: AcctTransaction.last.adjusted_bal)
+    end
 end

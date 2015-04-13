@@ -89,6 +89,7 @@ class AcctTransactionsController < ApplicationController
       params.require(:acct_transaction).permit(:account_id, :transaction_type_id, :description, :amount, :adjusted_bal)
     end
 
+  public
     def modify_acct_balance
       account = Account.find(@acct_transaction.account_id)
       case @acct_transaction.transaction_type_id
