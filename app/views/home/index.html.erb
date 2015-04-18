@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<aside class="actionPanel">
   <h1>Let's do this!</h1>
   <p>
   	<% if user_signed_in? %>
@@ -15,4 +15,50 @@
   	<span role=button><%= link_to "Create an Account", new_user_registration_path, :class => "btn btn-primary btn-lg" %></span>
   	<% end %>
   </p>
+</aside>
+<div id="homeCarousel" class="carousel slide " data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#homeCaorusel" data-slide-to="0" class="active"></li>
+    <li data-target="#homeCaorusel" data-slide-to="1"></li>
+    <li data-target="#homeCaorusel" data-slide-to="2"></li>
+    <li data-target="#homeCaorusel" data-slide-to="3"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <h1>This is Slide #1</h1>
+      <p>Some great stuff will happen here</p>
+      <!-- <img src="img_chania.jpg" alt="Chania"> -->
+    </div>
+
+    <div class="item">
+      <h1>This is Slide #2</h1>
+      <p>More great stuff will happen here</p>
+      <!-- <img src="img_chania2.jpg" alt="Chania"> -->
+    </div>
+
+    <div class="item">
+      <h1>This is Slide #3</h1>
+      <p>Even more great stuff will happen here</p>
+      <!-- <img src="img_flower.jpg" alt="Flower"> -->
+    </div>
+
+    <div class="item">
+      <h1>This is Slide #4</h1>
+      <p>Awesome stuff will happen here</p>
+      <!-- <img src="img_flower2.jpg" alt="Flower"> -->
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#homeCaorusel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#homeCaorusel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>

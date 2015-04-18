@@ -5,10 +5,12 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+/* Parsed W3C errors on 2015-04-16 and edited for validation */
 html {
   font-family: sans-serif;
-  -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
+/*  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;*/
 }
 body {
   margin: 0;
@@ -95,8 +97,8 @@ figure {
 }
 hr {
   height: 0;
-  -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
+/*  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;*/
           box-sizing: content-box;
 }
 pre {
@@ -2499,7 +2501,7 @@ input[type="search"] {
 input[type="radio"],
 input[type="checkbox"] {
   margin: 4px 0 0;
-  margin-top: 1px \9;
+  margin-top: 1px /*\9*/;
   line-height: normal;
 }
 input[type="file"] {
@@ -2574,7 +2576,7 @@ textarea.form-control {
 input[type="search"] {
   -webkit-appearance: none;
 }
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
+/*@media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type="date"],
   input[type="time"],
   input[type="datetime-local"],
@@ -2601,7 +2603,7 @@ input[type="search"] {
   .input-group-lg input[type="month"] {
     line-height: 46px;
   }
-}
+}*/
 .form-group {
   margin-bottom: 15px;
 }
@@ -2625,7 +2627,7 @@ input[type="search"] {
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
   position: absolute;
-  margin-top: 4px \9;
+  margin-top: 4px /*\9*/;
   margin-left: -20px;
 }
 .radio + .radio,
@@ -2764,7 +2766,7 @@ select[multiple].form-group-lg .form-control {
   height: 34px;
   line-height: 34px;
   text-align: center;
-  pointer-events: none;
+  /*pointer-events: none;*/
 }
 .input-lg + .form-control-feedback {
   width: 46px;
@@ -2975,13 +2977,13 @@ select[multiple].form-group-lg .form-control {
   white-space: nowrap;
   vertical-align: middle;
   -ms-touch-action: manipulation;
-      touch-action: manipulation;
+      /*touch-action: manipulation;*/
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none;
-  background-image: none;
+/*          user-select: none;
+*/  background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
 }
@@ -3011,9 +3013,9 @@ select[multiple].form-group-lg .form-control {
 .btn.disabled,
 .btn[disabled],
 fieldset[disabled] .btn {
-  pointer-events: none;
+  /*pointer-events: none;*/
   cursor: not-allowed;
-  filter: alpha(opacity=65);
+  /*filter: alpha(opacity=65);*/
   -webkit-box-shadow: none;
           box-shadow: none;
   opacity: .65;
@@ -3474,7 +3476,7 @@ tbody.collapse.in {
   cursor: not-allowed;
   background-color: transparent;
   background-image: none;
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);*/
 }
 .open > .dropdown-menu {
   display: block;
@@ -3698,7 +3700,7 @@ tbody.collapse.in {
 [data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
-  pointer-events: none;
+  /*pointer-events: none;*/
 }
 .input-group {
   position: relative;
@@ -4977,7 +4979,7 @@ a.thumbnail.active {
 .alert-danger .alert-link {
   color: #843534;
 }
-@-webkit-keyframes progress-bar-stripes {
+/*@-webkit-keyframes progress-bar-stripes {
   from {
     background-position: 40px 0;
   }
@@ -4992,7 +4994,7 @@ a.thumbnail.active {
   to {
     background-position: 0 0;
   }
-}
+}*/
 @keyframes progress-bar-stripes {
   from {
     background-position: 40px 0;
@@ -5080,7 +5082,7 @@ a.thumbnail.active {
 .media,
 .media-body {
   overflow: hidden;
-  zoom: 1;
+  /*zoom: 1;*/
 }
 .media-body {
   width: 10000px;
@@ -5680,7 +5682,7 @@ a.list-group-item-danger.active:focus {
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
-  filter: alpha(opacity=20);
+  /*filter: alpha(opacity=20);*/
   opacity: .2;
 }
 .close:hover,
@@ -5688,7 +5690,7 @@ a.list-group-item-danger.active:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
-  filter: alpha(opacity=50);
+  /*filter: alpha(opacity=50);*/
   opacity: .5;
 }
 button.close {
@@ -5757,11 +5759,11 @@ button.close {
   background-color: #000;
 }
 .modal-backdrop.fade {
-  filter: alpha(opacity=0);
+  /*filter: alpha(opacity=0);*/
   opacity: 0;
 }
 .modal-backdrop.in {
-  filter: alpha(opacity=50);
+  /*filter: alpha(opacity=50);*/
   opacity: .5;
 }
 .modal-header {
@@ -5829,11 +5831,11 @@ button.close {
   font-weight: normal;
   line-height: 1.4;
   visibility: visible;
-  filter: alpha(opacity=0);
+  /*filter: alpha(opacity=0);*/
   opacity: 0;
 }
 .tooltip.in {
-  filter: alpha(opacity=90);
+  /*filter: alpha(opacity=90);*/
   opacity: .9;
 }
 .tooltip.top {
@@ -6136,10 +6138,10 @@ button.close {
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
-  filter: alpha(opacity=50);
+  /*filter: alpha(opacity=50);*/
   opacity: .5;
 }
-.carousel-control.left {
+/*.carousel-control.left {
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
   background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
   background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .0001)));
@@ -6156,12 +6158,12 @@ button.close {
   background-image:         linear-gradient(to right, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
   background-repeat: repeat-x;
-}
+}*/
 .carousel-control:hover,
 .carousel-control:focus {
   color: #fff;
   text-decoration: none;
-  filter: alpha(opacity=90);
+  /*filter: alpha(opacity=90);*/
   outline: 0;
   opacity: .9;
 }
@@ -6216,7 +6218,7 @@ button.close {
   margin: 1px;
   text-indent: -999px;
   cursor: pointer;
-  background-color: #000 \9;
+  background-color: #000 /*\9*/;
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #fff;
   border-radius: 10px;
@@ -6340,7 +6342,7 @@ button.close {
   visibility: hidden;
 }
 .text-hide {
-  font: 0/0 a;
+  /*font: 0/0 a;*/
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -6353,9 +6355,9 @@ button.close {
 .affix {
   position: fixed;
 }
-@-ms-viewport {
+/*@-ms-viewport {
   width: device-width;
-}
+}*/
 .visible-xs,
 .visible-sm,
 .visible-md,

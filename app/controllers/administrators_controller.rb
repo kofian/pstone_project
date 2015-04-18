@@ -27,6 +27,8 @@ class AdministratorsController < ApplicationController
           @criteria = 'id'
         when '2'
           @criteria = 'customer_id'
+        when '3'
+          
         # when '3' 
         #   Account.includes(:customers).all
         #   @criteria = 'customer.lastname'

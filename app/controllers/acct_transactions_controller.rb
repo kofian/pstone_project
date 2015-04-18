@@ -42,6 +42,7 @@ class AcctTransactionsController < ApplicationController
 
     adjust_balance
     modify_acct_balance
+    logger.info "Transaction was just created"
 
     respond_to do |format|
       if @acct_transaction.save

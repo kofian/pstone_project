@@ -5,6 +5,18 @@
 @import "bootstrap-sprockets"
 @import "bootstrap"
 
+$break-xs: 320px 
+$break-s: 480px
+$break-m: 640px
+$break-l: 860px
+$break-xl: 960px
+$break-xxl: 1140px
+
+@font-face
+	font-family: 'Glyphicons Halflings'
+	src: url('/assets/glyphicons-halflings-regular.eot')
+	src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg')
+
 @font-face 
 	font-family: 'Cinzel-Regular'
 	src: font-url('Cinzel-Regular.ttf')
@@ -26,6 +38,7 @@ body
 	background: #7E99D0 image-url("snowy_prairie_bg.jpg") no-repeat center top
 	font: normal normal 12pt 'Oxygen', Verdana, sans-serif
 	margin: 0 0 100px
+	min-width: 320px
 
 footer 
 	position: absolute
@@ -68,6 +81,14 @@ nav:not(.pagination)
 		font-weight: 500
 		font-size: 34pt
 		color: #FFF
+		@media screen and (max-width: $break-xxl)
+			font-size: 28pt
+		@media screen and (max-width: $break-xl)
+			font-size: 24pt
+		@media screen and (max-width: $break-m)
+			font-size: 20pt
+			width: 120px
+			line-spacing: 5px
 
 .navbar-header
 	.navbar-brand:visited
@@ -78,14 +99,26 @@ nav:not(.pagination)
 		color: #FFF
 		text-shadow: 0px 0px 10px rgba(255,255,255,1)
 
+.nav
+	.btn
+		margin-top: 4px
+		font-weight: 600
+		@media screen and (max-width: $break-xxl)
+			font-size: 85%
+			padding: 9px
+			margin-top: 6px
+		@media screen and (max-width: $break-xl)
+			font-size: 75%
+			padding: 7px
+			margin-top: 7px
+
 .topnav-button
 	margin-right: 10px
 
 	a
 		background: rgba(255,255,255,0.75)
 		color: #000
-		font-weight: 500
-		letter-spacing: 0.12em
+		font-weight: 600
 
 #admin-nav
 	background: rgba(15,15,15,1)
@@ -172,6 +205,7 @@ main>h1
 	font-size: 88%
 
 .jumbotron
+	width: 33%
 	background: rgba(0,0,0,0)
 	text-align: center
 
@@ -243,3 +277,34 @@ td
 	li
 		display: inline
 		margin-right: 10px
+
+.actionPanel
+	float: left
+	margin: 50px 25px
+	background: rgba(240,240,240,0.6)
+	padding: 10px
+	width: 280px
+	border-radius: 2px
+	height: 400px
+	min-height: 1px
+	text-align: center
+
+	a
+		width: 250px
+		margin: 10px 0
+
+#homeCarousel
+	float: left
+	background: transparent
+	padding: 10px
+	width: 67%
+	border-radius: 2px
+	height: 260px
+	color: #FFF
+	text-align: center
+	margin: 50px 0 
+
+	@media screen and (max-width: $break-xxl)
+		width: 62%
+	@media screen and (max-width: $break-xl)
+		width: 57%

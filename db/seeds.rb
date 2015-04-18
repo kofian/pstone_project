@@ -37,7 +37,7 @@ AcctType.create(id: 2, name: 'checking', interest_rate: 0.000)
 
 # Generate 100 users (with "customer" role) (Admins created separately)
 users = [] # Empty array to store users
-99.times do
+9.times do
 	username = "#{Faker::Vehicle.make}#{Faker::BaconIpsum.word}-#{rand(999)}"
 	user_password = SecureRandom.base64(12)
 	u = User.new
@@ -65,7 +65,7 @@ Administrator.create(id: 1111111111, firstname: 'Peggy', lastname: 'Hill', user_
 
 # Generate 100 customers
 customers = [] # Empty array to store customers
-100.times do |i|
+10.times do |i|
 	c = Customer.new
 		user_id = User.select(:user_id).distinct
 
@@ -106,7 +106,7 @@ customers = [] # Empty array to store customers
 end
 
 # Generate 100 addresses for addresses table to be assigned to customers
-100.times do |i|
+10.times do |i|
 	a = Address.new
 		address1 = Forgery('address').street_address
 		c = ZipCode.count
@@ -129,7 +129,7 @@ end
 
 # Generate the first 100 accounts
 accounts = []
-100.times do |i|
+10.times do |i|
     a = Account.new
     	a.customer_id = customers[i].id
     	a.acct_type_id = rand(1..2)
@@ -141,7 +141,7 @@ accounts = []
 end
 
 # Generate 50 more (secondary) accounts ("Some customers have more than 1 account")
-50.times do |i|
+5.times do |i|
     a = Account.new
     	a.customer_id = customers[i].id
     	a.acct_type_id = rand(1..2)
@@ -190,9 +190,10 @@ descriptions_Miscellaneous = 'Miscellaneous'
 atm_amounts = [20.00,40.00,60.00,80.00,100.00,120.00,140.00,160.00,180.00,200.00]
 types = [1,2,3,4,5,6,7,99]
 
-# Generate 75 unique transactions for each account and update balance
+
 accounts.each do |account|
-	75.times do
+	5.times do
+		# puts account.balance
 		type = types.sample
 			case (type)
 				when 1
@@ -220,7 +221,7 @@ accounts.each do |account|
 					description = descriptions_Miscellaneous
 					amount = ((500.0 - 5.0) * rand() + 5) *-1
 			end
-		AcctTransaction.create do |transaction|
+		AcctTransaction.create! do |transaction|
 			transaction.id = SecureRandom.random_number(99999999999999)
 			transaction.account_id = account.id
 			transaction.transaction_type_id = type
@@ -233,7 +234,10 @@ accounts.each do |account|
 			else
 				transaction.date = rand(AcctTransaction.where(account_id: transaction.account_id).last.date..Time.now)
 			end
+		account.update(balance: transaction.adjusted_bal)
+		puts account.balance
+
+		# transaction.account.update_column(:balance, transaction.adjusted_bal)
 		end
-		Account.update(AcctTransaction.last.account_id, balance: AcctTransaction.last.adjusted_bal)
     end
 end
