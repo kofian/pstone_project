@@ -11,46 +11,59 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require_self
 //= require_tree .
-$(function() {
-	$('a.tab_link').click(function(e) {
-	    $('a.tab_link').removeClass('active');
-	    $(this).addClass('active');
-	});
-});
 
-// $(function() {
-//   $("#accounts th a, #accounts .pagination a").live("click", function() {
-//     $.getScript(this.href);
-//     return false;
-//   });
-//   $("#accounts_search input").keyup(function() {
-//     $.get($("#accounts_search").attr("action"), $("#accounts_search").serialize(), null, "script");
-//     return false;
-//   });
-// });
+var style_cookie_name = "style" ;
+var style_cookie_duration = 30 ;
 
-// $(function() {
-//   $("#customers th a, #customers .pagination a").live("click", function() {
-//     $.getScript(this.href);
-//     return false;
-//   });
-//   $("#customers_search input").keyup(function() {
-//     $.get($("#customers_search").attr("action"), $("#customers_search").serialize(), null, "script");
-//     return false;
-//   });
-// });
-
-// $(function() {
-//   $("#acct_transactions th a, #acct_transactions .pagination a").live("click", function() {
-//     $.getScript(this.href);
-//     return false;
-//   });
-//   $("#acct_transactions_search input").keyup(function() {
-//     $.get($("#acct_transactions_search").attr("action"), $("#acct_transactions_search").serialize(), null, "script");
-//     return false;
-//   });
-// });
+function change_theme ( css_title )
+{
+  var i, link_tag ;
+  for (i = 0, link_tag = document.getElementsByTagName("link") ;
+    i < link_tag.length ; i++ ) {
+    if ((link_tag[i].rel.indexOf( "stylesheet" ) != -1) &&
+      link_tag[i].title) {
+      link_tag[i].disabled = true ;
+      if (link_tag[i].title == css_title) {
+        link_tag[i].disabled = false ;
+      }
+    }
+    set_cookie( style_cookie_name, css_title,
+      style_cookie_duration );
+  }
+}
+function set_style_from_cookie()
+{
+  var css_title = get_cookie( style_cookie_name );
+  if (css_title.length) {
+    change_theme( css_title );
+  }
+}
+function set_cookie ( cookie_name, cookie_value,
+    lifespan_in_days, valid_domain )
+{
+    var domain_string = valid_domain ?
+                       ("; domain=" + valid_domain) : '' ;
+    document.cookie = cookie_name +
+                       "=" + encodeURIComponent( cookie_value ) +
+                       "; max-age=" + 60 * 60 *
+                       24 * lifespan_in_days +
+                       "; path=/" + domain_string ;
+}
+function get_cookie ( cookie_name )
+{
+    var cookie_string = document.cookie ;
+    if (cookie_string.length != 0) {
+        var cookie_value = cookie_string.match (
+                        '(^|;)[\s]*' +
+                        cookie_name +
+                        '=([^;]*)' );
+        return decodeURIComponent ( cookie_value[2] ) ;
+    }
+    return '' ;
+}

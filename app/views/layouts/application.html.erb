@@ -1,13 +1,20 @@
 <!DOCTYPE html>
+<!-- 	Barnabas Bulpett, Web Technologies System Project WEB-289-D1, Spring 2015 -->
 <html>
 <head>
-  <title>Capstone v1.5.3</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>Capstone v1.5.6</title>
+  <!-- Links for stylesheets -->
+  <link rel="stylesheet" type="text/css" href="/assets/tranquil_mountain.css" title="tranquil_mountain">
+  <link rel="stylesheet" type="text/css" href="/assets/tropical_shores.css" title="tropical_shores">
+  <link rel="stylesheet" type="text/css" href="/assets/winter_sunrise.css" title="winter_sunrise">
+  <!-- Declare a default stylesheet -->
+  <meta http-equiv="Default-Style" content="tropical_shores"> 
+  <!-- Load javascripts -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'capstone_icon.png' %>
 </head>
-<body>
+<body onload="set_style_from_cookie()">
 	<!-- render main navigation partial -->
 	<%= render 'navigation' %>
 	<% if notice %>
@@ -16,7 +23,8 @@
 	<% if alert %>
 	  <p class="alert alert-danger"><%= alert %></p>
 	<% end %>
-	<div>
+	<div id='content'>
+		<!-- dynamically render page content -->
 		<%= yield %>
 	</div>
 	<!-- render footer partial -->

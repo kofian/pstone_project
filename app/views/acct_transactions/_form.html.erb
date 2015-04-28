@@ -1,5 +1,5 @@
-
-<div class="panel panel-default" style="width: 50%; padding: 0 25px;">  
+<main>
+<div class="panel" style="margin: 10px; padding: 20px;">  
 
   <%= bootstrap_form_for(@acct_transaction) do |f| %>
   <% if @acct_transaction.errors.any? %>
@@ -13,16 +13,17 @@
       </ul>
   <% end %>
         <!-- pre-filled (static) fields -->
-        <p>Transaction Type: <strong><%= @trans_type %></strong></p>
-        <p>Date: <strong><%= Time.now.to_date %></strong></p>
+        <p>Transaction Type: <strong><%= @trans_type %></strong>
+          <br />
+          Date: <strong><%= Time.now.to_date %></strong></p>
         <!-- fields for AcctTransaction object -->
-        <%= f.text_field :description %>
-        <%= f.text_field :amount %>
+        <%= f.text_field :description, :style =>"max-width: 550px;" %>
+        <%= f.text_field :amount, :style =>"width: 160px;" %>
         <%= f.hidden_field :account_id, :value => params[:account_id] %>
         <%= f.hidden_field :transaction_type_id, :value => @acct_transaction.transaction_type_id %>
-      <br />
       <div class="actions">
-        <%= f.submit "Complete Transaction", :class => "btn btn-info", :style => 'margin-bottom: 25px;'%>
+        <%= f.submit "Complete Transaction", :class => "btn btn-info"%>
       </div>
     <% end %>
   </div>
+</main>

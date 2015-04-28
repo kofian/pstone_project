@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
-<div id=panel>
+<div id="panel">
 	<h2>Customer Details</h2>
 	<p><strong>Customer ID:</strong>  <%= @customer.id %></p>
 	<p><strong>Phone (primary):</strong>  <%= @customer.phone1 %></p>
 	<p><strong>Phone (secondary):</strong>  <%= @customer.phone2 %></p>
-	<p><strong>Email:</strong>  <%= @customer.user.email %></p>
+	<p><strong>Email:</strong>  <%= mail_to @customer.user.email %></p>
 	<p><strong>Mailing Address:</strong><br />
 		<%= @customer.address.address1 %><br />
 		<% unless @customer.address.address2.blank? %>

@@ -7,7 +7,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <%= image_tag 'capstone-decal.png', :style => "float: left; height: 50px; overflow: visible; margin: 0 15px; padding: 0;"%>
+	      <%= image_tag 'capstone-decal.png', :style => ""%>
 	      <%= link_to "Capstone Savings Bank", root_path, :class => "navbar-brand" %>
 	      <!-- <a class="navbar-brand" href="#">Capstone Savings Bank</a> -->
 	    </div>
@@ -18,18 +18,22 @@
 	        <li class="topnav-button"><%= link_to "About", home_about_path, :class => "btn btn-default" %></li>
 	        <li class="topnav-button"><%= link_to "Help", home_help_path, :class => "btn btn-default" %></li>
 	        <li>&nbsp;&nbsp;&nbsp;</li>
-	       <!--  <li class="dropdown"> -->
-	          <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Settings <span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#">Action</a></li>
-	            <li><a href="#">Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
+	          	<form>
+		          	<li><em>Chanage theme</em></li>
+		          	<li><input type="submit" onclick="change_theme('tranquil_mountain');return false;" name="theme" value="Tranquil Mountain" id="tranquil_mountain"></li>
+					<li><input type="submit" onclick="change_theme('tropical_shores');return false;" name="theme" value="Tropical Shores" id="tropical_shores"></li>
+					<li><input type="submit" onclick="change_theme('winter_sunrise');return false;" name="theme" value="Winter Sunrise" id="winter_sunrise"></li>
+				</form>
 	            <li class="divider"></li>
-	            <li><a href="#">Separated link</a></li>
-	            <li class="divider"></li>
-	            <li><a href="#">One more separated link</a></li>
+	            <li><em>Select language</em></li>
+	            <li><a href="#">English (default)</a></li>
+	            <li><a href="#">Spanish</a></li>
+	            <li><a href="#">Chinese</a></li>
 	          </ul>
-	        </li> -->
+	        </li>
 <!-- 	      </ul>
  -->	      <!-- <form class="navbar-form navbar-left" role="search">
 	        <div class="form-group">

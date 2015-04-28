@@ -1,5 +1,6 @@
 <h1>My Accounts</h1>
 <% if @accounts.count > 0 %>
+<main>
   <table id="indexTable" class="table table-striped">
     <thead>
       <tr>
@@ -18,15 +19,16 @@
           <td><%= AcctType.find(account.acct_type_id).name %></td>
           <td><%= number_to_currency(account.balance)%></td>
           <!-- Action links -->
-          <td><%= link_to 'Deposit', new_account_acct_transactions_path(:account_id => account.id, :transaction_type_id => 3) %>
-          <td><%= link_to 'Withdraw', new_account_acct_transactions_path(:account_id => account.id, :transaction_type_id => 7) %>
-          <td><%= link_to 'Show', account %></td>
+          <td><%= link_to 'Deposit', new_account_acct_transactions_path(:account_id => account.id, :transaction_type_id => 3), :class => "btn btn-default" %>
+          <td><%= link_to 'Withdraw', new_account_acct_transactions_path(:account_id => account.id, :transaction_type_id => 7), :class => "btn btn-default" %>
+          <td><%= link_to 'Show', account, :class => "btn btn-default" %></td>
           <td><%= link_to 'Close Account', account, method: :delete, data: { confirm: 'Are you sure you want to close this account?' } %></td>
         </tr>
         <% end %>
       
     </tbody>
   </table>
+</main>
 <% else %>
       <div class="jumbotron" style="text-align: center; border: 1px solid #DDD; border-radius: 8px;">
       <h1>No accounts to display</h1>
@@ -34,5 +36,6 @@
 <% end %>
 
 <br>
-
+<div id="links-block">
 <%= link_to 'Add a New Account', new_account_path, :class => "btn btn-primary"  %>
+</div>
