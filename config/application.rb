@@ -1,3 +1,8 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# application.rb
+
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'

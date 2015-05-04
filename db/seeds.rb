@@ -1,11 +1,11 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# seeds.rb
+# Populates database with default values and generic historical data for demonstration purposes
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 require 'ffaker' #Using faker to seed make-believe data
 require 'csv' #Pull data from local .csv files
 
@@ -30,9 +30,10 @@ TransactionType.create(id: 4, name: 'Auto-draft')
 TransactionType.create(id: 5, name: 'POS')
 TransactionType.create(id: 6, name: 'Transfer')
 TransactionType.create(id: 7, name: 'Withdrawal')
+TransactionType.create(id: 8, name: 'Interest')
 TransactionType.create(id: 99, name: 'Miscellaneous')
 # Generate account types
-AcctType.create(id: 1, name: 'savings', interest_rate: 0.010)
+AcctType.create(id: 1, name: 'savings', interest_rate: 0.99)
 AcctType.create(id: 2, name: 'checking', interest_rate: 0.000)
 
 # Generate 100 users (with "customer" role) (Admins created separately)
@@ -95,12 +96,12 @@ customers = [] # Empty array to store customers
 
 		c.user_id = users[i].id
 		c.id = SecureRandom.random_number(999999999) # 9-digit integer
-		# c.email = users[i].email # "#{Faker::Internet.free_email(firstname)}"
 		c.phone1 = "#{FFaker::PhoneNumber.short_phone_number}"
 		c.phone2 = "#{FFaker::PhoneNumber.short_phone_number}"
 		c.title = name_prefix
 		c.firstname = firstname
 		c.lastname = lastname
+		# c.user.update(email: "#{FFaker::Internet.free_email(c.firstname)}")
 	c.save
 	customers << c
 end
@@ -138,6 +139,18 @@ accounts = []
     	a.date_opened = rand(10.years).seconds.ago
     a.save
     accounts << a
+    # Generate initial deposits
+    acct = Account.last
+    AcctTransaction.create! do |transaction|
+			transaction.id = SecureRandom.random_number(99999999999999)
+			transaction.account_id = acct.id
+			transaction.transaction_type_id = 3
+			transaction.description = "Initial Deposit"
+			transaction.amount = (200.0 - 5.0) * rand() + 5
+			transaction.adjusted_bal = acct.balance + transaction.amount
+			transaction.date = a.date_opened
+		acct.update(balance: transaction.adjusted_bal)
+	end
 end
 
 # Generate 50 more (secondary) accounts ("Some customers have more than 1 account")
@@ -146,10 +159,22 @@ end
     	a.customer_id = customers[i].id
     	a.acct_type_id = rand(1..2)
     	a.id =  SecureRandom.random_number(999999999999) 
-    	a.balance = (200.0 - 5.0) * rand() + 5
+    	a.balance = 0
     	a.date_opened = rand(10.years).seconds.ago
     a.save
     accounts << a
+    # Generate initial deposits
+    acct = Account.last
+    AcctTransaction.create! do |transaction|
+			transaction.id = SecureRandom.random_number(99999999999999)
+			transaction.account_id = acct.id
+			transaction.transaction_type_id = 3
+			transaction.description = "Initial Deposit"
+			transaction.amount = (200.0 - 5.0) * rand() + 5
+			transaction.adjusted_bal = acct.balance + transaction.amount
+			transaction.date = a.date_opened
+		acct.update(balance: transaction.adjusted_bal)
+	end
 end
 
 # Generate historical transactions (AcctTransactions) for each account
@@ -186,6 +211,7 @@ descriptions_POS = ['Jingles Markets POS Transaction',
 descriptions_Transfer = 'Transfer'
 descriptions_Withdrawal = 'Withdrawal'
 descriptions_Miscellaneous = 'Miscellaneous'
+descriptions_Interest = 'Interest Payment'
 
 atm_amounts = [20.00,40.00,60.00,80.00,100.00,120.00,140.00,160.00,180.00,200.00]
 types = [1,2,3,4,5,6,7,99]
@@ -198,36 +224,47 @@ accounts.each do |account|
 			case (type)
 				when 1
 					description = descriptions_ATM_Withdrawal.sample
-					amount = (atm_amounts.sample) *-1
+					amount = (atm_amounts.sample)
 				when 2
 					description = descriptions_Check.sample
-					amount = ((500.0 - 5.0) * rand() + 5) *-1
+					amount = (500.0 - 5.0) * rand() + 5
 				when 3
 					description = descriptions_Deposit.sample
 					amount = (2000.0 - 5.0) * rand() + 5
 				when 4
 					description = descriptions_AutoDraft.sample
-					amount = ((350.0 - 5.0) * rand() + 5) *-1
+					amount = (350.0 - 5.0) * rand() + 5
 				when 5
 					description = descriptions_POS.sample
-					amount = ((150.0 - 5.0) * rand() + 5) *-1
+					amount = (150.0 - 5.0) * rand() + 5
 				when 6
 					description = descriptions_Transfer
 					amount = (500.0 - 5.0) * rand() + 5
 				when 7
 					description = descriptions_Withdrawal
-					amount = ((500.0 - 5.0) * rand() + 5) *-1
+					amount = (500.0 - 5.0) * rand() + 5
+				when 8
+					description = descriptions_Interest
+					amount = account.balance * 0.099
 				when 99
 					description = descriptions_Miscellaneous
-					amount = ((500.0 - 5.0) * rand() + 5) *-1
+					amount = (500.0 - 5.0) * rand() + 5
 			end
+		next if (type == 8) && (account.acct_type_id == 2)
+		next if (type != 3) && (amount.abs > account.balance)
 		AcctTransaction.create! do |transaction|
 			transaction.id = SecureRandom.random_number(99999999999999)
 			transaction.account_id = account.id
 			transaction.transaction_type_id = type
 			transaction.description = description
 			transaction.amount = amount
-			transaction.adjusted_bal = account.balance + transaction.amount
+			case transaction.transaction_type_id
+		          when 1,2,4,5,7,99
+		            transaction.adjusted_bal = Account.find(transaction.account_id).balance - transaction.amount
+		          when 3,6,8
+		            transaction.adjusted_bal = Account.find(transaction.account_id).balance + transaction.amount
+		    end
+			# transaction.adjusted_bal = account.balance + transaction.amount
 			# keep transaction in chronological order unless it's the first one
 			unless AcctTransaction.exists?(account_id: transaction.account_id)
 				transaction.date = rand(account.date_opened..Time.now)
@@ -235,9 +272,7 @@ accounts.each do |account|
 				transaction.date = rand(AcctTransaction.where(account_id: transaction.account_id).last.date..Time.now)
 			end
 		account.update(balance: transaction.adjusted_bal)
-		puts account.balance
 
-		# transaction.account.update_column(:balance, transaction.adjusted_bal)
 		end
     end
 end

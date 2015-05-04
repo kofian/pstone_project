@@ -97,17 +97,17 @@ class AcctTransactionsController < ApplicationController
       account = Account.find(@acct_transaction.account_id)
       case @acct_transaction.transaction_type_id
           when 1,2,4,5,7
-              account.update(balance: account.balance - @acct_transaction.amount)
-          when 3
+            account.update(balance: account.balance - @acct_transaction.amount)
+          when 3,6,8
             account.update(balance: account.balance + @acct_transaction.amount)
       end
     end
 
     def adjust_balance
       case @acct_transaction.transaction_type_id
-          when 2,4,5,7
+          when 1,2,4,5,7
             @acct_transaction.adjusted_bal = Account.find(@acct_transaction.account_id).balance - @acct_transaction.amount
-          when 3
+          when 3,6,8
             @acct_transaction.adjusted_bal = Account.find(@acct_transaction.account_id).balance + @acct_transaction.amount
       end
     end

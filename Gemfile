@@ -1,5 +1,8 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# Gemfile
 source 'https://rubygems.org'
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
@@ -35,6 +38,8 @@ gem 'fabrication', '~> 2.12.2'
 gem 'ffaker'
 # Forgery is another data generator
 gem 'forgery'
+# rufus-shcduler is a CRON job scheduler
+gem 'rufus-scheduler', '~> 3.1.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # i18n == 'internationalization'
@@ -46,27 +51,15 @@ gem "activeuuid"
 gem 'foreigner', '~> 1.7.2'
 # Amazon cli tools
 gem 'aws-sdk', '~> 2.0.24'
-# The yaml_db gem is used to populate the database with existing data
-# gem 'yaml_db', '~>0.3.0'
-
 # The Rails-ERD gem generates diagrams based on ActiveRecord db models. Requires GraphViz utility
 group :development do
   gem 'rails-erd', '~> 1.3.0'
 end
-
 # Twitter bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'bootstrap_form'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 # Use Puma as the app server
 gem 'puma', '~> 2.11.1'
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
 # Use Devise for authentication
 gem 'devise'

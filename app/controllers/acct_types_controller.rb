@@ -1,3 +1,8 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# acct_types_controller.rb
+
 class AcctTypesController < ApplicationController
   before_action :set_acct_type, only: [:show, :edit, :update, :destroy]
 
