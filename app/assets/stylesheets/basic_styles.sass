@@ -25,7 +25,7 @@ $break-xl: 1100px
 $break-xxl: 1240px
 
 // Mixin defining common layout and styles
-@mixin basic_styles($bg_color, $bg_image, $body_text_color)
+@mixin basic_styles($bg_color, $bg_image, $body_text_color, $panel_heading_color)
 	// Font definitions
 	@font-face
 		font-family: 'Glyphicons Halflings'
@@ -134,6 +134,12 @@ $break-xxl: 1240px
 	article
 		width: 95%
 		margin: 10px auto 20px
+
+		h2
+			@include border-radius(2px)
+			padding: 10px
+			background-color: $panel_heading_color
+			color: #FFF
 
 	.admin-nav>a, .header-message, th, .navbar-brand, .navbar-brand:active, .navbar-brand:visited, h1, h2, h3, #homeCarousel
 		color: #FFF

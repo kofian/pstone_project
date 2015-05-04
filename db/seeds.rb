@@ -101,7 +101,7 @@ customers = [] # Empty array to store customers
 		c.title = name_prefix
 		c.firstname = firstname
 		c.lastname = lastname
-		# c.user.update(email: "#{FFaker::Internet.free_email(c.firstname)}")
+		c.user.update(email: "#{FFaker::Internet.free_email(c.firstname)}")
 	c.save
 	customers << c
 end
@@ -211,7 +211,6 @@ descriptions_POS = ['Jingles Markets POS Transaction',
 descriptions_Transfer = 'Transfer'
 descriptions_Withdrawal = 'Withdrawal'
 descriptions_Miscellaneous = 'Miscellaneous'
-descriptions_Interest = 'Interest Payment'
 
 atm_amounts = [20.00,40.00,60.00,80.00,100.00,120.00,140.00,160.00,180.00,200.00]
 types = [1,2,3,4,5,6,7,99]
@@ -224,33 +223,29 @@ accounts.each do |account|
 			case (type)
 				when 1
 					description = descriptions_ATM_Withdrawal.sample
-					amount = (atm_amounts.sample)
+					amount = (atm_amounts.sample) *-1
 				when 2
 					description = descriptions_Check.sample
-					amount = (500.0 - 5.0) * rand() + 5
+					amount = ((500.0 - 5.0) * rand() + 5) *-1
 				when 3
 					description = descriptions_Deposit.sample
 					amount = (2000.0 - 5.0) * rand() + 5
 				when 4
 					description = descriptions_AutoDraft.sample
-					amount = (350.0 - 5.0) * rand() + 5
+					amount = ((350.0 - 5.0) * rand() + 5) *-1
 				when 5
 					description = descriptions_POS.sample
-					amount = (150.0 - 5.0) * rand() + 5
+					amount = ((150.0 - 5.0) * rand() + 5) *-1
 				when 6
 					description = descriptions_Transfer
 					amount = (500.0 - 5.0) * rand() + 5
 				when 7
 					description = descriptions_Withdrawal
-					amount = (500.0 - 5.0) * rand() + 5
-				when 8
-					description = descriptions_Interest
-					amount = account.balance * 0.099
+					amount = ((500.0 - 5.0) * rand() + 5) *-1
 				when 99
 					description = descriptions_Miscellaneous
-					amount = (500.0 - 5.0) * rand() + 5
+					amount = ((500.0 - 5.0) * rand() + 5) *-1
 			end
-		next if (type == 8) && (account.acct_type_id == 2)
 		next if (type != 3) && (amount.abs > account.balance)
 		AcctTransaction.create! do |transaction|
 			transaction.id = SecureRandom.random_number(99999999999999)
@@ -258,13 +253,7 @@ accounts.each do |account|
 			transaction.transaction_type_id = type
 			transaction.description = description
 			transaction.amount = amount
-			case transaction.transaction_type_id
-		          when 1,2,4,5,7,99
-		            transaction.adjusted_bal = Account.find(transaction.account_id).balance - transaction.amount
-		          when 3,6,8
-		            transaction.adjusted_bal = Account.find(transaction.account_id).balance + transaction.amount
-		    end
-			# transaction.adjusted_bal = account.balance + transaction.amount
+			transaction.adjusted_bal = account.balance + transaction.amount
 			# keep transaction in chronological order unless it's the first one
 			unless AcctTransaction.exists?(account_id: transaction.account_id)
 				transaction.date = rand(account.date_opened..Time.now)

@@ -1,10 +1,23 @@
-<div class="jumbotron">
-  <h1>We're Here To Help</h1>
+<h1>We're Here To Help</h1>
+<div id="panel">
+	<div class="panel-body">
+		<article>
+			<h2>General Help Topics</h2>
+			<p><%= FFaker::BaconIpsum.paragraph %></p>
+			<ul>
+				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
+				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
+				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
+				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
+			</ul>
+			<h2>Frequently Asked Questions (FAQ)</h2>
+			<p><%= FFaker::BaconIpsum.paragraph %></p>
+			<ul>
+				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
+				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
+				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
+				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
+			</ul>
+		</article>
+	</div>
 </div>
-<article style="width: 88%; margin: 0 auto;">
-		<h4><%= Faker::BaconIpsum.paragraph %></h4>
-		<h4><%= Faker::BaconIpsum.paragraph %>
-			<%= Faker::BaconIpsum.paragraph %></h4>
-		<h4><%= Faker::BaconIpsum.paragraph %>
-			<%= Faker::BaconIpsum.paragraph %></h4>
-</article>
