@@ -1,3 +1,9 @@
+<!-- 	Barnabas Bulpett
+		WEB-289-YD1
+		Spring 2015
+		_navigation.html.erb
+-->
+<!-- Partial view for global site navigation -->
 <nav class="navbar navbar-default">
   	<div class="container-fluid">
   		<div class="navbar-header">
@@ -7,31 +13,33 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <%= image_tag 'capstone-decal.png', :style => ""%>
+	      <%= image_tag 'capstone-decal.png'%>
 	      <%= link_to "Capstone Savings Bank", root_path, :class => "navbar-brand" %>
 	      <!-- <a class="navbar-brand" href="#">Capstone Savings Bank</a> -->
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav nav-pills pull-right">
 	        <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
-	        <li class="topnav-button"><%= link_to "Home", root_path, :class => "btn btn-default" %></li>
-	        <li class="topnav-button"><%= link_to "About", home_about_path, :class => "btn btn-default" %></li>
-	        <li class="topnav-button"><%= link_to "Help", home_help_path, :class => "btn btn-default" %></li>
+	        <li><%= link_to "Home", root_path, :class => "btn btn-default" %></li>
+	        <li><%= link_to "About", home_about_path, :class => "btn btn-default" %></li>
+	        <li><%= link_to "Help", home_help_path, :class => "btn btn-default" %></li>
 	        <li>&nbsp;&nbsp;&nbsp;</li>
 	        <li class="dropdown">
 	          <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Settings <span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
-	          	<form>
-		          	<li><em>Chanage theme</em></li>
-		          	<li><input type="submit" onclick="change_theme('tranquil_mountain');return false;" name="theme" value="Tranquil Mountain" id="tranquil_mountain"></li>
-					<li><input type="submit" onclick="change_theme('tropical_shores');return false;" name="theme" value="Tropical Shores" id="tropical_shores"></li>
-					<li><input type="submit" onclick="change_theme('winter_sunrise');return false;" name="theme" value="Winter Sunrise" id="winter_sunrise"></li>
+	          	<form class="settings-form">
+		          	<li><em>Change theme</em></li>
+		          	<li><input type="submit" onclick="change_theme('tranquil_mountain');return false;" name="theme" value="Tranquil Mountain" id="tranquil_mountain" style="color:#1F3D00;"></li>
+					<li><input type="submit" onclick="change_theme('tropical_shores');return false;" name="theme" value="Tropical Shores" id="tropical_shores" style="color:#006B6B"></li>
+					<li><input type="submit" onclick="change_theme('winter_sunrise');return false;" name="theme" value="Winter Sunrise" id="winter_sunrise" style="color:#4C1A80"></li>
 				</form>
 	            <li class="divider"></li>
 	            <li><em>Select language</em></li>
-	            <li><a href="#">English (default)</a></li>
-	            <li><a href="#">Spanish</a></li>
-	            <li><a href="#">Chinese</a></li>
+	          	<div style="background: #FFF;padding: 5px;">
+		            <li><a href="#">English (default)</a></li>
+		            <li><a href="#">Spanish</a></li>
+		            <li><a href="#">Chinese</a></li>
+		        </div>
 	          </ul>
 	        </li>
 <!-- 	      </ul>

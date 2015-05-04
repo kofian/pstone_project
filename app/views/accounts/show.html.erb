@@ -29,7 +29,7 @@
       	<!--- Put transaction display logic here -->
           <% for trans in @acct_transactions do %>
             <tr>
-              <td> <%= trans.date %> </td>
+              <td> <%= trans.date.strftime("%m/%d/%Y at %I:%M%p") %> </td>
               <td class="hide-large"> <%= trans.id %> </td>
               <td class="hide-medium"> <%= trans.description %></td>
               <td class="hide-small"> <%= TransactionType.find(trans.transaction_type_id).name %> </td>

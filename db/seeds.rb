@@ -37,15 +37,15 @@ AcctType.create(id: 2, name: 'checking', interest_rate: 0.000)
 
 # Generate 100 users (with "customer" role) (Admins created separately)
 users = [] # Empty array to store users
-9.times do
-	username = "#{Faker::Vehicle.make}#{Faker::BaconIpsum.word}-#{rand(999)}"
+99.times do
+	username = "#{FFaker::Vehicle.make}#{FFaker::BaconIpsum.word}-#{rand(999)}"
 	user_password = SecureRandom.base64(12)
 	u = User.new
 		u.id = SecureRandom.uuid
 		u.username = username.gsub(/\s+/,"")
 		u.password = user_password
 		u.password_confirmation = user_password
-		u.email = "#{Faker::Internet.free_email}"
+		u.email = "#{FFaker::Internet.free_email}"
 		u.sign_in_count = 0
 		# u.role_id = 2
 	u.save
@@ -65,7 +65,7 @@ Administrator.create(id: 1111111111, firstname: 'Peggy', lastname: 'Hill', user_
 
 # Generate 100 customers
 customers = [] # Empty array to store customers
-10.times do |i|
+100.times do |i|
 	c = Customer.new
 		user_id = User.select(:user_id).distinct
 
@@ -96,8 +96,8 @@ customers = [] # Empty array to store customers
 		c.user_id = users[i].id
 		c.id = SecureRandom.random_number(999999999) # 9-digit integer
 		# c.email = users[i].email # "#{Faker::Internet.free_email(firstname)}"
-		c.phone1 = "#{Faker::PhoneNumber.short_phone_number}"
-		c.phone2 = "#{Faker::PhoneNumber.short_phone_number}"
+		c.phone1 = "#{FFaker::PhoneNumber.short_phone_number}"
+		c.phone2 = "#{FFaker::PhoneNumber.short_phone_number}"
 		c.title = name_prefix
 		c.firstname = firstname
 		c.lastname = lastname
@@ -106,7 +106,7 @@ customers = [] # Empty array to store customers
 end
 
 # Generate 100 addresses for addresses table to be assigned to customers
-10.times do |i|
+100.times do |i|
 	a = Address.new
 		address1 = Forgery('address').street_address
 		c = ZipCode.count
@@ -115,7 +115,7 @@ end
 		secondary_address = nil
 		case rand(1..2)
 			when 1 
-				secondary_address = "#{Faker::Address.secondary_address}"
+				secondary_address = "#{FFaker::Address.secondary_address}"
 			when 2 
 				secondary_address = nil
 		end
@@ -129,7 +129,7 @@ end
 
 # Generate the first 100 accounts
 accounts = []
-10.times do |i|
+100.times do |i|
     a = Account.new
     	a.customer_id = customers[i].id
     	a.acct_type_id = rand(1..2)
@@ -141,7 +141,7 @@ accounts = []
 end
 
 # Generate 50 more (secondary) accounts ("Some customers have more than 1 account")
-5.times do |i|
+50.times do |i|
     a = Account.new
     	a.customer_id = customers[i].id
     	a.acct_type_id = rand(1..2)
@@ -192,7 +192,7 @@ types = [1,2,3,4,5,6,7,99]
 
 
 accounts.each do |account|
-	5.times do
+	100.times do
 		# puts account.balance
 		type = types.sample
 			case (type)

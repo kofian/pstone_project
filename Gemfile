@@ -38,7 +38,7 @@ gem 'forgery'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # i18n == 'internationalization'
-gem 'rails-i18n', '~> 4.0.0'
+# gem 'rails-i18n', '~> 4.0.0'
 # ActiveUUID generates binary uuid's for key generation, it's based on uuidtools gem
 # This is a cool way to avoid key collisions in multi-master environments
 gem "activeuuid"
