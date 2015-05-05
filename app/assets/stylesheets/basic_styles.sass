@@ -2,10 +2,6 @@
 /** Base stylesheet defining global styles, injected with params from specific themes **/
 /**	This file defines basic styles common to all pages and all themes **/
 
-/*
- *= require bootstrap.min
- */
-
 @import "bootstrap-sprockets"
 @import "bootstrap"
 
@@ -46,6 +42,15 @@ $break-xxl: 1240px
 		-moz-box-sizing: border-box
 		-webkit-box-sizing: border-box
 
+	html
+		position: relative
+		min-height: 100%
+		text-shadow: 1px 1px 1px rgba(0,0,0,0.002)
+		-webkit-font-smoothing: antialiased
+		-moz-font-smoothing: antialiased
+		-o-font-smoothing: antialiased
+		font-smoothing: antialiased
+
 	body
 		background: $bg_color asset-url($bg_image) no-repeat center top
 		font: normal normal 12pt 'Oxygen', Verdana, sans-serif
@@ -55,15 +60,7 @@ $break-xxl: 1240px
 		-moz-background-size: cover
 		-o-background-size: cover
 		background-size: cover
-
-	html
-		position: relative
-		min-height: 100%
-		text-shadow: 1px 1px 1px rgba(0,0,0,0.002)
-		-webkit-font-smoothing: antialiased
-		-moz-font-smoothing: antialiased
-		-o-font-smoothing: antialiased
-		font-smoothing: antialiased
+		height: 100%
 
 	footer 
 		position: absolute
@@ -131,15 +128,27 @@ $break-xxl: 1240px
 	main, #panel, .btn, .admin-nav, .actionPanel, #homeCarousel
 		@include border-radius(2px)
 
+	#panel
+		width: 95%
+		margin: 12px auto
+		background: #FFF
+		padding: 5px 10px 10px 10px
+
+		h1, h2, h3
+			color: $panel_heading_color
+			margin: 15px 0 
 	article
 		width: 95%
 		margin: 10px auto 20px
+		overflow: hidden
 
+	.panel-body
 		h2
+			color: #FFF !important
 			@include border-radius(2px)
 			padding: 10px
 			background-color: $panel_heading_color
-			color: #FFF
+			width: 96.5%
 
 	.admin-nav>a, .header-message, th, .navbar-brand, .navbar-brand:active, .navbar-brand:visited, h1, h2, h3, #homeCarousel
 		color: #FFF
@@ -153,6 +162,10 @@ $break-xxl: 1240px
 			width: 140px
 			padding: 7px 5px
 
+	#content
+	h1, h2, h3
+		color: $body_text_color
+		margin-left: 1.75%
 
 	// Messages and alerts
 	.alert
@@ -160,7 +173,7 @@ $break-xxl: 1240px
 		position: absolute
 		width: 100%
 		@include border-radius(0)
-		padding: 0 1em
+		padding: 0.5em 1em
 		font-weight: 700
 		-webkit-animation: alertFades 1s linear 1s 1 forwards
 		-moz-animation: alertFades 1s linear 1s 1 forwards
@@ -298,15 +311,6 @@ $break-xxl: 1240px
 			font-weight: 800
 			text-shadow: 0 0 2px 2px #FFF
 
-	#panel
-		width: 95%
-		margin: 12px auto
-		background: #FFF
-		padding: 5px 10px 10px 10px
-
-		h1, h2, h3
-			color: #333
-
 	.table-heading
 		color: #333
 		display: inline
@@ -340,7 +344,8 @@ $break-xxl: 1240px
 		white-space: normal
 
 	#links-block
-		margin: 0 20px
+		margin: 5px 10px
+		padding: 0
 
 	.navbar
 		background: rgba(0,0,0,0.2)
@@ -354,6 +359,10 @@ $break-xxl: 1240px
 			height: 50px
 			overflow: visible
 			margin: 0 15px
+
+		@media (min-width: 979px)
+			ul.nav li.dropdown:hover > ul.dropdown-menu
+			display: block
 
 		.navbar-brand
 			margin-right: 0
@@ -433,7 +442,7 @@ $break-xxl: 1240px
 		margin: 5px 0 0
 
 	.actionPanel
-		margin: 25px 25px
+		margin: 25px
 		background: rgba(240,240,240,0.6)
 		padding: 10px
 		width: 280px
@@ -452,7 +461,7 @@ $break-xxl: 1240px
 				width: 75%
 
 	#homeCarousel
-		background: transparent
+		background: rgba(255,255,255,0.2)
 		padding: 10px
 		width: 67%
 		height: 280px
@@ -503,16 +512,23 @@ $break-xxl: 1240px
 	.actionPanel, #homeCarousel, .navbar-header>img
 		float: left
 
-	#content
-		h1, h2, h3
-			color: $body_text_color
-
 	.dropdown-menu
 		background: rgba(255,255,255,0.5)
 		padding: 10px 5px
 		em
 			color: #444
 			font-weight: 600
+
+		input
+			color: #EEE
+			border: none
+			@include border-radius(2)
+			box-shadow: 0px 0px 5px #222
+			-moz-box-shadow: 0px 0px 5px #222
+			-webkit-box-shadow: 0px 0px 5px #222
+			padding: 0
+			width: 90%
+			margin: 5px auto
 
 	.settings-form
 		input
@@ -527,7 +543,6 @@ $break-xxl: 1240px
 		box-shadow: 0px 0px 5px #FFF
 		-moz-box-shadow: 0px 0px 5px #FFF
 		-webkit-box-shadow: 0px 0px 5px #FFF
-		margin: 25px 2.5% 15px 0
 		float: right
 
 		@media screen and (max-width: $break-l)

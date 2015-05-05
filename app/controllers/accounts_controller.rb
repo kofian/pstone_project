@@ -1,6 +1,13 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# accounts_controller.rb
+
+# This controller contains method pertaining to Account objects
 class AccountsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_filter :user_owns_account?
 
   # GET /accounts
   # GET /accounts.json
@@ -10,6 +17,7 @@ class AccountsController < ApplicationController
 
   end
 
+  # Admins must have access to ALL account data
   def adminview
     @accounts = Account.all
 
@@ -115,4 +123,10 @@ class AccountsController < ApplicationController
       params.require(:account).permit(:acct_type_id)
     end
 
+    # User may only access their own account(s), unless they are admin
+    def user_owns_account?
+      if @account
+        @account.customer.user_id == current_user.id || current_user.role == 'admin'
+      end
+    end
 end

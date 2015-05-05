@@ -3,6 +3,7 @@
 # Spring 2015
 # acct_transactions_controller.rb
 
+# This controller contains methods for AcctTransaction objects
 class AcctTransactionsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_acct_transaction, only: [:show, :edit, :update, :destroy]

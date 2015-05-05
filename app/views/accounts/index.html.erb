@@ -1,4 +1,11 @@
+<!--  Barnabas Bulpett
+      WEB-289-YD1
+      Spring 2015
+      accounts/index.html.erb -->
+<!-- Dynamic view displaying current customer's accounts -->
+
 <h1>My Accounts</h1>
+<!-- Make sure they have active account(s) -->
 <% if @accounts.count > 0 %>
 <main>
   <table id="indexTable" class="table table-striped">
@@ -28,14 +35,15 @@
       
     </tbody>
   </table>
+  <br>
+    <div id="links-block">
+    <%= link_to 'Add a New Account', new_account_path, :class => "btn btn-primary"  %>
+    </div>
 </main>
+<!-- Conditionally show "No accounts" message if customer has no accounts -->
 <% else %>
       <div class="jumbotron" style="text-align: center; border: 1px solid #DDD; border-radius: 8px;">
       <h1>No accounts to display</h1>
       </div>
 <% end %>
 
-<br>
-<div id="links-block">
-<%= link_to 'Add a New Account', new_account_path, :class => "btn btn-primary"  %>
-</div>

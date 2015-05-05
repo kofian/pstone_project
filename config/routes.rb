@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
   get 'home/about'
   get 'home/help'
+  get 'home/credits'
+  get 'home/site_info'
+  get 'home/legal'
 
   get 'accounts/add_account', to: 'accounts#new'
   post 'accounts/add_account', to: 'accounts#create'
