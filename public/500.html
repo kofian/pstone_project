@@ -2,6 +2,7 @@
 <!--  Barnabas Bulpett, Web Technologies System Project WEB-289-D1, Spring 2015 -->
 <!-- 500.html -->
 <!-- This file lives in public/500.html, it displays message for internal server errors -->
+<!-- This view only displays in PRODUCTION, as Rails provides detailed message with debugging information when running in the Development and Testing environments -->
 
 <html>
 <head>
@@ -43,6 +44,7 @@
   <link href="/assets/capstone_icon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 </head>
 <body onload="set_style_from_cookie()">
+<!-- Header / Navigation -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -80,6 +82,7 @@
       </div>
     </div>
 </nav>
+<!-- Errors display below -->
   <div id='content'>
     <main style="text-align: center;">
       <div id="panel">
@@ -89,6 +92,7 @@
       </div>
     </main>
   </div>
+<!-- Footer area -->
 <footer>
   <p><strong>Version 1.5.9</strong> | A project by Barnabas Bulpett | Asheville-Buncombe Web Technologies System Project<br />WEB-289-YD1 | Final Phase
   <br /><a href="https://github.com/bbulpett/capstone_project" target="_blank"> <em>Available on GitHub</em></a></p>

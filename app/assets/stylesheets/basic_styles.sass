@@ -80,6 +80,7 @@ $break-xxl: 1240px
 			float: left
 		ul
 			float: right
+			list-style: none
 
 		a
 			color: #F9F
@@ -155,17 +156,23 @@ $break-xxl: 1240px
 
 	.header-message
 		font: italic 400 14pt 'Oxygen', Verdana, sans-serif
-		padding: 0 20px
+		padding: 0 10px
+		line-height: 1.25em
+		width: 135px
 
 		@media screen and (max-width: $break-xl)
 			font-size: 85%
-			width: 140px
+			width: 100px
 			padding: 7px 5px
 
 	#content
-	h1, h2, h3
-		color: $body_text_color
-		margin-left: 1.75%
+		h1, h2, h3
+			color: $body_text_color
+			margin-left: 1.75%
+
+		h1
+			@media screen and (max-width: $break-s)
+				text-align: center
 
 	// Messages and alerts
 	.alert
@@ -210,7 +217,7 @@ $break-xxl: 1240px
 
 	#tip 
 		background-color: #CCF
-		margin: 10px
+		margin: 20px 10px
 		padding: 10px 10px 3px
 		font-size: 88%
 
@@ -232,11 +239,6 @@ $break-xxl: 1240px
 		@media screen and (max-width: $break-s)
 			width: 90%
 
-	.formPanel
-		width: 50%
-		margin: 10px 20px
-		padding: 0 25px
-
 	.formButton
 		margin-top: 15px
 
@@ -246,10 +248,11 @@ $break-xxl: 1240px
 		min-width: 251px
 
 		caption
-			background-color: #222
+			background-color: $panel_heading_color
 			color: #EEE
 			text-indent: 10px
 			padding-top: 15px
+			overflow: visible
 
 			strong
 				@media screen and (max-width: $break-m)
@@ -280,14 +283,21 @@ $break-xxl: 1240px
 
 	.searchBox 
 		height: 20px
-		input
+		input, select
 			color: #000
 			margin: 0 10px
 			line-height: 30px
 
 			@media screen and (max-width: $break-s)
 				margin: 0
-				width: 45%
+				width: 30%
+
+		select
+			color: #FFF
+			background: rgba(0,0,0,0.35)
+
+	#search_criteria
+		line-height: 22px
 
 	.pagination
 		display: inline-block
@@ -313,7 +323,6 @@ $break-xxl: 1240px
 
 	.table-heading
 		color: #333
-		display: inline
 
 	#search-form
 		float: right
@@ -329,8 +338,8 @@ $break-xxl: 1240px
 			margin-right: 10px
 
 		nav:not(.pagination)
-		margin: 0
-		padding: 15px 0
+			margin: 0
+			padding: 15px 0
 
 	// Navigation
 	nav:not(.pagination)
@@ -373,20 +382,17 @@ $break-xxl: 1240px
 			@media screen and (max-width: $break-xxl)
 				font-size: 28pt
 			@media screen and (max-width: $break-xl)
+				padding-top: 0
+				line-height: 26px
+				width: 300px
 				font-size: 24pt
 			@media screen and (max-width: $break-l)
-				font-size: 20pt
-				width: 250px
-				line-height: 26px
-				padding: 0 15px
-			@media screen and (max-width: $break-m)
-				font-size: 20pt
-				width: 120px
-			@media screen and (max-width: $break-m)
 				font-size: 18pt
+				width: 200px
+				padding: 0 15px
+			@media screen and (max-width: $break-s)
 				width: 120px
 				padding: 0 20px
-				line-height: 0.85em
 
 	.navbar-header
 		.navbar-brand:active
@@ -438,9 +444,6 @@ $break-xxl: 1240px
 			background-color: #fff
 
 	// Special features
-	.navbar-form
-		margin: 5px 0 0
-
 	.actionPanel
 		margin: 25px
 		background: rgba(240,240,240,0.6)
@@ -449,10 +452,10 @@ $break-xxl: 1240px
 		text-align: center
 
 		a
-			width: 250px
 			margin: 10px 0
 		h1, h2, h3
 			color: #333
+			text-indent: 0
 		@media screen and (max-width: $break-m)
 			width: 91%
 			margin: 20px 4.5%
@@ -477,27 +480,23 @@ $break-xxl: 1240px
 			width: 48.5%
 		@media screen and (max-width: $break-m)
 			width: 91%
-			margin: 0 25px 85px
+			margin: 0 4.5% 85px
 		@media screen and (max-width: $break-s)
 			margin-bottom: 100px
 
-	.carousel-control.left, .carousel-control.right
-		background-image: none !important
-		height: 0
-		width: 30px
-		top: 75%
-
-	a.carousel-control.left
-		left: 33%
-
-	a.carousel-control.right
-		right: 33%
+		.carousel-control
+			position: absolute
+			background-image: none
+			font-size: 54pt
+			width: 25px
+			height: 50px
+			top: 22.3%
 
 	.carousel-caption
 		color: $body_text_color
-		position: relative
 		left: 0
 		text-align: center
+		position: static
 
 		a
 			color: $body_text_color
@@ -505,6 +504,9 @@ $break-xxl: 1240px
 	.carousel-inner h1
 		font-size: 32pt
 		text-indent: 0
+
+	.item
+		display: block
 
 	.searchBox, .navbar-header>img, #formButtonGroup
 		padding: 0
@@ -530,12 +532,27 @@ $break-xxl: 1240px
 			width: 90%
 			margin: 5px auto
 
+		background: 222
+		padding: initial
+		color: #FFF
+
 	.settings-form
 		input
 			border: none
 			background: #FFF
 			margin: 2px
-	
+
+
+	.formPanel
+		width: 50%
+		margin: 10px 20px
+		padding: 0 25px
+		line-height: 2em
+
+	#customer_title.form-control
+		height: 3em
+		width: 5em
+
 	// Images
 	#about_image
 		width: 65%

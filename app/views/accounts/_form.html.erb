@@ -1,5 +1,5 @@
 
-  <div class="panel panel-default" style="width: 50%; padding: 0 25px;">  
+  <div class="panel panel-default formPanel">  
 
   <%= bootstrap_form_for(@account) do |f| %>
   <% if @account.errors.any? %>
@@ -18,7 +18,7 @@
         </div>
         <!-- fields for Account object -->
         <%= f.collection_radio_buttons :acct_type_id, AcctType.all, :id, :name, required: true %>
-        <p style="color: #F00; font-size: 9pt;"><em>IMPORTANT! This site is for demonstration purposes only.  Accounts are not "real" bank accounts!</em></p>
+        <p style="color: #F00; font-size: 9pt; line-height: 1.2em;"><em>IMPORTANT! This site is for demonstration purposes only.  Accounts are not "real" bank accounts and shall therefore handle no exchange of equity!</em></p>
       <div class="actions">
         <ul id="formButtonGroup">
           <% if current_user.role == 'admin' %>

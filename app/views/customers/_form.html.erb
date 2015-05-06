@@ -14,11 +14,11 @@
   <% end %>
         <% unless current_user.role == 'admin' %>
           <div id="tip">
-          <p>We'd like to know who you are.</p>
+          <p>We need to know who you are.</p>
           </div>
         <% end %>
         <!-- fields for Customer object -->
-        <%= f.select :title, options_for_select(['Dr.', 'Mr.', 'Ms.', 'Mx.']) %>
+        <%= f.select :title, options_for_select(['Dr.', 'Mr.', 'Mrs.', 'Ms.', 'Mx.']) %>
         <%= f.text_field :firstname, required: true %>
         <%= f.text_field :lastname, required: true %>
         <%= f.text_field :phone1, required: true %>

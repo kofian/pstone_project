@@ -30,12 +30,30 @@ class AccountsController < ApplicationController
   # GET /accounts/1
   # GET /accounts/1.json
   def show
+    # criteria from the "Search by" select menu
     if params[:search]
-    @acct_transactions = @account.acct_transactions.where('id LIKE ?', "%#{params[:search]}%").page(params[:page]).per(15)
-    
+        case (params[:search_criteria])
+        when '1'
+          @criteria = 'id'
+        when '2'
+          # Using Dynamic attribute-based finders to lookup by non-ID field
+          # Wrapped in a rescue block to avert user typo errors
+          begin
+              @type_id = TransactionType.find_by_name("#{params[:search].downcase}").id
+          rescue
+              @acct_transactions = nil
+          end
+            @criteria = 'transaction_type_id'
+            @acct_transactions = @account.acct_transactions.where("#{@criteria} LIKE ?", "#{@type_id}").page(params[:page]).per(15)
+            return
+        when '3' 
+          @criteria = 'description'
+        end
+        @acct_transactions = @account.acct_transactions.where("#{@criteria} LIKE ?", "%#{params[:search].downcase}%").page(params[:page]).per(15)
+        @table_heading = "Transaction Search Results"
     else
     @acct_transactions = @account.acct_transactions.all.order('date DESC').page(params[:page]).per(15)
-
+    @table_heading = "Listing All Transactions"
     end
   end
 

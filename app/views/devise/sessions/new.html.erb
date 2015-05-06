@@ -3,11 +3,11 @@
     <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
       <div class="field">
-        <%= f.text_field :login, autofocus: true, required: true %>
+        <%= f.text_field :login, autofocus: true, required: true, placeholder: 'Email or Username' %>
       </div>
 
       <div class="field">
-        <%= f.password_field :password, autocomplete: "off", required: true %>
+        <%= f.password_field :password, autocomplete: "off", required: true, placeholder: 'Password'%>
       </div>
 
       <% if devise_mapping.rememberable? -%>
@@ -16,14 +16,12 @@
           <%= f.label :remember_me %>
         </div>
       <% end -%>
-
-      <br />
-
-      <div class="actions">
-        <%= f.submit "Log in", :class => "btn btn-info" %>
-      </div>
     </div>
+    <div class="actions">
+        <%= f.submit "Log in", :class => "btn btn-success" %>
+        <br />
     <% end %>
       <%= render "devise/shared/links" %>
+      </div>
     <br />
   </div>
