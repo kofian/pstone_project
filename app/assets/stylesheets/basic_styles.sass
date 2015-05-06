@@ -180,40 +180,40 @@ $break-xxl: 1240px
 		position: absolute
 		width: 100%
 		@include border-radius(0)
-		padding: 0.5em 1em
+		padding: 0.2em 1em
 		font-weight: 700
-		-webkit-animation: alertFades 1s linear 1s 1 forwards
-		-moz-animation: alertFades 1s linear 1s 1 forwards
-		-o-animation: alertFades 1s linear 1s 1 forwards
-		animation: alertFades 1s linear 1s 1 forwards
+		-webkit-animation: alertFades 2s linear 1s 1 forwards
+		-moz-animation: alertFades 2s linear 1s 1 forwards
+		-o-animation: alertFades 2s linear 1s 1 forwards
+		animation: alertFades 2s linear 1s 1 forwards
 
 	@-webkit-keyframes alertFades
 		0%
 			opacity: 1
 		100%
 			opacity: 0
-			-webkit-transform: translate(0,-75px)
+			-webkit-transform: translate(100%, 0)
 
 	@-mos-keyframes alertFades
 		0%
 			opacity: 1
 		100%
 			opacity: 0
-			-mos-transform: translate(0,-75px)
+			-mos-transform: translate(100%,0)
 
 	@-o-keyframes alertFades
 		0%
 			opacity: 1
 		100%
 			opacity: 0
-			-o-transform: translate(0,-75px)
+			-o-transform: translate(100%,0)
 		
 	@keyframes alertFades
 		0%
 			opacity: 1
 		100%
 			opacity: 0
-			transform: translate(0,-75px)
+			transform: translate(100%,0)
 
 	#tip 
 		background-color: #CCF
@@ -359,6 +359,7 @@ $break-xxl: 1240px
 	.navbar
 		background: rgba(0,0,0,0.2)
 		border: none
+		margin-bottom: 35px
 
 	.navbar-header
 		@media screen and (max-width: $break-m)
@@ -438,14 +439,10 @@ $break-xxl: 1240px
 				margin: 5px auto 0
 				width: 75%
 
-	.tab_link.active
-		a
-			color: #000
-			background-color: #fff
 
 	// Special features
 	.actionPanel
-		margin: 25px
+		margin: 35px
 		background: rgba(240,240,240,0.6)
 		padding: 10px
 		width: 280px
@@ -469,7 +466,7 @@ $break-xxl: 1240px
 		width: 67%
 		height: 280px
 		text-align: center
-		margin: 25px 0 
+		margin: 35px 0 
 		color: $body_text_color
 
 		@media screen and (max-width: $break-xxl)
@@ -520,6 +517,8 @@ $break-xxl: 1240px
 		em
 			color: #444
 			font-weight: 600
+		li 
+			text-indent: 5%
 
 		input
 			color: #EEE
@@ -552,6 +551,10 @@ $break-xxl: 1240px
 	#customer_title.form-control
 		height: 3em
 		width: 5em
+
+	.articleHead
+		color: $panel_heading_color !important
+		text-indent: 0
 
 	// Images
 	#about_image

@@ -42,9 +42,11 @@ class AccountsController < ApplicationController
               @type_id = TransactionType.find_by_name("#{params[:search].downcase}").id
           rescue
               @acct_transactions = nil
+              @table_heading = "Transaction Search Results"
           end
             @criteria = 'transaction_type_id'
             @acct_transactions = @account.acct_transactions.where("#{@criteria} LIKE ?", "#{@type_id}").page(params[:page]).per(15)
+            @table_heading = "Listing All Transactions"
             return
         when '3' 
           @criteria = 'description'

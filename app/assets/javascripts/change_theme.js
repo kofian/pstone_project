@@ -9,11 +9,6 @@
 var style_cookie_name = "style" ;
 var style_cookie_duration = 30 ;
 
-function hasClass(elementName, className)
-{
-  return elementName.className && new RegExp("(\\s|^)" + className + "(\\s|$)").test(elementName.className);
-}
-
 function change_theme ( css_title )
 {
   var i, link_tag ;
@@ -29,9 +24,7 @@ function change_theme ( css_title )
     set_cookie( style_cookie_name, css_title,
       style_cookie_duration );
   }
-  if (hasClass(li.dropdown, "open")) {
-            removeClass(li.dropdown, "open");
-  }
+
 }
 
 function set_style_from_cookie()
