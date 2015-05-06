@@ -1,66 +1,103 @@
 <!DOCTYPE html>
+<!--  Barnabas Bulpett, Web Technologies System Project WEB-289-D1, Spring 2015 -->
+<!-- 500.html -->
+<!-- This file lives in public/500.html, it displays message for internal server errors -->
+
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
-
-  div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+  <title>Capstone Savings Bank</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
+  <!-- Links for stylesheets -->
+  <link href="/assets/tranquil_mountain.self.css?body=1" media="screen" rel="stylesheet" title="tranquil_mountain" />
+  <link href="/assets/tropical_shores.self.css?body=1" media="screen" rel="stylesheet" title="tropical_shores" />
+  <link href="/assets/winter_sunrise.self.css?body=1" media="screen" rel="stylesheet" title="winter_sunrise" />
+  <!-- Declare a default stylesheet -->
+  <meta http-equiv="Default-Style" content="winter_sunrise"> 
+  <!-- Load javascripts -->
+  <script data-turbolinks-track="true" src="/assets/jquery.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/jquery.turbolinks.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/jquery_ujs.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/turbolinks.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap/affix.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap/alert.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap/button.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap/carousel.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap/collapse.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap/dropdown.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap/tab.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap/transition.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap/scrollspy.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap/modal.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap/tooltip.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap/popover.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap-sprockets.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/change_theme.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/application.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/administrators.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/home.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/nav_indicator.self.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/registrations.self.js?body=1"></script>
+  <meta content="authenticity_token" name="csrf-param" />
+  <meta content="iN3x6YSa4LZxEzi1w93ql6nUM3JPlYuYKsITCBvEOAo=" name="csrf-token" />
+  <link href="/assets/capstone_icon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 </head>
-
-<body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+<body onload="set_style_from_cookie()">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <img alt="Capstone decal" src="/assets/capstone-decal.png" />
+        <a class="navbar-brand" href="/">Capstone Savings Bank</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+        <ul class="nav nav-pills pull-right">
+          <li><a class="btn btn-default" href="/">Home</a></li>
+          <li><a class="btn btn-default" href="/home/about">About</a></li>
+          <li><a class="btn btn-default" href="/home/help">Help</a></li>
+          <li>&nbsp;</li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Settings <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><em>Change theme</em></li>
+                <li><input type="submit" onclick="change_theme('tranquil_mountain');return false;" name="theme" value="Tranquil Mountain" id="tranquil_mountain" style="background:#1e912d;"></li>
+                <li><input type="submit" onclick="change_theme('tropical_shores');return false;" name="theme" value="Tropical Shores" id="tropical_shores" style="background:#006B6B"></li>
+                <li><input type="submit" onclick="change_theme('winter_sunrise');return false;" name="theme" value="Winter Sunrise" id="winter_sunrise" style="background:#4C1A80"></li>
+                <li class="divider"></li>
+                <li><em>Select language</em></li>
+                <li><a href="#">English (default)</a></li>
+                <li><a href="#">Spanish</a></li>
+                <li><a href="#">Chinese</a></li>
+            </ul>
+          </li>
+          <li><a class="btn btn-primary" href="/users/sign_up">Sign up</a></li>
+        </ul>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+</nav>
+  <div id='content'>
+    <main style="text-align: center;">
+      <div id="panel">
+        <h1>We're sorry, but something went wrong.</h1>
+        <p>That's really all we can say about it.</p>
+        <p>If you are the application owner check the logs for more information.</p>
+      </div>
+    </main>
   </div>
+<footer>
+  <p><strong>Version 1.5.9</strong> | A project by Barnabas Bulpett | Asheville-Buncombe Web Technologies System Project<br />WEB-289-YD1 | Final Phase
+  <br /><a href="https://github.com/bbulpett/capstone_project" target="_blank"> <em>Available on GitHub</em></a></p>
+  <ul>
+    <!-- Secondary links -->
+    <li><a href="/home/credits">Credits</a></li>
+    <li><a href="/home/site_info">Site Information</a></li>
+    <li><a href="/home/legal">Legal</a></li>
+  </ul>
+</footer>
 </body>
 </html>
