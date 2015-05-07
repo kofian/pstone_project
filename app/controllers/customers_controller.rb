@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
 
     @customer = Customer.new
     @customer.id = SecureRandom.random_number(999999999) # 9-digit integer
-    @customer.user_id = current_user.id
+    @customer.user_id = session[:user_id]
 
   end
 
@@ -34,7 +34,7 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     @customer.id = SecureRandom.random_number(999999999) # 9-digit integer
-    @customer.user_id = current_user.id
+    @customer.user_id = session[:user_id]
     
     respond_to do |format|
       if @customer.save

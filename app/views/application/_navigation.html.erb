@@ -18,9 +18,9 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
 	      <ul class="nav nav-pills pull-right">
-	        <li><%= link_to "Home", root_path, :class => "btn btn-default" %></li>
-	        <li><%= link_to "About", home_about_path, :class => "btn btn-default" %></li>
-	        <li><%= link_to "Help", home_help_path, :class => "btn btn-default" %></li>
+	        <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path, :class => "btn btn-default" %></li>
+	        <li class="<%= 'active' if current_page?(home_about_path) %>"><%= link_to "About", home_about_path, :class => "btn btn-default" %></li>
+	        <li class="<%= 'active' if current_page?(home_help_path) %>"><%= link_to "Help", home_help_path, :class => "btn btn-default" %></li>
 	        <li>&nbsp;</li>
 	        <li class="dropdown">
 	          <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Settings <span class="caret"></span></a>

@@ -21,7 +21,7 @@ $break-xl: 1100px
 $break-xxl: 1240px
 
 // Mixin defining common layout and styles
-@mixin basic_styles($bg_color, $bg_image, $body_text_color, $panel_heading_color)
+@mixin basic_styles($bg_color, $bg_image, $body_text_color, $panel_heading_color, $secondary_theme_color, $tertiary_theme_color, $bg_transparency)
 	// Font definitions
 	@font-face
 		font-family: 'Glyphicons Halflings'
@@ -115,7 +115,7 @@ $break-xxl: 1240px
 
 	main 
 		margin: 20px auto
-		background: rgba(240,240,240,0.6)
+		background: $bg_transparency
 		padding: 10px
 		width: 95%
 		clear: both
@@ -129,15 +129,6 @@ $break-xxl: 1240px
 	main, #panel, .btn, .admin-nav, .actionPanel, #homeCarousel
 		@include border-radius(2px)
 
-	#panel
-		width: 95%
-		margin: 12px auto
-		background: #FFF
-		padding: 5px 10px 10px 10px
-
-		h1, h2, h3
-			color: $panel_heading_color
-			margin: 15px 0 
 	article
 		width: 95%
 		margin: 10px auto 20px
@@ -192,28 +183,24 @@ $break-xxl: 1240px
 			opacity: 1
 		100%
 			opacity: 0
-			-webkit-transform: translate(100%, 0)
 
 	@-mos-keyframes alertFades
 		0%
 			opacity: 1
 		100%
 			opacity: 0
-			-mos-transform: translate(100%,0)
 
 	@-o-keyframes alertFades
 		0%
 			opacity: 1
 		100%
 			opacity: 0
-			-o-transform: translate(100%,0)
 		
 	@keyframes alertFades
 		0%
 			opacity: 1
 		100%
 			opacity: 0
-			transform: translate(100%,0)
 
 	#tip 
 		background-color: #CCF
@@ -323,6 +310,7 @@ $break-xxl: 1240px
 
 	.table-heading
 		color: #333
+		display: inline
 
 	#search-form
 		float: right
@@ -415,10 +403,18 @@ $break-xxl: 1240px
 			background: #360
 		.btn-primary:hover
 			background: #036
+		.btn-default:hover
+			background: #AAA
+
+		li.active
+			a
+				background: $panel_heading_color
+			a:hover
+				background: $secondary_theme_color
 
 	.admin-nav
-		background: rgba(15,15,15,1)
-		color: #EEE
+		background: $panel_heading_color
+		color: #FFF
 
 		ul
 			border: none
@@ -428,7 +424,7 @@ $break-xxl: 1240px
 			
 			a
 				color: #FFF
-				background: #AAA
+				background: $tertiary_theme_color
 
 			a:focus
 				background: #FFF
@@ -438,12 +434,16 @@ $break-xxl: 1240px
 				font-size: 11pt
 				margin: 5px auto 0
 				width: 75%
-
+		li.active
+			a
+				background: #FFF
+			a:hover
+				background: #AAA
 
 	// Special features
 	.actionPanel
 		margin: 35px
-		background: rgba(240,240,240,0.6)
+		background: $bg_transparency
 		padding: 10px
 		width: 280px
 		text-align: center
@@ -461,7 +461,7 @@ $break-xxl: 1240px
 				width: 75%
 
 	#homeCarousel
-		background: rgba(255,255,255,0.2)
+		background: transparent
 		padding: 10px
 		width: 67%
 		height: 280px
@@ -540,7 +540,15 @@ $break-xxl: 1240px
 			border: none
 			background: #FFF
 			margin: 2px
+	#panel
+		width: 95%
+		margin: 12px auto
+		background: #FFF
+		padding: 5px 10px 10px 10px
 
+		h1, h2, h3
+			color: $panel_heading_color
+			margin: 15px 0 
 
 	.formPanel
 		width: 50%
@@ -555,6 +563,19 @@ $break-xxl: 1240px
 	.articleHead
 		color: $panel_heading_color !important
 		text-indent: 0
+
+	#error_explanation
+		h2
+			color: #F00 !important
+			text-indent: 0
+			text-align: center
+
+	#captchaFrame
+		background: $panel_heading_color
+		margin: 10px auto
+		padding: 5px
+		text-align: center
+		width: 313px
 
 	// Images
 	#about_image

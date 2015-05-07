@@ -17,6 +17,9 @@
             <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off", required: true, label: 'Confirm Password' %>
+        <div id="captchaFrame">
+          <%= recaptcha_tags %>
+        </div>
       <div class="actions">
         <ul id="formButtonGroup">
           <li><%= link_to 'Cancel', root_path, :class => "btn btn-danger formButton", data: {confirm: "Are you sure you want to cancel your registration? You'll have to start all over!"} %></li>

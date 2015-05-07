@@ -16,6 +16,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require change_theme
-//= require nav_indicator
 //= require_self
 //= require_tree .
