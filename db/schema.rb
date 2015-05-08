@@ -1,3 +1,9 @@
+#   Barnabas Bulpett
+#   WEB-289-YD1
+#   Spring 2015
+#   schema.rb
+#   This file populates the database with records
+
 # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
@@ -24,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150228175219) do
 
   add_index "accounts", ["acct_type_id"], name: "fk_accounts_acct_types1_idx", using: :btree
   add_index "accounts", ["customer_id"], name: "fk_accounts_customers1_idx", using: :btree
+  add_index "accounts", ["id"], name: "id", using: :btree
 
   create_table "acct_transactions", force: true do |t|
     t.datetime "date",                                                     null: false

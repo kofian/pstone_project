@@ -1,4 +1,9 @@
-# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+#   Barnabas Bulpett
+#   WEB-289-YD1
+#   Spring 2015
+#   devise.en.yml
+# 
+#   This file defines all of the default messages for the Devise authorization module
 
 en:
   devise:

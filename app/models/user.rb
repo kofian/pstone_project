@@ -1,3 +1,9 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# user.rb
+
+# User model definitions, relationships, and validation behaviours
 class User < ActiveRecord::Base
   before_create :generate_id
 

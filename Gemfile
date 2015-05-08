@@ -2,6 +2,7 @@
 # WEB-289-YD1
 # Spring 2015
 # Gemfile
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -40,12 +41,8 @@ gem 'ffaker'
 gem 'forgery'
 # rufus-shcduler is a CRON job scheduler
 gem 'rufus-scheduler', '~> 3.1.1'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 # This plugin adds helpers for the reCAPTCHA API.
 gem 'recaptcha', :require => 'recaptcha/rails'
-# i18n == 'internationalization'
-# gem 'rails-i18n', '~> 4.0.0'
 # ActiveUUID generates binary uuid's for key generation, it's based on uuidtools gem
 # This is a cool way to avoid key collisions in multi-master environments
 gem "activeuuid"

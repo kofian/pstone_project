@@ -1,3 +1,9 @@
+#   Barnabas Bulpett
+#   WEB-289-YD1
+#   Spring 2015
+#   routes.rb
+#   This is where all the app's routes are defined
+
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
 
@@ -19,8 +25,6 @@ Rails.application.routes.draw do
 
   get 'home/about'
   get 'home/help'
-  get 'home/credits'
-  get 'home/site_info'
   get 'home/legal'
 
   get 'accounts/add_account', to: 'accounts#new'

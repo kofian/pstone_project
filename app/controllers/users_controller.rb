@@ -1,3 +1,9 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# users_controller.rb
+
+# This controller contains methods for User objects
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy]

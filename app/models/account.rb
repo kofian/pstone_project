@@ -1,3 +1,10 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# account.rb
+
+# Account model definitions, relationships, and validation behaviours
+
 class Account < ActiveRecord::Base
 	belongs_to :customer
 	belongs_to :user

@@ -1,3 +1,10 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# zip_codes_controller.rb
+
+# This controller contains methods for ZipCode objects
+
 class ZipCodesController < ApplicationController
   before_action :set_zip_code, only: [:show, :edit, :update, :destroy]
 

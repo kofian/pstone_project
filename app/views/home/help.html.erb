@@ -11,20 +11,26 @@
 			<h2>General Help Topics</h2>
 			<p><%= FFaker::BaconIpsum.paragraph %></p>
 			<ul>
-				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
-				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
-				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
-				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
+				<li><a href="#" onclick="document.getElementById('hiddenText1').style.display='block'; return false;"><%= FFaker::BaconIpsum.sentence %></a></li>
+					<div style="display: none;" id="hiddenText1">This is hidden</div>
+				<li><a href="#" onclick="document.getElementById('hiddenText2').style.display='block'; return false;"><%= FFaker::BaconIpsum.sentence %></a></li>
+					<div style="display: none;" id="hiddenText2">This is hidden</div>
+				<li><a href="#" onclick="document.getElementById('hiddenText3').style.display='block'; return false;"><%= FFaker::BaconIpsum.sentence %></a></li>
+					<div style="display: none;" id="hiddenText3">This is hidden</div>
+					
 			</ul>
 		</article>
 		<h2>Frequently Asked Questions (FAQ)</h2>
 		<article>
 			<p><%= FFaker::BaconIpsum.paragraph %></p>
 			<ul>
-				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
-				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
-				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
-				<li><a href="#"><%= FFaker::BaconIpsum.sentence %></a></li>
+				<li><a href="#" onclick="document.getElementById('hiddenText4').style.display='block'; return false;"><%= FFaker::BaconIpsum.sentence %></a></li>
+					<div style="display: none;" id="hiddenText4">This is hidden</div>
+				<li><a href="#" onclick="document.getElementById('hiddenText5').style.display='block'; return false;"><%= FFaker::BaconIpsum.sentence %></a></li>
+					<div style="display: none;" id="hiddenText5">This is hidden</div>
+				<li><a href="#" onclick="document.getElementById('hiddenText6').style.display='block'; return false;"><%= FFaker::BaconIpsum.sentence %></a></li>
+					<div style="display: none;" id="hiddenText6">This is hidden</div>
+
 			</ul>
 		</article>
 	</div>

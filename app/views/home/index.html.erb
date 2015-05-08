@@ -1,3 +1,10 @@
+<!--  Barnabas Bulpett
+      WEB-289-YD1
+      Spring 2015
+      index.html.erb
+-->
+<!-- "Home" page partial - dynamically rendered according to role and login state -->
+
 <aside class="actionPanel">
   <h1>Let's do this!</h1>
   <p>
@@ -29,7 +36,7 @@
               <div class="carousel-caption">
                 <h1>Savings is our middle name</h1>
                 <h3>Now offering 0.99&#37; APY!</h3>
-                <p><em><a href="#">Open an account today</a></em></p>
+                <p><em><%= link_to "Open an account today!", new_user_registration_path %></em></p>
               </div>
           </div>
           <div class="item">

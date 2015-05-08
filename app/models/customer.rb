@@ -1,3 +1,10 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# customer.rb
+
+# Customer model definitions, relationships, and validation behaviours
+
 class Customer < ActiveRecord::Base
 
 	belongs_to :user, :dependent => :destroy

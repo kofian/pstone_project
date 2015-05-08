@@ -1,3 +1,10 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# addresses_controller.rb
+
+# This controller contains methods for Address objects
+
 class AddressesController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_address, only: [:show, :edit, :update, :destroy]

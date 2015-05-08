@@ -1,3 +1,10 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# administrators_controller.rb
+
+# This controller contains methods for Administrator objects
+
 class AdministratorsController < ApplicationController
   #call admin layout file
   layout "admin"

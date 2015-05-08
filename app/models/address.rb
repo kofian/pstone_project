@@ -1,3 +1,9 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# address.rb
+
+# Address model definitions, relationships, and validation behaviours
 class Address < ActiveRecord::Base
 	belongs_to :customer
 	belongs_to :user

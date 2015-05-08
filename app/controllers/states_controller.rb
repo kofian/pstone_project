@@ -1,3 +1,9 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# states_controller.rb
+
+# This controller contains methods for State objects and handles actions pertaining to State objects
 class StatesController < ApplicationController
   before_action :set_state, only: [:show, :edit, :update, :destroy]
 

@@ -1,3 +1,9 @@
+# Barnabas Bulpett
+# WEB-289-YD1
+# Spring 2015
+# transaction_types_controller.rb
+
+# This controller contains methods for TransactionType objects
 class TransactionTypesController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_transaction_type, only: [:show, :edit, :update, :destroy]
