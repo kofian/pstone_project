@@ -9,8 +9,6 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
 
-    session[:user_id] = current_user.id
-
   	if current_user.role == 'admin'
   		adminview_administrator_path(current_user, format: :html)
   	else

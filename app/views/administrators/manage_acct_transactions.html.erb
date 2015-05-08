@@ -35,6 +35,8 @@
     </table>
     <%= paginate (@acct_transactions) %>
     <br />
-  <%= link_to 'Back', :back, :class => "btn btn-primary formButton"  %>
-
+    <div id='links-block'>
+      <%= link_to 'Back', :back, :class => "btn btn-primary formButton"  %>
+      <%= link_to 'Return to Dashboard', manage_acct_transactions_administrator_path, :class => "btn btn-info formButton"  %>
+    </div>
 <% end %>

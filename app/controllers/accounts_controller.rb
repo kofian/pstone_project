@@ -146,7 +146,7 @@ class AccountsController < ApplicationController
     # User may only access their own account(s), unless they are admin
     def user_owns_account?
       if @account
-        @account.customer.user_id == session[:user_id] || current_user.role == 'admin'
+        @account.customer.user_id == current_user.id || current_user.role == 'admin'
       end
     end
 end

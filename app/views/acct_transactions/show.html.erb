@@ -11,7 +11,7 @@
 		<h3>Summary for Transaction no. <%= @acct_transaction.id %></h3>
 		<ul>
 			<li>Account: <%= @acct_transaction.account_id%></li>
-			<li>Type: <%= @acct_transaction.transaction_type_id %></li>
+			<li>Type: <%= TransactionType.find(@acct_transaction.transaction_type_id).name %></li>
 			<li>Date: <%= @acct_transaction.date%></li>
 			<li>Amount: <%= number_to_currency(@acct_transaction.amount)%></li>
 			<li>Description: <%= @acct_transaction.description %></li>
