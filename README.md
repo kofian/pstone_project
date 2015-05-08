@@ -1,15 +1,15 @@
 <h1>Capstone Savings Bank</h1>
 
-The website that I will create for my final project is a site for a banking institution. For demonstration purposes, I will be creating a functional online bank which offers checking and/or savings accounts. This site will be scalable and adaptable for use by actual financial institutions with minor modifications. 
+The website that I have created for my final project is a site for a banking institution. For demonstration purposes, I will be creating a functional online bank which offers checking and/or savings accounts. This site will be scalable and adaptable for use by actual financial institutions with minor modifications. 
 The general public will be able to view information about the bank, including (but not limited to):
-Sales and promotional offers for new customers
-Descriptions of benefits enjoyed by customers
-Ability to register a new account and fund that account with a debit card
-Mission statement
-Legal information/disclaimers
-Financial tips and tools (calculators, etc.)
-Contact and Location information
-Help Center (email and phone)
+<ul>
+	<li>Sales and promotional offers for new customers</li>
+	<li>Descriptions of benefits enjoyed by customers</li>
+	<li>Mission statement</li>
+	<li>Legal information/disclaimers</li>
+	<li>Contact and Location information</li>
+	<li>Help Center (tips, email and phone)</li>
+</ul>
 Accountholders and Administrators will access the site in the same manner. However, once logged in, administrators will be prompted to enter their employee passcode. 
 Accountholders will be able to view this material:
 An overview of all their accounts
