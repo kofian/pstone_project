@@ -1,9 +1,3 @@
-#   Barnabas Bulpett
-#   WEB-289-YD1
-#   Spring 2015
-#   schema.rb
-#   This file populates the database with records
-
 # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
