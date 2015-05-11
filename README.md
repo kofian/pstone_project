@@ -1,5 +1,8 @@
 <h1>Capstone Savings Bank</h1>
-
+<h3>Note: the passwords for testing of this project are as follows:<br /><br />
+Regular user: username: user, email: foo@bar.com, password: password<br /><br />
+Admin user: username: admin, email: phill@capstonesavings.com, password: Pa55w0rd</h3><br />
+<h3> All required assignment documentation can also be found in the above ASSETS directory</h3>
 <p>The website that I have created for my final project is a site for a banking institution. For demonstration purposes, I will be creating a functional online bank which offers checking and/or savings accounts. This site will be scalable and adaptable for use by actual financial institutions with minor modifications.</p>
 
 <p>The general public will be able to view information about the bank, including (but not limited to):</p>
