@@ -2,6 +2,10 @@
 -- WEB-289-YD1
 -- Spring 2015
 -- database_final.sql
+-- 
+-- User login criteria:
+-- Regular User: username: user, password: password, email: foo@bar.com
+-- Admin User: username: admin, password: Pa55w0rd, email: phill@capstonesavings.com
 --
 -- My database username: root
 -- My database password: 4kayamoses

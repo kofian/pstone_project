@@ -11,7 +11,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if current_user.role != "admin"
+      @users = []
+      @users << User.find(current_user)
+    else
+      @users = User.all
+    end
   end
 
   # GET /users/1
