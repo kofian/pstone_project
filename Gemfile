@@ -54,11 +54,17 @@ gem 'aws-sdk', '~> 2.0.24'
 group :development do
   gem 'rails-erd', '~> 1.3.0'
 end
+
+gem 'capistrano', '~> 3.1.0'
+gem 'capistrano-bundler', '~> 1.1.2'
+gem 'capistrano-rails', '~> 1.1.1'
+gem 'capistrano-rvm', github: "capistrano/rvm"
+
 # Twitter bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'bootstrap_form'
-# Use Puma as the app server
-gem 'puma', '~> 2.11.1'
+# Use Unicorn as the app server
+gem 'unicorn'
 # Use Devise for authentication
 gem 'devise'

@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20150228175219) do
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username", "id"], name: "BY_USERNAME", using: :btree
+  add_index "users", ["username"], name: "username", unique: true, using: :btree
 
   create_table "zip_codes", primary_key: "zip_code", force: true do |t|
     t.string "city",               limit: 45, null: false
