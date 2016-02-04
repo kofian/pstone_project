@@ -53,18 +53,19 @@ gem 'aws-sdk', '~> 2.0.24'
 # The Rails-ERD gem generates diagrams based on ActiveRecord db models. Requires GraphViz utility
 group :development do
   gem 'rails-erd', '~> 1.3.0'
-end
 
-gem 'capistrano', '~> 3.1.0'
-gem 'capistrano-bundler', '~> 1.1.2'
-gem 'capistrano-rails', '~> 1.1.1'
-gem 'capistrano-rvm', github: "capistrano/rvm"
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+end
 
 # Twitter bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'bootstrap_form'
 # Use Unicorn as the app server
-gem 'unicorn'
+gem 'puma'
 # Use Devise for authentication
 gem 'devise'
