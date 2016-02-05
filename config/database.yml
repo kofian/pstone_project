@@ -20,7 +20,7 @@ default: &default
   pool: 5
   username: root
   password: 4kayamoses
-  socket: /var/run/mysqld/mysqld.sock
+  host: localhost
 
 development:
   <<: *default

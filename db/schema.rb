@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20150228175219) do
 
   add_index "accounts", ["acct_type_id"], name: "fk_accounts_acct_types1_idx", using: :btree
   add_index "accounts", ["customer_id"], name: "fk_accounts_customers1_idx", using: :btree
-  add_index "accounts", ["id"], name: "id", using: :btree
 
   create_table "acct_transactions", force: true do |t|
     t.datetime "date",                                                     null: false
@@ -111,7 +110,6 @@ ActiveRecord::Schema.define(version: 20150228175219) do
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username", "id"], name: "BY_USERNAME", using: :btree
-  add_index "users", ["username"], name: "username", unique: true, using: :btree
 
   create_table "zip_codes", primary_key: "zip_code", force: true do |t|
     t.string "city",               limit: 45, null: false
@@ -120,4 +118,5 @@ ActiveRecord::Schema.define(version: 20150228175219) do
 
   add_index "zip_codes", ["state_abbreviation"], name: "fk_zip_codes_states1_idx", using: :btree
 
+  Foreigner.load
 end
