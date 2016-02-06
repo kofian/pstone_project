@@ -3,7 +3,7 @@ server '107.170.105.223', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:bbulpett/capstone_project.git'
 set :application,     'capstone_project'
-set :user,            'deploy'
+set :user,            'root'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
