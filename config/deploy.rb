@@ -1,5 +1,5 @@
 # Change these
-server '107.170.105.223', roles: [:web, :app, :db], primary: true
+server '107.170.105.223', port: 7171, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:bbulpett/capstone_project.git'
 set :application,     'capstone_project'
