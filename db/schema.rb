@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150228175219) do
 
-  create_table "accounts", force: true do |t|
+  create_table "accounts", force: :cascade do |t|
     t.decimal  "balance",                precision: 10, scale: 2, null: false
     t.datetime "date_opened",                                     null: false
     t.integer  "customer_id",  limit: 8,                          null: false
@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(version: 20150228175219) do
   add_index "accounts", ["acct_type_id"], name: "fk_accounts_acct_types1_idx", using: :btree
   add_index "accounts", ["customer_id"], name: "fk_accounts_customers1_idx", using: :btree
 
-  create_table "acct_transactions", force: true do |t|
+  create_table "acct_transactions", force: :cascade do |t|
     t.datetime "date",                                                     null: false
     t.text     "description",         limit: 255
     t.decimal  "amount",                          precision: 10, scale: 2, null: false
     t.integer  "account_id",          limit: 8,                            null: false
-    t.integer  "transaction_type_id",                                      null: false
+    t.integer  "transaction_type_id", limit: 4,                            null: false
     t.decimal  "adjusted_bal",                    precision: 10, scale: 2, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -40,12 +40,12 @@ ActiveRecord::Schema.define(version: 20150228175219) do
   add_index "acct_transactions", ["date", "id"], name: "BY_DATE", using: :btree
   add_index "acct_transactions", ["transaction_type_id"], name: "fk_acct_transactions_transaction_types1_idx", using: :btree
 
-  create_table "acct_types", force: true do |t|
+  create_table "acct_types", force: :cascade do |t|
     t.string  "name",          limit: 14
     t.decimal "interest_rate",            precision: 3, scale: 3, default: 0.0, null: false
   end
 
-  create_table "addresses", primary_key: "customer_id", force: true do |t|
+  create_table "addresses", primary_key: "customer_id", force: :cascade do |t|
     t.string "address1",          limit: 60, null: false
     t.string "address2",          limit: 60
     t.string "zip_code_zip_code", limit: 5,  null: false
@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(version: 20150228175219) do
 
   add_index "addresses", ["zip_code_zip_code"], name: "fk_addresses_zip_codes1_idx", using: :btree
 
-  create_table "administrators", force: true do |t|
+  create_table "administrators", force: :cascade do |t|
     t.string   "firstname",  limit: 40, null: false
     t.string   "lastname",   limit: 40, null: false
-    t.uuid     "user_id",               null: false
+    t.uuid     "user_id",    limit: 16, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,13 +64,13 @@ ActiveRecord::Schema.define(version: 20150228175219) do
   add_index "administrators", ["lastname", "firstname", "id"], name: "BY_LASTNAME", using: :btree
   add_index "administrators", ["user_id"], name: "fk_administrators_users_idx", using: :btree
 
-  create_table "customers", force: true do |t|
+  create_table "customers", force: :cascade do |t|
     t.string   "phone1",     limit: 20
     t.string   "phone2",     limit: 20
     t.string   "title",      limit: 11
     t.string   "firstname",  limit: 40
     t.string   "lastname",   limit: 40
-    t.uuid     "user_id",               null: false
+    t.uuid     "user_id",    limit: 16, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20150228175219) do
   add_index "customers", ["lastname", "firstname"], name: "NAME_LAST_FIRST", using: :btree
   add_index "customers", ["user_id"], name: "fk_customers_users1_idx", using: :btree
 
-  create_table "states", force: true do |t|
+  create_table "states", force: :cascade do |t|
     t.string "name",         limit: 30, null: false
     t.string "abbreviation", limit: 5,  null: false
     t.string "assoc_press",  limit: 14, null: false
@@ -86,37 +86,36 @@ ActiveRecord::Schema.define(version: 20150228175219) do
 
   add_index "states", ["name", "id"], name: "BY_NAME", using: :btree
 
-  create_table "transaction_types", force: true do |t|
+  create_table "transaction_types", force: :cascade do |t|
     t.string "name", limit: 30
   end
 
-  create_table "users", force: true do |t|
-    t.string   "username",               limit: 30, default: "", null: false
-    t.string   "password",               limit: 30, default: "", null: false
+  create_table "users", force: :cascade do |t|
+    t.string   "username",               limit: 30,  default: "", null: false
+    t.string   "password",               limit: 30,  default: "", null: false
     t.string   "role",                   limit: 30
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                             default: "", null: false
-    t.string   "encrypted_password",                default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                     default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username", "id"], name: "BY_USERNAME", using: :btree
 
-  create_table "zip_codes", primary_key: "zip_code", force: true do |t|
+  create_table "zip_codes", primary_key: "zip_code", force: :cascade do |t|
     t.string "city",               limit: 45, null: false
     t.string "state_abbreviation", limit: 3,  null: false
   end
 
   add_index "zip_codes", ["state_abbreviation"], name: "fk_zip_codes_states1_idx", using: :btree
 
-  Foreigner.load
 end

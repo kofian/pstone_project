@@ -6,7 +6,8 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.14.1', git: "git://github.com/rails/rails.git", branch: '4-1-stable'
+# gem 'rails', '4.1.14.1', git: "git://github.com/rails/rails.git", branch: '4-1-stable'
+gem 'rails', '4.2.4'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.3.18'
 # Use SCSS for stylesheets
@@ -49,23 +50,24 @@ gem "activeuuid"
 # Foreigner gem for generating foreign keys 
 gem 'foreigner', '~> 1.7.2'
 # Amazon cli tools
-gem 'aws-sdk', '~> 2.0.24'
+# gem 'aws-sdk', '~> 2.0.24'
 # The Rails-ERD gem generates diagrams based on ActiveRecord db models. Requires GraphViz utility
 group :development do
-  gem 'rails-erd', '~> 1.3.0'
-
-  gem 'capistrano',         require: false
-  gem 'capistrano-rvm',     require: false
-  gem 'capistrano-rails',   require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
+	gem 'rails-erd', '~> 1.3.0'
+	# Capistrano is a fun way to deploy things
+	gem 'capistrano', '~> 3.4.0'
+	gem 'capistrano-bundler', '~> 1.1.4'
+	gem 'capistrano-rails', '~> 1.1.6'
+	gem 'capistrano-rbenv', github: "capistrano/rbenv"
 end
-
 # Twitter bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'bootstrap_form'
 # Use Unicorn as the app server
-gem 'puma'
+# gem 'unicorn'
+# Use Puma as the app server
+# gem 'puma'
+
 # Use Devise for authentication
 gem 'devise'

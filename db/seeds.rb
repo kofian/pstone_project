@@ -10,17 +10,17 @@ require 'ffaker' #Using faker to seed make-believe data
 require 'csv' #Pull data from local .csv files
 
 # Seed zip_code and states tables via SQL import
-# csv_text = File.read("#{Rails.root}/db/state_table.csv")
-# csv = CSV.parse(csv_text, :headers => true)
-# csv.each do |row|
-#   State.create!(row.to_hash)
-# end
+csv_text = File.read("#{Rails.root}/db/state_table.csv")
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  State.create!(row.to_hash)
+end
 
-# csv_text = File.read("#{Rails.root}/db/zip_code_table.csv")
-# csv = CSV.parse(csv_text, :headers => true)
-# csv.each do |row|
-#   ZipCode.create!(row.to_hash)
-# end
+csv_text = File.read("#{Rails.root}/db/zip_code_table.csv")
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  ZipCode.create!(row.to_hash)
+end
 
 # Generate transaction types
 TransactionType.create(id: 1, name: 'ATM_Withdrawal')
