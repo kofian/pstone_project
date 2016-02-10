@@ -18,10 +18,10 @@ development:
   username: root
 production: 
   adapter: mysql2
-  database: "<%= ENV['DATABASE_NAME'] %>"
+  database: capstone_production
   encoding: utf8
-  password: "<%= ENV['DATABASE_PASSWORD'] %>"
-  username: "<%= ENV['DATABASE_USERNAME'] %>"
+  password: "<%= ENV['MYSQL_DB_PASSWORD'] %>"
+  username: "<%= ENV['MYSQL_DB_USERNAME'] %>"
 test: 
   adapter: mysql2
   database: capstone_test
