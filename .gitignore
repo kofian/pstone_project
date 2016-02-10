@@ -24,5 +24,10 @@
 /config/local_env.yml
 
 # Ignore database config
-#/config/database.yml
+/config/database.yml
+/config/database.yml.example
+
+# Ignore secrets
+/config/secrets.yml
+/config/secrets.yml.example
 
