@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.4.0'
+lock '3.4.1'
 
 set :application, 'capstone_project'
 set :repo_url, 'git@github.com:bbulpett/capstone_project.git'
@@ -8,8 +8,8 @@ set :repo_url, 'git@github.com:bbulpett/capstone_project.git'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/deploy/capstone_project'
-
+#set :deploy_to, '/home/deploy/capstone_project'
+set :deploy_to, '/var/www/transa-transact.com'
 # Default value for :scm is :git
 # set :scm, :git
 

@@ -58,7 +58,9 @@ group :development do
 	gem 'capistrano', '~> 3.4.0'
 	gem 'capistrano-bundler', '~> 1.1.4'
 	gem 'capistrano-rails', '~> 1.1.6'
-	gem 'capistrano-rbenv', github: "capistrano/rbenv"
+	#gem 'capistrano-rbenv', github: "capistrano/rbenv"
+        gem 'capistrano-rvm', github: "capistrano/rvm"
+        gem 'capistrano-passenger' 
 end
 # Twitter bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
