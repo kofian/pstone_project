@@ -1,8 +1,8 @@
 # config valid only for current version of Capistrano
 lock '3.4.1'
 
-set :application, 'capstone_project'
-set :repo_url, 'git@github.com:bbulpett/capstone_project.git'
+set :application, 'pstone_project'
+set :repo_url, 'git@github.com:kofian/pstone_project.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
