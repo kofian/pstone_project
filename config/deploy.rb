@@ -10,7 +10,7 @@ set :passenger_restart_with_touch, true
 
 # Default deploy_to directory is /var/www/my_app_name
 #set :deploy_to, '/home/deploy/capstone_project'
-set :deploy_to, '/var/www/transa-transact.com'
+set :deploy_to, '/var/www/transa-transact.com/public_html'
 # Default value for :scm is :git
 # set :scm, :git
 
